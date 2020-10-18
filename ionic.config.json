@@ -1,0 +1,7 @@
+{
+  "name": "KogerApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
