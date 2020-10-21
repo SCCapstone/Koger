@@ -18,8 +18,8 @@ This app will help users find their seats in the Koger Center
 ## Running Tests
 
 # Authors
-James Cochran - jdc7@email.sc.edu
-Joshua Acree - jgacree@email.sc.edu
-Tyler Beagle - wbeagle@email.sc.edu
-Justin Brown - justinhb@email.sc.edu
-Devon Harant - dharant@email.sc.edu
+James Cochran - jdc7@email.sc.edu<br />
+Joshua Acree - jgacree@email.sc.edu<br />
+Tyler Beagle - School: wbeagle@email.sc.edu; Personal: tylerbeagle34@gmail.com<br />
+Justin Brown - justinhb@email.sc.edu<br />
+Devon Harant - School: dharant@email.sc.edu; Personal: 
