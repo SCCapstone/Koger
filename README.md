@@ -1,6 +1,7 @@
 # Koger Center App
 
 ## Project Description
+This app will help users find their seats in the Koger Center
 
 ## External Requirements
 
