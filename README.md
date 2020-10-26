@@ -12,6 +12,8 @@ To set up your environment to run this project, you will need to:
 * Update/install Node.js from the command line
 * Update/install npm from the command line
 * Install the Ionic CLI from the command line with "npm install -g @ionic/cli"
+* Install Angular through npm from the command line with "npm install @ionic/angular@latest --save"
+* Add Ionic Angular from the command line with "ng add @ionic/angular"
 
 ## Running
 To run the app from a computer with the project cloned to it, you will need to:
