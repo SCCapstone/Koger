@@ -2,6 +2,7 @@
 
 ## Project Description
 This app will help users find their seats in the Koger Center as well as provide other services relevant to the Koger Center and their showings.
+[Description Page](https://github.com/SCCapstone/Koger/wiki/Project-Description).
 
 ## External Requirements
 In order to build this project, you will need:
