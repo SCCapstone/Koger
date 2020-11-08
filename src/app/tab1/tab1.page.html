@@ -31,5 +31,27 @@
         <ion-text><h3>Enter your ticket information:</h3></ion-text>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <img alt="ticket" height="100" src="../../assets/img/ticket.jpg">
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label floating>Section</ion-label>
+      <ion-select [(ngModel)]="seat.section" (ngModelChange)="setRows(seat.section)" name="Section">
+        <ion-select-option *ngFor="let i of sections">{{ i }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Row</ion-label>
+      <ion-select [(ngModel)]="seat.row" name="Row">
+        <ion-select-option *ngFor="let i of rows">{{ i }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Seat Number: </ion-label>
+      <ion-input [(ngModel)]="seat.seatNum" name="SeatNum"></ion-input>
+    </ion-item>
+    <ion-button expand="full" color="garnet">Find Seat</ion-button>
   </ion-grid>
 </ion-content>
