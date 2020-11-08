@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyC1-fHtmcX-e_16-JJX6IFEfnTIXSGMdOw",
+    authDomain: "koger-center-app.firebaseapp.com",
+    databaseURL: "https://koger-center-app.firebaseio.com",
+    projectId: "koger-center-app",
+    storageBucket: "koger-center-app.appspot.com",
+    messagingSenderId: "898838743540",
+    appId: "1:898838743540:web:5d00f9bb87c8b59398d1a1",
+    measurementId: "G-ZG58JS5HEN"
+  }
 };
 
 /*
