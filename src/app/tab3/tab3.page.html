@@ -25,6 +25,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-title color = "primary">Admin Login</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
 
     <ion-item>
