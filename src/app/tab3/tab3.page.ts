@@ -23,6 +23,7 @@ export class Tab3Page  implements OnInit {
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
+      // Pattern must match ___@___.___
       Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
       password: new FormControl('', Validators.compose
@@ -32,6 +33,7 @@ export class Tab3Page  implements OnInit {
       ])),
     });
   }
+  // Error Messages
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.'},
@@ -50,6 +52,7 @@ export class Tab3Page  implements OnInit {
         console.log(res);
         console.log('Succesfully Logged In')
         this.errorMessage = "";
+        console.log("UID: " + this.authService.userData.uid);
       }, err=> {
         this.errorMessage = err.message;
       })
