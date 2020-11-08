@@ -27,9 +27,9 @@
     "@ionic-native/status-bar": "^5.0.0",
     
     "@ionic/angular": "^5.0.0",
-     "angularfire2": "^5.4.2",
-     "firebase": "^8.0.1",
-     "ionic-img-viewer": "^2.9.0",
+    "angularfire2": "^5.4.2",
+    "firebase": "^8.0.1",
+    "ionic-img-viewer": "^2.9.0",
 
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
