@@ -25,15 +25,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-card>
   <ion-grid>
     <ion-row>
       <ion-col>
         <ion-text><h3>Enter your ticket information:</h3></ion-text>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <img alt="ticket" height="100" src="../../assets/img/ticket.jpg">
       </ion-col>
     </ion-row>
     <ion-item>
@@ -44,14 +40,33 @@
     </ion-item>
     <ion-item>
       <ion-label floating>Row</ion-label>
-      <ion-select [(ngModel)]="seat.row" name="Row">
+      <ion-select [(ngModel)]="seat.row" (ngModelChange)="setSeats(seat.row)" name="Row">
         <ion-select-option *ngFor="let i of rows">{{ i }}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label floating>Seat Number: </ion-label>
-      <ion-input [(ngModel)]="seat.seatNum" name="SeatNum"></ion-input>
+      <ion-select [(ngModel)]="seat.seatNum" name="SeatNum">
+        <ion-select-option *ngFor="let i of seats">{{ i }}</ion-select-option>
+      </ion-select>
     </ion-item>
-    <ion-button expand="full" color="garnet">Find Seat</ion-button>
   </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img alt="ticket" height="100" src="../../assets/img/ticket.jpg">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="garnet">Find Seat</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
 </ion-content>
