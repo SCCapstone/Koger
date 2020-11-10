@@ -2,16 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
-import { AdminLoginPage } from '../admin-login/admin-login.page';
-import { Router } from '@angular/router';
-
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-admin-login',
+  templateUrl: 'admin-login.page.html',
+  styleUrls: ['admin-login.page.scss']
 })
-export class Tab3Page  implements OnInit {
+export class AdminLoginPage  implements OnInit {
 
   validations_form: FormGroup;
   errorMessage: string = '';
@@ -19,8 +16,7 @@ export class Tab3Page  implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder,
-    private route: Router
+    private formBuilder: FormBuilder
   ) {}
   ngOnInit()
   {
@@ -48,11 +44,6 @@ export class Tab3Page  implements OnInit {
       { type: 'minLength', message: 'Password must be at least 5 characters'}
     ]
   };
-
-  jumpToLogin()
-  {
-    this.route.navigate(['../admin-login']);
-  }
 
   loginUser(value)
   {
