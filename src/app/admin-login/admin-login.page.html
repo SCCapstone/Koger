@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="auto">
+          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
+        </ion-col>
+        <ion-col>
+          <ion-grid>
+            <ion-row>
+              <ion-col> 
+                <ion-text>Welcome to the</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-text><h1>Koger Center</h1></ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-title color = "primary">Admin Login</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
+    
+    <!--Reads in email and outputs errors if not correct format or not filled out-->
+    <ion-item>
+      <ion-label position = "floating" color="primary">Email</ion-label>
+      <ion-input type="text" formControlName = "email"></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-align-self-start" size="auto">
+          <div class = "validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+            <div class="error-message"
+              *ngIf = "validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+              {{ validation.message }}
+            </div>
+            </ng-container>
+         </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!--Reads in password and outputs errors if not correct format or not filled out-->
+    <ion-item>
+      <ion-label position = "floating" color="primary">Password</ion-label>
+      <ion-input type="password" formControlName = "password" class="form-controll" required></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-align-self-start" size="auto">
+          <div class = "validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message"
+             *ngIf = "validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+              {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-align-self-start">
+          <!-- If form is not valid then log in button is not clickable -->
+          <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" expand="block">Log In</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <label class="error-message">{{errorMessage}}</label>
+  </form>
+</ion-content>
