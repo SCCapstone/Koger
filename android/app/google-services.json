@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "898838743540",
+    "firebase_url": "https://koger-center-app.firebaseio.com",
+    "project_id": "koger-center-app",
+    "storage_bucket": "koger-center-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898838743540:android:0cdd99948005256598d1a1",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898838743540-vfru6jukjp768t2k0nm8ao6ejuhps7mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMju483xYUd7DcCdd0vEILZhZTMxMHOQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898838743540-vfru6jukjp768t2k0nm8ao6ejuhps7mh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
