@@ -25,7 +25,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
   <ion-card>
     <ion-grid>
       <ion-row>
@@ -35,9 +34,28 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="garnet" (click)="openParking()">Parking Information</ion-button>
+          <ion-button expand="block" color="garnet" (click) = "jumpToEvents()">Upcoming Events</ion-button>
         </ion-col>
       </ion-row>
+  
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="garnet" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="garnet" (click) = "jumpToParking()">Parking Information</ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="garnet" (click) = "jumpToHandicapped()">Handicapped Accessibility</ion-button>
+        </ion-col>
+      </ion-row>
+  
       <ion-row>
         <ion-col>
           <ion-button type = "button" expand="block" color="garnet" (click) = "jumpToLogin()">Admin Login</ion-button>
@@ -45,37 +63,4 @@
       </ion-row>
     </ion-grid>
   </ion-card>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" color="garnet" (click) = "jumpToEvents()">Upcoming Events</ion-button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" color="garnet" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" color="garnet" (click) = "jumpToParking()">Parking Information</ion-button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" color="garnet" (click) = "jumpToHandicapped()">Handicapped Accessibility</ion-button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-button type = "button" expand="block" color="garnet" (click) = "jumpToLogin()">Admin Login</ion-button>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
 </ion-content>
