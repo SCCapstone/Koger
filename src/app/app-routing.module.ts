@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'admin-login',
     loadChildren: () => import('./admin-login/admin-login.module').then( m => m.Tab3PageModule)
+  },
+  {
+    path: 'parking-info',
+    loadChildren: () => import('./parking-info/parking-info.module').then( m => m.ParkingInfoPageModule)
   }
 
 ];
