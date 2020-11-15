@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
+import { ParkingInfoPage } from '../parking-info/parking-info.page';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class Tab3Page  implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
-    private route: Router
+    private route: Router,
+    private modalController: ModalController
   ) {}
   ngOnInit()
   {
@@ -85,5 +87,12 @@ export class Tab3Page  implements OnInit {
       }, err=> {
         this.errorMessage = err.message;
       })
+  }
+
+  async openParking() {
+    const modal = await this.modalController.create({
+      component: ParkingInfoPage
+    });
+    return await modal.present();
   }
 }
