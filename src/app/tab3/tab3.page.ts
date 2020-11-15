@@ -54,6 +54,26 @@ export class Tab3Page  implements OnInit {
     this.route.navigate(['../admin-login']);
   }
 
+  jumpToEvents()
+  {
+    this.route.navigate(['../upcoming-events']);
+  }
+
+  jumpToArt()
+  {
+    this.route.navigate(['../art']);
+  }
+
+  jumpToParking()
+  {
+    this.route.navigate(['../parking']);
+  }
+
+  jumpToHandicapped()
+  {
+    this.route.navigate(['../handicapped']);
+  }
+
   loginUser(value)
   {
     this.authService.loginUser(value)

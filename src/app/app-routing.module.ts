@@ -13,6 +13,22 @@ const routes: Routes = [
   {
     path: 'admin-login',
     loadChildren: () => import('./admin-login/admin-login.module').then( m => m.Tab3PageModule)
+  },
+  {
+    path: 'upcoming-events',
+    loadChildren: () => import('./upcoming-events/upcoming-events.module').then( m => m.UpcomingEventsPageModule)
+  },
+  {
+    path: 'art',
+    loadChildren: () => import('./art/art.module').then( m => m.ArtPageModule)
+  },
+  {
+    path: 'parking',
+    loadChildren: () => import('./parking/parking.module').then( m => m.ParkingPageModule)
+  },
+  {
+    path: 'handicapped',
+    loadChildren: () => import('./handicapped/handicapped.module').then( m => m.HandicappedPageModule)
   }
 
 ];
