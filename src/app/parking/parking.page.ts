@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-parking',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParkingPage implements OnInit {
 
-  constructor() { }
+  constructor(private photoViewer: PhotoViewer) { }
 
   ngOnInit() {
+  }
+
+  zoomImage(imageData) {
+    this.photoViewer.show(imageData);
   }
 
 }
