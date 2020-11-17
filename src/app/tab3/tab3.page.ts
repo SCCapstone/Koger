@@ -5,6 +5,7 @@ import { AuthenticateService } from '../services/authentication.service';
 import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
 import { ParkingInfoPage } from '../parking-info/parking-info.page';
+//import { InAppBroswer } from 'ionic-native';
 
 
 @Component({
@@ -88,6 +89,14 @@ export class Tab3Page  implements OnInit {
         this.errorMessage = err.message;
       })
   }
+
+  
+
+  /*launch(url){
+    this.platform.ready().then(() => {
+      cordova.InAppBrowser.open(url, "_system", "location=true");});
+    }
+  }*/
 
   async openParking() {
     const modal = await this.modalController.create({
