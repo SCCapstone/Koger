@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController, ModalController, Platform } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
 import { ParkingInfoPage } from '../parking-info/parking-info.page';
-//import { InAppBroswer } from 'ionic-native';
+//import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @Component({
@@ -23,7 +23,8 @@ export class Tab3Page  implements OnInit {
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
     private route: Router,
-    private modalController: ModalController
+    private modalController: ModalController,
+    public platform: Platform
   ) {}
   ngOnInit()
   {
@@ -90,12 +91,10 @@ export class Tab3Page  implements OnInit {
       })
   }
 
-  
-
-  /*launch(url){
+  /*openUrl(){
     this.platform.ready().then(() => {
-      cordova.InAppBrowser.open(url, "_system", "location=true");});
-    }
+      let browser = new InAppBrowser("https://itkt.choicecrm.net/templates/USCK/#/events", '_blank');
+    })
   }*/
 
   async openParking() {
