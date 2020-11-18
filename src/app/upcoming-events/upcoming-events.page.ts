@@ -6,14 +6,20 @@ import { AuthenticateService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-events',
-  templateUrl: './events.page.html',
-  styleUrls: ['./events.page.scss'],
+  templateUrl: './upcoming-events.page.html',
+  styleUrls: ['./upcoming-events.page.scss'],
 })
 export class EventsPage implements OnInit {
   public eventList: Observable<Event[]>
+  public afStore: AuthenticateService;
   constructor (private firestoreService: FirestoreService) {}
 
   ngOnInit () {
     this.eventList = this.firestoreService.getEventData();
+  }
+  userExists()
+  {
+    console.log(this.afStore.userExists())
+    return this.afStore.userExists();
   }
 }

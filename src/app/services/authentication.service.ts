@@ -67,4 +67,12 @@ export class AuthenticateService {
         merge: true
       })
   }
+  userExists(){
+    if(this.userData.id != null) {
+      return true;
+    }
+    else {
+      return false;
+      }
+  }
 }

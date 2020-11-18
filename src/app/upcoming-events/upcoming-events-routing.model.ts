@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EventsPage } from './events.page';
+import { EventsPage } from './upcoming-events.page';
 
 const routes: Routes = [
   {
