@@ -44,7 +44,7 @@ export class AdminLoginPage  implements OnInit {
       { type: 'minLength', message: 'Password must be at least 5 characters'}
     ]
   };
-
+  // Logs in user and returns UID
   loginUser(value)
   {
     this.authService.loginUser(value)
