@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'map-seats-balcony',
     loadChildren: () => import('./map-seats-balcony/map-seats-balcony.module').then( m => m.MapSeatsBalconyPageModule)
+  },
+  {
+    path: 'seat-description',
+    loadChildren: () => import('./seat-description/seat-description.module').then( m => m.SeatDescriptionPageModule)
   }
 
 ];
