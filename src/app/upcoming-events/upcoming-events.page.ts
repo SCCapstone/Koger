@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../shared/event';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { FirestoreService } from '../services/data/firestore.service';
 import { AuthenticateService } from '../services/authentication.service';
 
 @Component({
-  selector: 'app-events',
+  selector: 'app-upcoming-events',
   templateUrl: './upcoming-events.page.html',
   styleUrls: ['./upcoming-events.page.scss'],
 })
-export class EventsPage implements OnInit {
+export class UpcomingEventsPage implements OnInit {
   public eventList: Observable<Event[]>
   public afStore: AuthenticateService;
   constructor (private firestoreService: FirestoreService) {}
