@@ -27,16 +27,26 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col size ="auto">
           <ion-text><h3>Upcoming Events</h3></ion-text>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
+
+  <ion-item *ngFor = "let event of eventList | async" >
+    <ion-label>
+     <h2>{{event.title}}</h2>
+     <p> {{event.description}}</p>
+    </ion-label>
+  </ion-item>
+  <!--<ion-button *ngIf = "userExists()" routerLink="/event-create"></ion-button>-->
+
 
   <ion-card>
     <ion-card-header>

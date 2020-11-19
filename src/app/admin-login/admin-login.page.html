@@ -28,13 +28,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-title color = "primary">Admin Login</ion-title>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-text><h3>Admin Login</h3></ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
   <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
     
     <!--Reads in email and outputs errors if not correct format or not filled out-->

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Event } from '../shared/event';
+import { Observable } from 'rxjs';
+import { FirestoreService } from '../services/data/firestore.service';
+import { AuthenticateService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-upcoming-events',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upcoming-events.page.scss'],
 })
 export class UpcomingEventsPage implements OnInit {
+  public eventList: Observable<Event[]>
+  public afStore: AuthenticateService;
+  constructor (private firestoreService: FirestoreService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit () {
+    this.eventList = this.firestoreService.getEventData();
   }
-
+  userExists()
+  {
+    console.log(this.afStore.userExists())
+    return this.afStore.userExists();
+  }
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+
 import { UpcomingEventsPageRoutingModule } from './upcoming-events-routing.module';
 
 import { UpcomingEventsPage } from './upcoming-events.page';
