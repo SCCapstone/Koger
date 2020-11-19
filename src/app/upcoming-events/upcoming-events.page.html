@@ -39,13 +39,22 @@
     </ion-grid>
   </ion-card>
 
-  <ion-item *ngFor = "let event of eventList | async" >
-    <ion-label>
-     <h2>{{event.title}}</h2>
-     <p> {{event.description}}</p>
-    </ion-label>
-  </ion-item>
-  <!--<ion-button *ngIf = "userExists()" routerLink="/event-create"></ion-button>-->
+
+  <ion-card *ngFor = "let event of eventList | async">
+    <ion-card-header>
+      <ion-card-title>{{event.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>Description</ion-card-subtitle>
+      <p>{{event.description}}</p>
+      <ion-card-subtitle>Seating</ion-card-subtitle>
+      <p>There are strict COVID-19 health and safety protocols in place to protect our patrons, dancers, 
+         staff, and volunteers. Seating will be socially distanced. Every other row in the theater will be 
+         empty and seating is ONLY sold in pairs. There will be three empty seats between each pair of 
+         occupied seats.</p>
+    </ion-card-content>
+  </ion-card>
+
 
 
   <ion-card>
