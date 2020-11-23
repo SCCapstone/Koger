@@ -18,7 +18,11 @@ export class CreateEventPage implements OnInit {
     private router: Router
     ) { 
       this.createEventForm = formBuilder.group({
-      eventName: ['', Validators.required]
+      eventName: ['', Validators.required],
+      eventDescription: ['', Validators.required],
+      link: ['', Validators.required],
+      tag: ['', Validators.required],
+      dates: ['', Validators.required]
     });
   }
   ngOnInit() {
@@ -27,9 +31,13 @@ export class CreateEventPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     
     const eventName = this.createEventForm.value.eventName;
-
+    const eventDescription = this.createEventForm.value.eventDescription;
+    const dates = this.createEventForm.value.dates;
+    const link = this.createEventForm.value.link;
+    const tag = this.createEventForm.value.tag;
+    
     this.firestoreService.
-    createEvent(eventName).
+    createEvent(eventName, eventDescription, dates, link, tag).
     then(
       () => {
         loading.dismiss().then(()=> {

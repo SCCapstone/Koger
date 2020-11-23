@@ -27,51 +27,18 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  <form [formGroup] = "createEventForm" (submit)="createEvent()">
+  <form [formGroup] = "deleteEventForm" (submit)="deleteEvent()">
     <ion-item>
-      <ion-label stacked> Event Name</ion-label>
+      <ion-label stacked>Event Name</ion-label>
       <ion-input formControlName="eventName"
       type="text"
       placeholder="What is the name of the event?"
       >
       </ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label stacked>Event Description</ion-label>
-      <ion-input formControlName="eventDescription"
-      type="text"
-      placeholder="Describe the event"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked> Date and Time</ion-label>
-      <ion-input formControlName="dates"
-      type="text"
-      placeholder="What are the dates and times?"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Tag</ion-label>
-      <ion-input formControlName="tag"
-      type="text"
-      placeholder="What is the tag?"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Link</ion-label>
-      <ion-input formControlName="link"
-      type="text"
-      placeholder="Please paste the link to the event"
-      >
-      </ion-input>
-    </ion-item>
     <ion-button expand="block" type="submit">
-      Add Event
+      Delete Event
     </ion-button>
   </form>
 </ion-content>
