@@ -43,15 +43,21 @@
   <ion-card *ngFor = "let event of eventList | async">
     <ion-card-header>
       <ion-card-title>{{event.title}}</ion-card-title>
+      <ion-card-subtitle color = "primary">{{event.dates}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <ion-card-subtitle>Description</ion-card-subtitle>
+      <ion-card-subtitle color = "primary">Description</ion-card-subtitle>
       <p>{{event.description}}</p>
-      <ion-card-subtitle>Seating</ion-card-subtitle>
+      <!--<ion-card-subtitle color = "primary">Tag</ion-card-subtitle>
+      <p>{{event.tag}}</p>-->
+      <!--<ion-card-subtitle color = "primary">Link</ion-card-subtitle>
+      <p>{{event.link}}</p>-->
+      <ion-card-subtitle color = "primary">Seating</ion-card-subtitle>
       <p>There are strict COVID-19 health and safety protocols in place to protect our patrons, dancers, 
          staff, and volunteers. Seating will be socially distanced. Every other row in the theater will be 
          empty and seating is ONLY sold in pairs. There will be three empty seats between each pair of 
          occupied seats.</p>
+      <ion-button type = "button" expand="block" color="garnet" onclick="window.open(event.link, '_system', 'location=yes'); return false;">Go To Event</ion-button>
     </ion-card-content>
   </ion-card>
 
