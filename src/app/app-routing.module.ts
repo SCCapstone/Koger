@@ -57,7 +57,20 @@ const routes: Routes = [
   {
     path: 'seat-description',
     loadChildren: () => import('./seat-description/seat-description.module').then( m => m.SeatDescriptionPageModule)
+  },
+  {
+    path: 'admin-dashboard',
+    loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+  },
+  {
+    path: 'create-event',
+    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
+  },  {
+    path: 'create-event',
+    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
   }
+
+
 
 
 ];

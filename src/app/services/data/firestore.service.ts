@@ -15,4 +15,11 @@ export class FirestoreService {
   getEventData(): Observable<Event[]>{
     return this.firestore.collection<Event>('Event').valueChanges();
   }
+  createEvent(
+    eventName:string
+  ): Promise<void> { 
+    return this.firestore.doc('Event/'+eventName).set({
+      eventName
+    });
+  }
 }

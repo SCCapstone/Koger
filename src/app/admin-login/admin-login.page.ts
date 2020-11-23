@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { AuthenticateService } from '../services/authentication.service';
 
 @Component({
@@ -14,9 +14,9 @@ export class AdminLoginPage  implements OnInit {
   errorMessage: string = '';
 
   constructor(
-    private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public router: Router
   ) {}
   ngOnInit()
   {
@@ -53,8 +53,14 @@ export class AdminLoginPage  implements OnInit {
         console.log('Succesfully Logged In')
         this.errorMessage = "";
         console.log("UID: " + this.authService.userData.uid);
+        // Redirects user on login to dashboard
+        this.router.navigate(['admin-dashboard'])
       }, err=> {
         this.errorMessage = err.message;
       })
+  }
+  jumpToHomePage()
+  {
+    this.router.navigate(['tabs/tab3'])
   }
 }
