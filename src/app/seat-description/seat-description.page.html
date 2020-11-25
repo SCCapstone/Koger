@@ -28,8 +28,13 @@
 </ion-header>
 
 <ion-content>
-  <h1 class="ion-text-center">Seat Description</h1>
-  <p class="ion-text-center">Section: {{ inputSeat.section }}</p>
-  <p class="ion-text-center">Row: {{ inputSeat.row }}</p>
-  <p class="ion-text-center">Seat Number: {{ inputSeat.seatNum }}</p>
+  <ion-card class="ion-padding">
+    <ion-card-title class="ion-text-center">Seat Description</ion-card-title>
+    <p class="ion-text-center">Section: {{ inputSeat.section }}, Row: {{ inputSeat.row }}, Seat Number: {{ inputSeat.seatNum }}</p>
+    <ion-card-title class="ion-text-center">Directions for Finding Your Seat</ion-card-title>
+    <p class="ion-text-center">Step 1: {{ message.message1 }}</p>
+    <p class="ion-text-center">Step 2: {{ message.message2 }}</p>
+    <p class="ion-text-center">Step 3: {{ message.message3 }}</p>
+    <p class="ion-text-center">Step 4: {{ message.message4 }}</p>
+  </ion-card>
 </ion-content>
