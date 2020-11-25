@@ -13,7 +13,69 @@ const routes: Routes = [
   {
     path: 'admin-login',
     loadChildren: () => import('./admin-login/admin-login.module').then( m => m.Tab3PageModule)
+  },
+  {
+    path: 'upcoming-events',
+    loadChildren: () => import('./upcoming-events/upcoming-events.module').then( m => m.UpcomingEventsPageModule)
+  },
+  {
+    path: 'art',
+    loadChildren: () => import('./art/art.module').then( m => m.ArtPageModule)
+  },
+  {
+    path: 'parking',
+    loadChildren: () => import('./parking/parking.module').then( m => m.ParkingPageModule)
+  },
+  {
+    path: 'handicapped',
+    loadChildren: () => import('./handicapped/handicapped.module').then( m => m.HandicappedPageModule)
+  },
+  {
+    path: 'map-lobby',
+    loadChildren: () => import('./map-lobby/map-lobby.module').then( m => m.MapLobbyPageModule)
+  },
+  {
+    path: 'map-seats-orchestra',
+    loadChildren: () => import('./map-seats-orchestra/map-seats-orchestra.module').then( m => m.MapSeatsOrchestraPageModule)
+  },
+  {
+    path: 'map-grand',
+    loadChildren: () => import('./map-grand/map-grand.module').then( m => m.MapGrandPageModule)
+  },
+  {
+    path: 'map-seats-grand',
+    loadChildren: () => import('./map-seats-grand/map-seats-grand.module').then( m => m.MapSeatsGrandPageModule)
+  },
+  {
+    path: 'map-balcony',
+    loadChildren: () => import('./map-balcony/map-balcony.module').then( m => m.MapBalconyPageModule)
+  },
+  {
+    path: 'map-seats-balcony',
+    loadChildren: () => import('./map-seats-balcony/map-seats-balcony.module').then( m => m.MapSeatsBalconyPageModule)
+  },
+  {
+    path: 'seat-description',
+    loadChildren: () => import('./seat-description/seat-description.module').then( m => m.SeatDescriptionPageModule)
+  },
+  {
+    path: 'admin-dashboard',
+    loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+  },
+  {
+    path: 'create-event',
+    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
+  },  {
+    path: 'create-event',
+    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
+  },
+  {
+    path: 'delete-event',
+    loadChildren: () => import('./delete-event/delete-event.module').then( m => m.DeleteEventPageModule)
   }
+
+
+
 
 ];
 @NgModule({

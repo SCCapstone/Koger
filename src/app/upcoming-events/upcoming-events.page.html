@@ -1,0 +1,202 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="auto">
+          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
+        </ion-col>
+        <ion-col>
+          <ion-grid>
+            <ion-row>
+              <ion-col> 
+                <ion-text>Welcome to the</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-text><h1>Koger Center</h1></ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size ="auto">
+          <ion-text><h3>Upcoming Events</h3></ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+  <ion-card *ngFor = "let event of eventList | async">
+    <ion-card-header>
+      <ion-card-title>{{event.title}}</ion-card-title>
+      <ion-card-subtitle color = "primary">{{event.dates}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle color = "primary">Description</ion-card-subtitle>
+      <p>{{event.description}}</p>
+      <!--<ion-card-subtitle color = "primary">Tag</ion-card-subtitle>
+      <p>{{event.tag}}</p>-->
+      <!--<ion-card-subtitle color = "primary">Link</ion-card-subtitle>
+      <p>{{event.link}}</p>-->
+      <ion-card-subtitle color = "primary">Seating</ion-card-subtitle>
+      <p>There are strict COVID-19 health and safety protocols in place to protect our patrons, dancers, 
+         staff, and volunteers. Seating will be socially distanced. Every other row in the theater will be 
+         empty and seating is ONLY sold in pairs. There will be three empty seats between each pair of 
+         occupied seats.</p>
+      <ion-button type = "button" expand="block" color="garnet" onclick="window.open(event.link, '_system', 'location=yes'); return false;">Go To Event</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Columbia Classical Ballet presents The Nutcracker</ion-card-title>
+      <ion-card-subtitle>December 4-6, 2020</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>Shows</ion-card-subtitle>
+      <p>Friday, December 4 -10:00 a.m.</p>
+      <p>Saturday, December 5 - 2:00 p.m.</p>
+      <p>Sunday, December 6 - 2:00 p.m.</p>
+      <ion-card-subtitle>Seating</ion-card-subtitle>
+      <p>There are strict COVID-19 health and safety protocols in place to protect our patrons, dancers, 
+        staff, and volunteers. Seating will be socially distanced. Every other row in the theater will be 
+        empty and seating is ONLY sold in pairs. There will be three empty seats between each pair of 
+        occupied seats.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Columbia City Ballet presents The Nutcracker</ion-card-title>
+      <ion-card-subtitle>December 12 - 20, 2020</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Nutcracker, Columbia's holiday family tradition, has the distinction of being the Koger Center's 
+        first Nutcracker production and longest consecutively running arts event. With eight snow-filled 
+        performances, including four matiness, Nutcracker is designed to accommodate the entire family's 
+        holiday schedule.</p>
+      <ion-card-subtitle>Shows</ion-card-subtitle>
+      <p>Saturday, December 12, 3:00 p.m.</p>
+      <p>Saturday, December 12, 7:30 p.m.</p>
+      <p>Sunday, December 13, 1:00 p.m.</p> 
+      <p>Sunday, December 13, 5:30 p.m.</p> 
+      <p>Saturday, December 19, 3:00 p.m.</p> 
+      <p>Saturday, December 19, 7:30 p.m.</p> 
+      <p>Sunday, December 20, 1:00 p.m.</p>
+      <p>Sunday, December 20, 5:30 p.m.</p> 
+      <ion-card-subtitle>Seating</ion-card-subtitle>
+      <p>There are strict COVID-19 health and safety protocols in place to protect our patrons, dancers, 
+        staff, and volunteers. Seating will be socially distanced. Every other row in the theater will be 
+        empty and seating is ONLY sold in pairs. There will be three empty seats between each pair of 
+        occupied seats.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>David Feherty - Live Off Tour</ion-card-title>
+      <ion-card-subtitle>Monday, April 5, 2021 - 7:30 p.m.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>This performance has been rescheduled to Monday, April 5, 2021 to correspond to 
+        the Masters 2021.
+        Your original tickets for the April 6, 2020 date will be valid for the new April 5, 2021 performance, 
+        so hang on to them.</ion-card-subtitle>
+      <p>How do you describe the offbeat antics of David Feherty? The New York Times called him "a cross between 
+        Oprah Winfrey and Johnny Carson." With a sharp wit and irreverant style, the professional golfer turned 
+        gold analyst, talk show host and sports broadcaster has made a name for himself as one of the most 
+        hilarious and irrepressible personalities in golf. Of Feherty's live one-man show, Golf Digest said: 
+        "Uncensored and unhinged, and worth the price of admission. It really was stupendous." The Pittsburgh 
+        Post-Gazette raves, David Feherty was uproariously funny. It was two hours of zaniness and madcap 
+        storytelling. People were coming out of their seats with laughter."</p>
+      <ion-card-subtitle>Shows</ion-card-subtitle>
+      <p>Monday, April 5, 2021 - 7:30 p.m.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>TobyMac - The Theatre Tour</ion-card-title>
+      <ion-card-subtitle>Monday, May 10, 2021 at 7:00 p.m.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>The revised new date for this concert is Monday,  May 10, 2021 at 7:00 p.m. 
+        (Please note the new time.)</ion-card-subtitle>
+      <p>Please make sure to follow the TobyMac and Awakening Events social media channels for the most current 
+        updates about the tour.</p>
+      <ion-card-subtitle>Shows</ion-card-subtitle>
+      <p>Monday, May 10, 2021 at 7:00 p.m.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>An Evening with Gregory Porter</ion-card-title>
+      <ion-card-subtitle>Friday, June 25, 2021 - 7:30 p.m.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>An Evening With GREGORY PORTER has been rescheduled to FRIDAY, JUNE 25, 2021. If you have 
+        previously purchased tickets for the June 27, 2020 performance at the Koger Center for the Arts we ask that 
+        you retain the tickets as they will be valid for the new date of June 25, 2021. (Please note this is one 
+        year from the original concert date.)</ion-card-subtitle>
+      <p>A big man with a big sound, Two-time Grammy Award winner, Gregory Porter has quickly
+        become one of jazz’s most important male vocalists, a soul-drenched singer often at his best
+        delivering his emotionally charged original songs. Largely unknown before his sensational,
+        Grammy-nominated 2010 debut CD Water, Porter followed up with last year’s Be Good (both on
+        Motéma Music), an album marked by his supple phrasing, sophisticated lyrics and tough but tender
+        delivery.</p>
+      <p>Born in Los Angeles and raised in the hardscrabble city of Bakersfield, Porter grew up with seven siblings 
+        who all sang and worked in their mother’s skid row mission. He attended San Diego State on a football 
+        scholarship, but after an injury he spent more time on the bandstand
+        collaborating with top jazz artists than on the gridiron. A chance encounter led to Porter’s recording 
+        debut on Hubert Laws Remembers the Unforgettable Nat King Cole, a 1998 album that earned him an audition for 
+        the Broadway-bound musical “It Ain’t Nothin’ But the Blues.” Growing up around rollicking tent revivals 
+        offered ideal training for a revue tracing the history of the blues, and he got the gig. Porter brings the 
+        same soul-stirring authority to jazz settings, revealing powerful truths with heart and grace.</p>
+      <ion-card-subtitle>Shows</ion-card-subtitle>
+      <p>Friday, June 25, 2021 - 7:30 p.m.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Broadway in Columbia presents Cats</ion-card-title>
+      <ion-card-subtitle>August 13 - 14, 2021</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>CATS has been RESCHEDULED to August 2021. If you have previously purchased tickets we ask 
+        that you retain your tickets as they will be valid for the new dates. Tickets for the June 16/November 2 
+        performance will be valid for the August 13, 2021 (7:30 p.m.) performance, tickets for the June 17/November 3 
+        performance will be valid for the August 14, 2021 (2:00 p.m.) performance, and tickets for the June 18/November 4 
+        performance will be valid for the August 14, 2021(7:30 p.m.) performance.</ion-card-subtitle>
+      <p>Rediscover CATS - the beloved musical with break taking music – including one of the most treasured songs in 
+        musical theater, “Memory.” Featuring new sound design, direction and choreography for a new generation -- experience 
+        CATS for the first time as it begins a new life, or let it thrill you all over again!</p>
+      <ion-card-subtitle>Shows</ion-card-subtitle>
+      <p>Friday, August 13 – 7:30 p.m.</p>
+      <p>Friday, August 13 – 7:30 p.m.</p>
+      <p>Saturday, August 14 – 7:30 p.m.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <img src="../../assets/img/KogerCenterLogo.jpg">
+  </ion-card>
+
+</ion-content>
