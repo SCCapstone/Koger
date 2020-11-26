@@ -20,6 +20,13 @@ export class UpcomingEventsPage implements OnInit {
   userExists()
   {
     console.log(this.afStore.userExists())
-    return this.afStore.userExists();
+    return this.afStore.userExists()
+  }
+  openURL(url: string) 
+  {
+    if (url == null || url === "")
+      alert("URL for event was not found.")
+    else
+      window.open(url, "_blank")
   }
 }

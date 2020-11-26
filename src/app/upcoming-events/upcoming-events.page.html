@@ -57,7 +57,7 @@
          staff, and volunteers. Seating will be socially distanced. Every other row in the theater will be 
          empty and seating is ONLY sold in pairs. There will be three empty seats between each pair of 
          occupied seats.</p>
-      <ion-button type = "button" expand="block" color="garnet" onclick="window.open(event.link, '_system', 'location=yes'); return false;">Go To Event</ion-button>
+      <ion-button type = "tabopen" expand="block" color="garnet" (click)="openURL(event.link)">Go To Event</ion-button>
     </ion-card-content>
   </ion-card>
 
