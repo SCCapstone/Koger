@@ -15,11 +15,13 @@ To set up your environment to run this project, you will need to:
 * Install the Ionic CLI from the command line with "npm install -g @ionic/cli"
 * Install Angular through npm from the command line with "npm install @ionic/angular@latest --save"
 * Add Ionic Angular from the command line with "ng add @ionic/angular"
+* Clone this repository: git clone https://github.com/SCCapstone/Koger.git
+* Run npm install in a terminal from the project root
 
 ## Running
 To run the app from a computer with the project cloned to it, you will need to:
 * cd into the project directory through the command line
-* run the command "ionic serve" from the command line
+* Run ionic serve in a terminal from the project root
 
 The Ionic command "ionic serve" will serve the app on a port and open it in a web browser.
 
