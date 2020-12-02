@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,6 +11,7 @@ export class Tab1Page {
 
   constructor(
     private router: Router,
+    public photoService: PhotoService
   ) {}
 
   seat = {
@@ -355,6 +357,10 @@ export class Tab1Page {
 
   removeSeatSelection() {
     this.seat.seatNum=null;
+  }
+
+  newCapture(){
+    this.photoService.addNewToGallery();
   }
 
 }
