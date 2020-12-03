@@ -13,8 +13,8 @@ export class MapSeatsOrchestraPage implements OnInit {
   ngOnInit() {
   }
 
-  zoomImage(imageData) {
-    this.photoViewer.show(imageData);
-  }
+  // zoomImage(imageData) {
+  //   this.photoViewer.show(imageData);
+  // }
 
 }

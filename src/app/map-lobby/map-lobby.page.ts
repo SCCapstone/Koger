@@ -12,9 +12,9 @@ export class MapLobbyPage implements OnInit {
 
   ngOnInit() {
   }
-
-  zoomImage(imageData) {
-    this.photoViewer.show(imageData);
-  }
+  
+  // zoomImage(imageData) {
+  //   this.photoViewer.show(imageData);
+  // }
 
 }
