@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { createWorker } from 'tesseract.js';
 import {
   Plugins,
   PushNotification,
@@ -16,8 +17,14 @@ const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotificati
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
-  constructor() { }
+  worker :Tesseract.Worker;
+  workerReady = false;
+  image = '../assets/img/ticket.jpg';
+  ocrResult = '';
+  captureProgress = 0;
+  constructor() { 
+    this.loadWorker();
+  }
 
   ngOnInit() {
     if (isPushNotificationsAvailable) {
@@ -64,6 +71,28 @@ export class HomePage implements OnInit {
         }
       );
     }
+  }
+
+  async loadWorker() {
+    this.worker = createWorker({
+      logger: progress => {
+        console.log(progress)
+        if (progress.status == 'recognizing text') {
+          this.captureProgress = parseInt('' + progress.progress * 100);
+        }
+      }
+    });
+    await this.worker.load();
+    await this.worker.loadLanguage('eng');
+    await this.worker.initialize('eng');
+    this.workerReady = true;
+  }
+
+  async recognizeImage() {
+    const result = await this.worker.recognize(this.image);
+    console.log(result);
+    this.ocrResult = result.data.text;
+    console.log(this.ocrResult);
   }
 }
 
