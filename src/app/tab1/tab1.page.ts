@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
+import { createWorker } from 'tesseract.js';
 
 @Component({
   selector: 'app-tab1',
@@ -8,11 +9,18 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  worker :Tesseract.Worker;
+  workerReady = false;
+  image = '';
+  ocrResult = '';
+  captureProgress = 0;
 
   constructor(
     private router: Router,
     public photoService: PhotoService
-  ) {}
+  ) {
+    this.loadWorker();
+  }
 
   seat = {
     section: '',
@@ -359,8 +367,32 @@ export class Tab1Page {
     this.seat.seatNum=null;
   }
 
-  newCapture(){
-    this.photoService.addNewToGallery();
+  async newCapture(){
+    let capturedImage = await this.photoService.addNewToGallery();
+    this.image = capturedImage;
+    this.recognizeImage();
+  }
+
+  async loadWorker() {
+    this.worker = createWorker({
+      logger: progress => {
+        console.log(progress)
+        if (progress.status == 'recognizing text') {
+          this.captureProgress = parseInt('' + progress.progress * 100);
+        }
+      }
+    });
+    await this.worker.load();
+    await this.worker.loadLanguage('eng');
+    await this.worker.initialize('eng');
+    this.workerReady = true;
+  }
+
+  async recognizeImage() {
+    const result = await this.worker.recognize(this.image);
+    console.log(result);
+    this.ocrResult = result.data.text;
+    console.log(this.ocrResult);
   }
 
 }
