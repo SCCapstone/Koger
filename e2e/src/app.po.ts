@@ -5,7 +5,7 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getPageTitle() {
-    return element(by.css('ion-title')).getText();
+  getPageTabTitle() {
+    return element(by.css('.tab-selected ion-label')).getText();
   }
 }
