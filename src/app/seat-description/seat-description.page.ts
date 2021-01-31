@@ -10,12 +10,6 @@ export class SeatDescriptionPage implements OnInit {
 
   inputSeat: any;
 
-  // inputSeat = {
-  //   section: '',
-  //   row: '',
-  //   seatNum: '' 
-  // }
-
   message = {
     message1: '',
     message2: '',
@@ -35,9 +29,7 @@ export class SeatDescriptionPage implements OnInit {
     })
   }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   generateMessages() {
     if(this.inputSeat.section=='RORC' || this.inputSeat.section=='RGTR' || this.inputSeat.section=='RBAL') {
