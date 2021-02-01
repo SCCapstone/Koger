@@ -42,7 +42,7 @@ Behavior tests can be executed by running the following command in a terminal fr
 This command will open up a browser which will very quickly simulate an user clicking through the app.
 The results of the test are printed out in the terminal once completed.
 
-Our first behavior test for the initial deadline is included in `Koger/e2e/src/tab1/tab.e2e-spec.ts`
+Our first behavior test for the initial deadline is included in `Koger/e2e/src/tab.e2e-spec.ts`
 
 # Authors
 James Cochran - jdc7@email.sc.edu<br />
