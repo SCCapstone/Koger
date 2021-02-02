@@ -46,7 +46,7 @@ export class SeatDescriptionPage implements OnInit {
   generateMessagesAndPictures() {
     this.pictures.picture1="../../assets/img/KogerCenterFront.jpg";
 
-    this.pictures.picture2="../../assets/img/MapLobby.jpeg";
+    this.pictures.picture2="../../assets/img/NewLobby.jpg";
 
     if(this.inputSeat.section=='RORC' || this.inputSeat.section=='RGTR' || this.inputSeat.section=='RBAL') {
       this.message.message1="Enter using the Assembly Street Entrance on the right side of the front of the building";
@@ -57,17 +57,17 @@ export class SeatDescriptionPage implements OnInit {
     if(this.inputSeat.section=='RGTR' || this.inputSeat.section=='LGTR') {
       this.message.message2="Go to the second level via the stairs or elevator. Stay on the side of the building you entered on";
 
-      this.pictures.picture3="../../assets/img/MapFloor2.jpg";
+      this.pictures.picture3="../../assets/img/NewGrandTier.jpg";
       this.pictures.picture4="../../assets/img/MapGrand.jpg";
     } else if(this.inputSeat.section=='RBAL' || this.inputSeat.section=='LBAL') {
       this.message.message2="Go to the third level via the stairs or elevator. Stay on the side of the building you entered on";
 
-      this.pictures.picture3="../../assets/img/KogerCenterSunset.jpg";
+      this.pictures.picture3="../../assets/img/NewBalcony.jpg";
       this.pictures.picture4="../../assets/img/MapBalcony.jpg";
     } else {
       this.message.message2="Stay on the first level on your side of the building";
 
-      this.pictures.picture3="../../assets/img/MapLobby.jpeg";
+      this.pictures.picture3="../../assets/img/NewLobby.jpg";
       this.pictures.picture4="../../assets/img/MapOrchestra.jpg";
     }
 
