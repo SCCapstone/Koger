@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, QueryList } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
 import { createWorker } from 'tesseract.js';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -20,7 +21,8 @@ export class Tab1Page {
 
   constructor(
     private router: Router,
-    public photoService: PhotoService
+    public photoService: PhotoService,
+    public alertController: AlertController
   ) {
     this.loadWorker();
   }
@@ -400,26 +402,99 @@ export class Tab1Page {
     console.log(this.ocrResult);
 
     for (var i = 0; i < result.data.words.length; i++) {
-      if (result.data.words[i].text == 'Arts') {
-        console.log('Section ' + result.data.words[i + 1].text);
-        console.log('Row ' + result.data.words[i + 2].text);
-        console.log('Seat ' + result.data.words[i + 3].text);
-        this.scan_section = result.data.words[i + 1].text;
-        this.scan_row = result.data.words[i + 2].text;
-        this.scan_seat = result.data.words[i + 3].text;
+      if (this.sections.includes(result.data.words[i].text)) {
+        console.log('SECTION ' + result.data.words[i].text);
+        console.log('ROW ' + result.data.words[i + 1].text);
+        console.log('SEAT ' + result.data.words[i + 2].text);
+        this.scan_section = result.data.words[i].text.trim();
+        this.scan_row = result.data.words[i + 1].text.trim();
+        this.scan_seat = result.data.words[i + 2].text.trim();
         break;
       }
     }
 
-    if (this.sections.includes(this.scan_section)) {
-      console.log("section test passed!");
+    // Test 
+    // this.scan_section = 'RBAL';
+    // this.scan_row = 'AAA';
+    // this.scan_seat = '220';
+
+    if (this.sections.includes(this.scan_section) && this.scan_section != '') {
+      console.log("SECTION TEST PASSED");
+      console.log("ROW SCAN RESULT " + this.scan_row)
       if (this.scan_section == "RORC" || this.scan_section == "LORC") {
+        if (this.ORCrows.includes(this.scan_row)) {
+          console.log("ROW TEST PASSED");
+          this.confirmation();
+        } else {
+          this.invalidScan();
+        }
       } else if (this.scan_section == "RGTR" || this.scan_section == "LGTR") {
+        if (this.GTRrows.includes(this.scan_row)) {
+          console.log("ROW TEST PASSED");
+          this.confirmation();
+        } else {
+          this.invalidScan();
+        }
       } else if (this.scan_section == "RBAL" || this.scan_section == "LBAL") {
         if (this.BALrows.includes(this.scan_row)) {
-          console.log("row test passed!");
+          console.log("ROW TEST PASSED");
+          this.confirmation();
+        }else {
+          this.invalidScan();
         }
       }
     }
   }
+  async confirmation() {
+    const alert = await this.alertController.create({
+      header: 'Correct Ticket Information?',
+      message: 'Section: ' + this.scan_section + '<br/> Row: ' + this.scan_row 
+                + '<br/> Seat: ' + this.scan_seat,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('CONFIRM CANCEL');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('CONFIRM OK');
+            this.seat.section = this.scan_section;
+            this.seat.row = this.scan_row;
+            this.seat.seatNum = this.scan_seat;
+            this.goToSeatDescription();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async invalidScan() {
+    const alert = await this.alertController.create({
+      header: 'Scan Ticket Error',
+      message: 'Invalid Scan Provided',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('CONFIRM CANCEL');
+          }
+        }, {
+          text: 'Try Scan Again',
+          handler: () => {
+            console.log('CONFIRM OK');
+            this.newCapture();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
 }
