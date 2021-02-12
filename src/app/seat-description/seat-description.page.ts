@@ -15,7 +15,8 @@ export class SeatDescriptionPage implements OnInit {
     message1: '',
     message2: '',
     message3: '',
-    message4: ''
+    message4: '',
+    doorNumber: 0
   };
 
   pictures = {
@@ -37,10 +38,9 @@ export class SeatDescriptionPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.generateDoorNumber();
     this.generateMessagesAndPictures();
     this.generateCarousel();
-    
   }
 
   generateMessagesAndPictures() {
@@ -50,8 +50,10 @@ export class SeatDescriptionPage implements OnInit {
 
     if(this.inputSeat.section=='RORC' || this.inputSeat.section=='RGTR' || this.inputSeat.section=='RBAL') {
       this.message.message1="Enter using the Assembly Street Entrance on the right side of the front of the building";
-    } else {
+    } else if(this.inputSeat.section=='LORC' || this.inputSeat.section=='LGTR' || this.inputSeat.section=='LBAL') {
       this.message.message1="Enter using the Greene Street Entrance on the left side of the building, across from Darla Moore";
+    } else {
+      this.message.message1="Invalid Section";
     }
 
     if(this.inputSeat.section=='RGTR' || this.inputSeat.section=='LGTR') {
@@ -64,16 +66,18 @@ export class SeatDescriptionPage implements OnInit {
 
       this.pictures.picture3="../../assets/img/NewBalcony.jpg";
       this.pictures.picture4="../../assets/img/MapBalcony.jpg";
-    } else {
+    } else if(this.inputSeat.section=='RORC' || this.inputSeat.section=='LORC') {
       this.message.message2="Stay on the first level on your side of the building";
 
       this.pictures.picture3="../../assets/img/NewLobby.jpg";
       this.pictures.picture4="../../assets/img/MapOrchestra.jpg";
+    } else {
+      this.message.message2="Invalid Section";
     }
 
-    this.message.message3="Find the corresponding door for your row in the section.  There are ushers to direct traffic";
+    this.message.message3="Enter at the seating bowl through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
 
-    this.message.message4="Enter the door into the seating bowl and find your seat in the correct row"
+    this.message.message4="There are ushers available near the doors to help you find your seat";
   }
 
   generateCarousel() {
@@ -100,6 +104,26 @@ export class SeatDescriptionPage implements OnInit {
           description: this.message.message4
         }
       ]
+    }
+  }
+
+  generateDoorNumber() {
+    if(this.inputSeat.row=="JJ" || this.inputSeat.row=="KK" || this.inputSeat.row=="LL" || this.inputSeat.row=="DDD" || this.inputSeat.section=="HC") {
+      this.message.doorNumber=1;
+    } else if(this.inputSeat.row=="T" || this.inputSeat.row=="U" || this.inputSeat.row=="GG" || this.inputSeat.row=="HH" || this.inputSeat.row=="II" || this.inputSeat.row=="AAA" || this.inputSeat.row=="BBB" || this.inputSeat.row=="CCC") {
+      this.message.doorNumber=2;
+    } else if(this.inputSeat.row=="Q" || this.inputSeat.row=="R" || this.inputSeat.row=="S" || this.inputSeat.row=="DD" || this.inputSeat.row=="EE" || this.inputSeat.row=="FF") {
+      this.message.doorNumber=3;
+    } else if(this.inputSeat.row=="N" || this.inputSeat.row=="O" || this.inputSeat.row=="P" || this.inputSeat.row=="AA" || this.inputSeat.row=="BB" || this.inputSeat.row=="CC") {
+      this.message.doorNumber=4;
+    } else if(this.inputSeat.row=="K" || this.inputSeat.row=="L" || this.inputSeat.row=="M") {
+      this.message.doorNumber=5;
+    } else if(this.inputSeat.row=="H" || this.inputSeat.row=="I" || this.inputSeat.row=="J") {
+      this.message.doorNumber=6;
+    } else if(this.inputSeat.row=="A" || this.inputSeat.row=="B" || this.inputSeat.row=="C" || this.inputSeat.row=="D" || this.inputSeat.row=="E" || this.inputSeat.row=="F" || this.inputSeat.row=="G") {
+      this.message.doorNumber=7;
+    } else {
+      this.message.doorNumber=0;
     }
   }
 
