@@ -13,13 +13,21 @@ import { HttpClient } from '@angular/common/http';
 export class UpcomingEventsPage implements OnInit {
   public eventList: Observable<Event[]>
   public afStore: AuthenticateService;
-  constructor (private firestoreService: FirestoreService, private http: HttpClient) {}
+  data: string;
+  constructor (private firestoreService: FirestoreService, private http: HttpClient) {
+    // this.data = '';
+  }
 
   ngOnInit () {
     this.eventList = this.firestoreService.getEventData();
-    this.http.get('https://kogercenterforthearts.com/upcoming.php').subscribe((response)=> {
-      console.log(response);
-    });
+  }
+  ionViewWillEnter() {
+    this.prepareDataRequest();
+      /*.subscribe(
+        data => {
+          this.data = JSON.stringify(data);
+          console.log(this.data);
+        }*/
   }
   userExists()
   {
@@ -32,5 +40,12 @@ export class UpcomingEventsPage implements OnInit {
       alert("URL for event was not found.")
     else
       window.open(url, "_blank")
+  }
+  private prepareDataRequest() {
+    // const dataUrl = 'https://www.kogercenterforthearts.com/upcoming.php';
+    const dataUrl = 'https://jsonplaceholder.typicode.com/users';
+    // const options = {mode: 'no-cors', method: "get", headers: new Headers({ "Content Type": "application/json"})};
+    const res = fetch(dataUrl, {mode: 'no-cors'});
+    console.log(JSON.stringify(res));
   }
 }
