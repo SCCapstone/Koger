@@ -1,8 +1,8 @@
 import { Component, QueryList } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
-import { createWorker } from 'tesseract.js';
 import { AlertController } from '@ionic/angular';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -10,21 +10,16 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  worker: Tesseract.Worker;
-  workerReady = false;
+  data: any;
   image = '';
-  ocrResult = '';
-  captureProgress = 0;
-  scan_section = '';
-  scan_row = '';
-  scan_seat = '';
 
   constructor(
     private router: Router,
     public photoService: PhotoService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private barcodeScanner: BarcodeScanner
   ) {
-    this.loadWorker();
+    // this.loadWorker();
   }
 
   seat = {
@@ -372,99 +367,23 @@ export class Tab1Page {
     this.seat.seatNum = null;
   }
 
-  async newCapture() {
-    let capturedImage = await this.photoService.addNewToGallery();
-    this.image = capturedImage;
-    // this.image = '../assets/img/ticket.jpg';
-    this.recognizeImage();
-  }
-
-  async loadWorker() {
-    this.worker = createWorker({
-      logger: progress => {
-        console.log(progress)
-        if (progress.status == 'recognizing text') {
-          this.captureProgress = parseInt('' + progress.progress * 100);
-        }
-      }
-    });
-    await this.worker.load();
-    await this.worker.loadLanguage('eng');
-    await this.worker.initialize('eng');
-    this.workerReady = true;
-  }
-
-  async recognizeImage() {
-    const result = await this.worker.recognize(this.image);
-    console.log(result);
-    this.ocrResult = result.data.text;
-    console.log(result.data);
-    console.log(this.ocrResult);
-
-    for (var i = 0; i < result.data.words.length; i++) {
-      if (this.sections.includes(result.data.words[i].text)) {
-        console.log('SECTION ' + result.data.words[i].text);
-        console.log('ROW ' + result.data.words[i + 1].text);
-        console.log('SEAT ' + result.data.words[i + 2].text);
-        this.scan_section = result.data.words[i].text.trim();
-        this.scan_row = result.data.words[i + 1].text.trim();
-        this.scan_seat = result.data.words[i + 2].text.trim();
-        break;
-      }
-    }
-
-    // Test 
-    // this.scan_section = 'RBAL';
-    // this.scan_row = 'AAA';
-    // this.scan_seat = '220';
-
-    if (this.sections.includes(this.scan_section) && this.scan_section != '') {
-      console.log("SECTION TEST PASSED");
-      console.log("ROW SCAN RESULT " + this.scan_row)
-      if (this.scan_section == "RORC" || this.scan_section == "LORC") {
-        if (this.ORCrows.includes(this.scan_row)) {
-          console.log("ROW TEST PASSED");
-          this.confirmation();
-        } else {
-          this.invalidScan();
-        }
-      } else if (this.scan_section == "RGTR" || this.scan_section == "LGTR") {
-        if (this.GTRrows.includes(this.scan_row)) {
-          console.log("ROW TEST PASSED");
-          this.confirmation();
-        } else {
-          this.invalidScan();
-        }
-      } else if (this.scan_section == "RBAL" || this.scan_section == "LBAL") {
-        if (this.BALrows.includes(this.scan_row)) {
-          console.log("ROW TEST PASSED");
-          this.confirmation();
-        }else {
-          this.invalidScan();
-        }
-      }
-    }
-  }
   async confirmation() {
+    console.log('Made it to Alert' + this.data);
     const alert = await this.alertController.create({
-      header: 'Correct Ticket Information?',
-      message: 'Section: ' + this.scan_section + '<br/> Row: ' + this.scan_row 
-                + '<br/> Seat: ' + this.scan_seat,
+      header: 'Text Scanned From Barcode',
+      message: this.data,
       buttons: [
+        // {
+        //   text: 'Cancel',
+        //   role: 'cancel',
+        //   handler: () => {
+        //     console.log('CONFIRM CANCEL');
+        //   }
+        // }, 
         {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('CONFIRM CANCEL');
-          }
-        }, {
           text: 'Ok',
           handler: () => {
             console.log('CONFIRM OK');
-            this.seat.section = this.scan_section;
-            this.seat.row = this.scan_row;
-            this.seat.seatNum = this.scan_seat;
-            this.goToSeatDescription();
           }
         }
       ]
@@ -488,13 +407,33 @@ export class Tab1Page {
           text: 'Try Scan Again',
           handler: () => {
             console.log('CONFIRM OK');
-            this.newCapture();
+            // this.newCapture();
           }
         }
       ]
     });
 
     await alert.present();
+  }
+
+  async scanBarcode() {
+    const options: BarcodeScannerOptions = {
+      preferFrontCamera: true,
+      showFlipCameraButton: true,
+      prompt: 'Place ticket barcode inside of scan area',
+      formats: 'EAN_13,EAN_8,QR_CODE,PDF_417',
+      orientation: 'portrait'    
+    };
+    
+    this.data = null;
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+      this.data = barcodeData.text;
+      console.log(this.data);
+      this.confirmation();
+    }).catch(err => {
+      console.log('Error', err);
+    });
   }
 
 }

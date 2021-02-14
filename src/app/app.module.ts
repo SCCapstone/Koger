@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
     StatusBar,
     SplashScreen,
     PhotoViewer,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
