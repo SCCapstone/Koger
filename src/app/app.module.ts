@@ -14,12 +14,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
+    BrowserModule,
+    HttpClientModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireAuthModule,

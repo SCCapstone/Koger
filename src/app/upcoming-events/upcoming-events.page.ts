@@ -3,6 +3,7 @@ import { Event } from '../shared/event';
 import { Observable } from 'rxjs';
 import { FirestoreService } from '../services/data/firestore.service';
 import { AuthenticateService } from '../services/authentication.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-upcoming-events',
@@ -12,10 +13,13 @@ import { AuthenticateService } from '../services/authentication.service';
 export class UpcomingEventsPage implements OnInit {
   public eventList: Observable<Event[]>
   public afStore: AuthenticateService;
-  constructor (private firestoreService: FirestoreService) {}
+  constructor (private firestoreService: FirestoreService, private http: HttpClient) {}
 
   ngOnInit () {
     this.eventList = this.firestoreService.getEventData();
+    this.http.get('https://kogercenterforthearts.com/upcoming.php').subscribe((response)=> {
+      console.log(response);
+    });
   }
   userExists()
   {
