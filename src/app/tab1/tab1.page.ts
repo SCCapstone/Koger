@@ -22,6 +22,8 @@ export class Tab1Page {
 
   sections = [
     'RORC', 'LORC', 'RGTR', 'LGTR', 'RBAL', 'LBAL', 'HC'
+    // 'RORC: Rear Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
+    // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HC: ADA Accesible'
   ]
 
   rows: string[];
@@ -242,6 +244,7 @@ export class Tab1Page {
     '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
     '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74'
   ]
+  HCseats = ['HC Left', 'HC Right']
 
   goToSeatDescription() {
     let navigationExtras: NavigationExtras = {
@@ -257,10 +260,13 @@ export class Tab1Page {
       this.removeRowSelection();
     }
     if(inputSection=="RORC" || inputSection=="LORC") {
+    // if(inputSection=='RORC: Rear Orchestra' || inputSection=='LORC: Left Orchestra') {
       this.rows = this.ORCrows;
     } else if(inputSection=="RGTR" || inputSection=="LGTR") {
+    // else if(inputSection=='RGTR: Right Grand Tier' || inputSection=='LGTR: Left Grand Tier') {
       this.rows = this.GTRrows;
     } else if(inputSection=="RBAL" || inputSection=="LBAL") {
+    // else if(inputSection=='RBAL: Right Balcony' || inputSection=='LBAL: Left Balcony') {
       this.rows = this.BALrows;
     } else {
       this.rows = ['HC'];
@@ -345,6 +351,8 @@ export class Tab1Page {
       this.seats = this.CCCseats;
     } else if(inputRow=="DDD") {
       this.seats = this.DDDseats;
+    } else if (inputRow=="HC") {
+      this.seats = this.HCseats;
     } else {
       this.seats = ['Invalid Section/Row']
     }
