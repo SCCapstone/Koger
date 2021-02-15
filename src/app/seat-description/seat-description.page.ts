@@ -77,7 +77,7 @@ export class SeatDescriptionPage implements OnInit {
 
     this.message.message3="Enter at the seating bowl through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
 
-    this.message.message4="There are ushers available near the doors to help you find your seat";
+    this.message.message4="There are ushers available near the doors to help you find your seat. You are seat " + this.inputSeat.seatNum + " in row " + this.inputSeat.row;
   }
 
   generateCarousel() {
