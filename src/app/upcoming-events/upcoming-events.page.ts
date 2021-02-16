@@ -46,6 +46,6 @@ export class UpcomingEventsPage implements OnInit {
     const dataUrl = 'https://jsonplaceholder.typicode.com/users';
     // const options = {mode: 'no-cors', method: "get", headers: new Headers({ "Content Type": "application/json"})};
     const res = fetch(dataUrl, {mode: 'no-cors'});
-    console.log(JSON.stringify(res));
+    console.log(res);
   }
 }

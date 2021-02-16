@@ -47,7 +47,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-card-subtitle color = "primary">Description</ion-card-subtitle>
-      <p>{{event.description}}</p>
+      <p>{{event.description | slice:0:400}}<a href = {{event.link}} target="_blank">{{ event.description.length > 250 ? 'Click to Read More ':' Click to Read More '}}</a></p>
       <!--<ion-card-subtitle color = "primary">Tag</ion-card-subtitle>
       <p>{{event.tag}}</p>-->
       <!--<ion-card-subtitle color = "primary">Link</ion-card-subtitle>
