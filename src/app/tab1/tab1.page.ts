@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +12,8 @@ export class Tab1Page {
 
   constructor(
     private router: Router,
-    public photoService: PhotoService
+    public photoService: PhotoService,
+    public alertController: AlertController
   ) {}
 
   seat = {
@@ -19,6 +21,8 @@ export class Tab1Page {
     row: '',
     seatNum: '' 
   }
+
+  sectionView: any;
 
   sections = [
     'RORC', 'LORC', 'RGTR', 'LGTR', 'RBAL', 'LBAL', 'HC'
@@ -255,6 +259,28 @@ export class Tab1Page {
     this.router.navigate(['seat-description'], navigationExtras);
   }
 
+  async showSectionView() {
+    if(this.seat.section=='') {
+      const alert = await this.alertController.create({
+        header: 'Section Required',
+        message: 'Please input a section to see the section view',
+        buttons: ['CLOSE']
+      });
+  
+      await alert.present();
+
+    } else {
+      this.generateSectionView();
+      const alert = await this.alertController.create({
+        header: 'View from Section ' + this.seat.section,
+        message: this.sectionView,
+        buttons: ['CLOSE']
+      });
+
+      await alert.present();
+    }
+  }
+
   setRows(inputSection: string) {
     if(this.seat.row!=null) {
       this.removeRowSelection();
@@ -369,6 +395,24 @@ export class Tab1Page {
 
   newCapture(){
     this.photoService.addNewToGallery();
+  }
+
+  generateSectionView() {
+    if(this.seat.section=='RORC') {
+      this.sectionView='<img src="../../assets/img/RORC.jpg"/>';
+    } else if(this.seat.section=='LORC') {
+      this.sectionView='<img src="../../assets/img/LORC.jpg"/>';
+    } else if(this.seat.section=='RGTR') {
+      this.sectionView='<img src="../../assets/img/RGTR.jpg"/>';
+    } else if(this.seat.section=='LGTR') {
+      this.sectionView='<img src="../../assets/img/LGTR.jpg"/>';
+    } else if(this.seat.section=='RBAL') {
+      this.sectionView='<img src="../../assets/img/RBAL.jpg"/>';
+    } else if(this.seat.section=='LBAL') {
+      this.sectionView='<img src="../../assets/img/LBAL.jpg"/>';
+    } else {
+      this.sectionView='<img src="../../assets/img/uofsclogo.jpg"/>';
+    }
   }
 
 }
