@@ -26,6 +26,8 @@ export class SeatDescriptionPage implements OnInit {
     picture4: ''
   }
 
+  seatView: any;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router
@@ -54,6 +56,7 @@ export class SeatDescriptionPage implements OnInit {
       this.pictures.picture3="../../assets/img/LobbyLeft.jpg";
       this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       this.pictures.picture4="../../assets/img/MapOrchestra.jpg";
+      this.seatView="../../assets/img/LORC.jpg";
 
     } else if(this.inputSeat.section=='RORC') {
       this.message.message1="Enter using the Assembly Street Entrance on the right side of the front of the building";
@@ -62,6 +65,7 @@ export class SeatDescriptionPage implements OnInit {
       this.pictures.picture3="../../assets/img/LobbyRight.jpg";
       this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       this.pictures.picture4="../../assets/img/MapOrchestra.jpg";
+      this.seatView="../../assets/img/RORC.jpg";
 
     } else if(this.inputSeat.section=='LGTR') {
       this.message.message1="Enter using the Greene Street Entrance on the left side of the building, across from Darla Moore";
@@ -70,6 +74,7 @@ export class SeatDescriptionPage implements OnInit {
       this.pictures.picture3="../../assets/img/GrandTierLeft.jpg";
       this.message.message3="Walk to the left side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       this.pictures.picture4="../../assets/img/MapGrand.jpg";
+      this.seatView="../../assets/img/LGTR.jpg";
 
     }else if(this.inputSeat.section=='RGTR') {
       this.message.message1="Enter using the Assembly Street Entrance on the right side of the front of the building";
@@ -78,6 +83,7 @@ export class SeatDescriptionPage implements OnInit {
       this.pictures.picture3="../../assets/img/GrandTierRight.jpg";
       this.message.message3="Walk to the right side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       this.pictures.picture4="../../assets/img/MapGrand.jpg";
+      this.seatView="../../assets/img/RGTR.jpg";
 
     } else if(this.inputSeat.section=='LBAL') {
       this.message.message1="Enter using the Greene Street Entrance on the left side of the building, across from Darla Moore";
@@ -86,6 +92,7 @@ export class SeatDescriptionPage implements OnInit {
       this.pictures.picture3="../../assets/img/BalconyLeft.jpg";
       this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       this.pictures.picture4="../../assets/img/MapBalcony.jpg";
+      this.seatView="../../assets/img/LBAL.jpg";
 
     } else if(this.inputSeat.section=='RBAL') {
       this.message.message1="Enter using the Assembly Street Entrance on the right side of the front of the building";
@@ -94,6 +101,7 @@ export class SeatDescriptionPage implements OnInit {
       this.pictures.picture3="../../assets/img/BalconyRight.jpg";
       this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       this.pictures.picture4="../../assets/img/MapBalcony.jpg";
+      this.seatView="../../assets/img/RBAL.jpg";
 
     } else {
       this.message.message1="Enter using the Assembly Street Entrance on the right side of the front of the building";

@@ -39,6 +39,12 @@
           <p class="ion-text-center">Step {{ i.id }}: {{ i.description }}</p>
         </div>
       </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          <img [src]="seatView"/>
+          <ion-card-subtitle class="ion-text-center">View from Section {{ inputSeat.section }}</ion-card-subtitle>
+        </div>
+      </ion-slide>
     </ion-slides>
   </ion-card>
 </ion-content>
