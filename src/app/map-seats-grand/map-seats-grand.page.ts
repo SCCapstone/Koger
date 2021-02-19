@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+// import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-map-seats-grand',
@@ -8,7 +8,9 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 })
 export class MapSeatsGrandPage implements OnInit {
 
-  constructor(private photoViewer: PhotoViewer) { }
+  constructor(
+    // private photoViewer: PhotoViewer
+    ) { }
 
   ngOnInit() {
   }

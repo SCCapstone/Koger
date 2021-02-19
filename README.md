@@ -10,32 +10,39 @@ In order to build this project, you will need:
 
 ## Setup
 To set up your environment to run this project, you will need to:
-* Update/install Node.js from the command line
-* Update/install npm from the command line
-* Install the Ionic CLI from the command line with "npm install -g @ionic/cli"
-* Install Angular through npm from the command line with "npm install @ionic/angular@latest --save"
-* Add Ionic Angular from the command line with "ng add @ionic/angular"
-* Clone this repository: git clone https://github.com/SCCapstone/Koger.git
-* Run npm install in a terminal from the project root
+* Make sure your computer has Node.js installed (Linked above)
+* Install the Ionic CLI from the command line with `npm install -g @ionic/cli`
+* Install Angular through npm from the command line with `npm install @ionic/angular@latest --save`
+* Clone this repository: `git clone https://github.com/SCCapstone/Koger.git`
+* Run `npm install` in a terminal from the project root
 
 ## Running
-To run the app from a computer with the project cloned to it, you will need to:
-* cd into the project directory through the command line
-* Run ionic serve in a terminal from the project root
+To launch the app, run the following command in a terminal from the project root:
+* `ionic serve`
 
-The Ionic command "ionic serve" will serve the app on a port and open it in a web browser.
+This command will serve the app on a port and open it in a web browser.
 
 # Deployment
 **Coming soon**
 
 # Testing
-**Coming soon**
 
-## Testing Technology
-**Coming soon**
+### Unit Testing
+Unit tests can be executed by running the following command in a terminal from the project root:
+* `npm test`
 
-## Running Tests
-**Coming soon**
+The results of these tests are printed out in the browser the testing software opens and in the terminal.
+
+Our first unit test for the initial deadline is included in `Koger/src/app/tab1/tab1.page.spec.ts`
+
+### Behavior Testing
+Behavior tests can be executed by running the following command in a terminal from the project root:
+* `npm run e2e`
+
+This command will open up a browser which will very quickly simulate an user clicking through the app.
+The results of the test are printed out in the terminal once completed.
+
+Our first behavior test for the initial deadline is included in `Koger/e2e/src/tab.e2e-spec.ts`
 
 # Authors
 James Cochran - jdc7@email.sc.edu<br />

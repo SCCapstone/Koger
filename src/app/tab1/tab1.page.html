@@ -25,7 +25,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card class="ion-padding">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -71,8 +71,13 @@
 
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="garnet" (click)="scanBarcode()">SCAN BARCODE</ion-button>
-          <!-- <ion-button expand="block" color="garnet" (click)="newCapture()" [disabled]="!workerReady">'Scan' Ticket</ion-button> -->
+          <ion-button expand="block" color="garnet" (click)="showSectionView()">Section View</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="garnet" (click)="scanBarcode()">Scan Barcode</ion-button>
         </ion-col>
       </ion-row>
 
