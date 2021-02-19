@@ -22,6 +22,15 @@ export class Tab1Page {
     // this.loadWorker();
   }
 
+  // Hard-wired array to mock a database until we connect to an
+  // actual database
+  barcode_mapping = [
+    '0821858040', 'LORC', 'D', '35',
+    '0821848687', 'LORC', 'E', '36',
+    '0821859186', 'LORC', 'D', '36',
+    '0821849369', 'LORC', 'E', '37',
+  ]
+
   seat = {
     section: '',
     row: '',
@@ -367,23 +376,26 @@ export class Tab1Page {
     this.seat.seatNum = null;
   }
 
+  // Alert window for good barcode scan
   async confirmation() {
-    console.log('Made it to Alert' + this.data);
     const alert = await this.alertController.create({
-      header: 'Text Scanned From Barcode',
-      message: this.data,
+      header: 'Scan Confirmation',
+      message: '<b> Is this the information found on your ticket? </b> <br/>' + 
+               'Section: ' + this.seat.section + '<br/> Row: ' + this.seat.row 
+                + '<br/> Seat: ' + this.seat.seatNum,
       buttons: [
-        // {
-        //   text: 'Cancel',
-        //   role: 'cancel',
-        //   handler: () => {
-        //     console.log('CONFIRM CANCEL');
-        //   }
-        // }, 
         {
-          text: 'Ok',
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('CONFIRM CANCEL');
+          }
+        }, 
+        {
+          text: 'Find Seat',
           handler: () => {
             console.log('CONFIRM OK');
+            this.goToSeatDescription();
           }
         }
       ]
@@ -392,6 +404,7 @@ export class Tab1Page {
     await alert.present();
   }
 
+  // Alert window for an invalid scan
   async invalidScan() {
     const alert = await this.alertController.create({
       header: 'Scan Ticket Error',
@@ -407,7 +420,7 @@ export class Tab1Page {
           text: 'Try Scan Again',
           handler: () => {
             console.log('CONFIRM OK');
-            // this.newCapture();
+            this.scanBarcode();
           }
         }
       ]
@@ -416,24 +429,42 @@ export class Tab1Page {
     await alert.present();
   }
 
+  // Scans barcode from ticket
   async scanBarcode() {
     const options: BarcodeScannerOptions = {
-      preferFrontCamera: true,
+      preferFrontCamera: false,
       showFlipCameraButton: true,
       prompt: 'Place ticket barcode inside of scan area',
-      formats: 'EAN_13,EAN_8,QR_CODE,PDF_417',
-      orientation: 'portrait'    
+      // formats: 'CODE_39',
+      orientation: 'portrait',
+      resultDisplayDuration: 0    
     };
     
     this.data = null;
-    this.barcodeScanner.scan().then(barcodeData => {
+    this.barcodeScanner.scan(options).then(barcodeData => {
       console.log('Barcode data', barcodeData);
       this.data = barcodeData.text;
       console.log(this.data);
-      this.confirmation();
+      this.process_barcode();
     }).catch(err => {
       console.log('Error', err);
     });
+  }
+
+  // Processes text from barcode
+  process_barcode() {
+    for (let i = 0; i < this.barcode_mapping.length; i++) {
+      if (this.barcode_mapping[i] == this.data) {
+        this.seat.section = this.barcode_mapping[i + 1];
+        this.setRows(this.seat.section);
+        this.seat.row = this.barcode_mapping[i + 2];
+        this.setSeats(this.seat.row);
+        this.seat.seatNum = this.barcode_mapping[i + 3];
+        this.confirmation();
+        return;
+      }
+    }
+    this.invalidScan();
   }
 
 }
