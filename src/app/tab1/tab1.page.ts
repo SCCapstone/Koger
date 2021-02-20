@@ -1,7 +1,7 @@
 import { Component, QueryList } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
@@ -17,6 +17,7 @@ export class Tab1Page {
     private router: Router,
     public photoService: PhotoService,
     public alertController: AlertController,
+    public platform: Platform,
     private barcodeScanner: BarcodeScanner
   ) {
     // this.loadWorker();
@@ -463,6 +464,9 @@ export class Tab1Page {
 
   // Scans barcode from ticket
   async scanBarcode() {
+    if (!this.platform.is('cordova'))
+      this.notCordova();
+
     const options: BarcodeScannerOptions = {
       preferFrontCamera: false,
       showFlipCameraButton: true,
@@ -515,6 +519,23 @@ export class Tab1Page {
     } else {
       this.sectionView='<img src="../../assets/img/uofsclogo.jpg"/>';
     }
+  }
+
+  // Alert for barcode scanner not working on ionic serve
+  async notCordova() {
+    const alert = await this.alertController.create({
+      header: 'Barcode Scanner only works on a device, not on ionic serve',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('CONFIRM OK');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }
