@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, QueryList } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
+import { AlertController, Platform } from '@ionic/angular';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -8,28 +10,48 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  data: any;
+  image = '';
 
   constructor(
     private router: Router,
-    public photoService: PhotoService
-  ) {}
+    public photoService: PhotoService,
+    public alertController: AlertController,
+    public platform: Platform,
+    private barcodeScanner: BarcodeScanner
+  ) {
+    // this.loadWorker();
+  }
+
+  // Hard-wired array to mock a database until we connect to an
+  // actual database
+  barcode_mapping = [
+    '0821858040', 'LORC', 'D', '35',
+    '0821848687', 'LORC', 'E', '36',
+    '0821859186', 'LORC', 'D', '36',
+    '0821849369', 'LORC', 'E', '37',
+  ]
 
   seat = {
     section: '',
     row: '',
-    seatNum: '' 
+    seatNum: ''
   }
+
+  sectionView: any;
 
   sections = [
     'RORC', 'LORC', 'RGTR', 'LGTR', 'RBAL', 'LBAL', 'HC'
+    // 'RORC: Rear Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
+    // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HC: ADA Accesible'
   ]
 
   rows: string[];
 
-  ORCrows = [ 
+  ORCrows = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U'
   ]
-  GTRrows = [ 
+  GTRrows = [
     'AA', 'BB', 'CC', 'DD', 'EE', 'FF', 'GG', 'HH', 'II', 'JJ', 'KK', 'LL'
   ]
   BALrows = [
@@ -242,6 +264,7 @@ export class Tab1Page {
     '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
     '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74'
   ]
+  HCseats = ['HC Left', 'HC Right']
 
   goToSeatDescription() {
     let navigationExtras: NavigationExtras = {
@@ -252,15 +275,40 @@ export class Tab1Page {
     this.router.navigate(['seat-description'], navigationExtras);
   }
 
+  async showSectionView() {
+    if(this.seat.section=='') {
+      const alert = await this.alertController.create({
+        header: 'Section Required',
+        message: 'Please input a section to see the section view',
+        buttons: ['CLOSE']
+      });
+  
+      await alert.present();
+
+    } else {
+      this.generateSectionView();
+      const alert = await this.alertController.create({
+        header: 'View from Section ' + this.seat.section,
+        message: this.sectionView,
+        buttons: ['CLOSE']
+      });
+
+      await alert.present();
+    }
+  }
+
   setRows(inputSection: string) {
-    if(this.seat.row!=null) {
+    if (this.seat.row != null) {
       this.removeRowSelection();
     }
     if(inputSection=="RORC" || inputSection=="LORC") {
+    // if(inputSection=='RORC: Rear Orchestra' || inputSection=='LORC: Left Orchestra') {
       this.rows = this.ORCrows;
     } else if(inputSection=="RGTR" || inputSection=="LGTR") {
+    // else if(inputSection=='RGTR: Right Grand Tier' || inputSection=='LGTR: Left Grand Tier') {
       this.rows = this.GTRrows;
     } else if(inputSection=="RBAL" || inputSection=="LBAL") {
+    // else if(inputSection=='RBAL: Right Balcony' || inputSection=='LBAL: Left Balcony') {
       this.rows = this.BALrows;
     } else {
       this.rows = ['HC'];
@@ -268,99 +316,226 @@ export class Tab1Page {
   }
 
   setSeats(inputRow: string) {
-    if(this.seat.seatNum!=null) {
+    if (this.seat.seatNum != null) {
       this.removeSeatSelection();
     }
-    if (inputRow=="A") {
+    if (inputRow == "A") {
       this.seats = this.Aseats;
-    } else if(inputRow=="B") {
+    } else if (inputRow == "B") {
       this.seats = this.Bseats;
-    } else if(inputRow=="C") {
+    } else if (inputRow == "C") {
       this.seats = this.Cseats;
-    } else if(inputRow=="D") {
+    } else if (inputRow == "D") {
       this.seats = this.Dseats;
-    } else if(inputRow=="E") {
+    } else if (inputRow == "E") {
       this.seats = this.Eseats;
-    } else if(inputRow=="F") {
+    } else if (inputRow == "F") {
       this.seats = this.Fseats;
-    } else if(inputRow=="G") {
+    } else if (inputRow == "G") {
       this.seats = this.Gseats;
-    } else if(inputRow=="H") {
+    } else if (inputRow == "H") {
       this.seats = this.Hseats;
-    } else if(inputRow=="I") {
+    } else if (inputRow == "I") {
       this.seats = this.Iseats;
-    } else if(inputRow=="J") {
+    } else if (inputRow == "J") {
       this.seats = this.Jseats;
-    } else if(inputRow=="K") {
+    } else if (inputRow == "K") {
       this.seats = this.Kseats;
-    } else if(inputRow=="L") {
+    } else if (inputRow == "L") {
       this.seats = this.Lseats;
-    } else if(inputRow=="M") {
+    } else if (inputRow == "M") {
       this.seats = this.Mseats;
-    } else if(inputRow=="N") {
+    } else if (inputRow == "N") {
       this.seats = this.Nseats;
-    } else if(inputRow=="O") {
+    } else if (inputRow == "O") {
       this.seats = this.Oseats;
-    } else if(inputRow=="P") {
+    } else if (inputRow == "P") {
       this.seats = this.Pseats;
-    } else if(inputRow=="Q") {
+    } else if (inputRow == "Q") {
       this.seats = this.Qseats;
-    } else if(inputRow=="R") {
+    } else if (inputRow == "R") {
       this.seats = this.Rseats;
-    } else if(inputRow=="S") {
+    } else if (inputRow == "S") {
       this.seats = this.Sseats;
-    } else if(inputRow=="T") {
+    } else if (inputRow == "T") {
       this.seats = this.Tseats;
-    } else if(inputRow=="U") {
+    } else if (inputRow == "U") {
       this.seats = this.Useats;
-    } else if(inputRow=="AA") {
+    } else if (inputRow == "AA") {
       this.seats = this.AAseats;
-    } else if(inputRow=="BB") {
+    } else if (inputRow == "BB") {
       this.seats = this.BBseats;
-    } else if(inputRow=="CC") {
+    } else if (inputRow == "CC") {
       this.seats = this.CCseats;
-    } else if(inputRow=="DD") {
+    } else if (inputRow == "DD") {
       this.seats = this.DDseats;
-    } else if(inputRow=="EE") {
+    } else if (inputRow == "EE") {
       this.seats = this.EEseats;
-    } else if(inputRow=="FF") {
+    } else if (inputRow == "FF") {
       this.seats = this.FFseats;
-    } else if(inputRow=="GG") {
+    } else if (inputRow == "GG") {
       this.seats = this.GGseats;
-    } else if(inputRow=="HH") {
+    } else if (inputRow == "HH") {
       this.seats = this.HHseats;
-    } else if(inputRow=="II") {
+    } else if (inputRow == "II") {
       this.seats = this.IIseats;
-    } else if(inputRow=="JJ") {
+    } else if (inputRow == "JJ") {
       this.seats = this.JJseats;
-    } else if(inputRow=="KK") {
+    } else if (inputRow == "KK") {
       this.seats = this.KKseats;
-    } else if(inputRow=="LL") {
+    } else if (inputRow == "LL") {
       this.seats = this.LLseats;
-    } else if(inputRow=="AAA") {
+    } else if (inputRow == "AAA") {
       this.seats = this.AAAseats;
-    } else if(inputRow=="BBB") {
+    } else if (inputRow == "BBB") {
       this.seats = this.BBBseats;
-    } else if(inputRow=="CCC") {
+    } else if (inputRow == "CCC") {
       this.seats = this.CCCseats;
-    } else if(inputRow=="DDD") {
+    } else if (inputRow == "DDD") {
       this.seats = this.DDDseats;
+    } else if (inputRow=="HC") {
+      this.seats = this.HCseats;
     } else {
       this.seats = ['Invalid Section/Row']
     }
   }
 
   removeRowSelection() {
-    this.seat.row=null;
-    this.seat.seatNum=null;
+    this.seat.row = null;
+    this.seat.seatNum = null;
   }
 
   removeSeatSelection() {
-    this.seat.seatNum=null;
+    this.seat.seatNum = null;
   }
 
-  newCapture(){
-    this.photoService.addNewToGallery();
+  // Alert window for good barcode scan
+  async confirmation() {
+    const alert = await this.alertController.create({
+      header: 'Scan Confirmation',
+      message: '<b> Is this the information found on your ticket? </b> <br/>' + 
+               'Section: ' + this.seat.section + '<br/> Row: ' + this.seat.row 
+                + '<br/> Seat: ' + this.seat.seatNum,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('CONFIRM CANCEL');
+          }
+        }, 
+        {
+          text: 'Find Seat',
+          handler: () => {
+            console.log('CONFIRM OK');
+            this.goToSeatDescription();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  // Alert window for an invalid scan
+  async invalidScan() {
+    const alert = await this.alertController.create({
+      header: 'Scan Ticket Error',
+      message: 'Invalid Scan Provided',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('CONFIRM CANCEL');
+          }
+        }, {
+          text: 'Try Scan Again',
+          handler: () => {
+            console.log('CONFIRM OK');
+            this.scanBarcode();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  // Scans barcode from ticket
+  async scanBarcode() {
+    if (!this.platform.is('cordova'))
+      this.notCordova();
+
+    const options: BarcodeScannerOptions = {
+      preferFrontCamera: false,
+      showFlipCameraButton: true,
+      prompt: 'Place ticket barcode inside of scan area',
+      // formats: 'CODE_39',
+      orientation: 'portrait',
+      resultDisplayDuration: 0    
+    };
+    
+    this.data = null;
+    this.barcodeScanner.scan(options).then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+      this.data = barcodeData.text;
+      console.log(this.data);
+      this.process_barcode();
+    }).catch(err => {
+      console.log('Error', err);
+    });
+  }
+
+  // Processes text from barcode
+  process_barcode() {
+    for (let i = 0; i < this.barcode_mapping.length; i++) {
+      if (this.barcode_mapping[i] == this.data) {
+        this.seat.section = this.barcode_mapping[i + 1];
+        this.setRows(this.seat.section);
+        this.seat.row = this.barcode_mapping[i + 2];
+        this.setSeats(this.seat.row);
+        this.seat.seatNum = this.barcode_mapping[i + 3];
+        this.confirmation();
+        return;
+      }
+    }
+    this.invalidScan();
+  }
+
+  generateSectionView() {
+    if(this.seat.section=='RORC') {
+      this.sectionView='<img src="../../assets/img/RORC.jpg"/>';
+    } else if(this.seat.section=='LORC') {
+      this.sectionView='<img src="../../assets/img/LORC.jpg"/>';
+    } else if(this.seat.section=='RGTR') {
+      this.sectionView='<img src="../../assets/img/RGTR.jpg"/>';
+    } else if(this.seat.section=='LGTR') {
+      this.sectionView='<img src="../../assets/img/LGTR.jpg"/>';
+    } else if(this.seat.section=='RBAL') {
+      this.sectionView='<img src="../../assets/img/RBAL.jpg"/>';
+    } else if(this.seat.section=='LBAL') {
+      this.sectionView='<img src="../../assets/img/LBAL.jpg"/>';
+    } else {
+      this.sectionView='<img src="../../assets/img/uofsclogo.jpg"/>';
+    }
+  }
+
+  // Alert for barcode scanner not working on ionic serve
+  async notCordova() {
+    const alert = await this.alertController.create({
+      header: 'Barcode Scanner only works on a device, not on ionic serve',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('CONFIRM OK');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

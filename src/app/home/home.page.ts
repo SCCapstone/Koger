@@ -16,7 +16,6 @@ const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotificati
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
@@ -66,5 +65,3 @@ export class HomePage implements OnInit {
     }
   }
 }
-
-

@@ -41,6 +41,6 @@ export class Tab2Page {
 
     jumpToMapSeatsBalcony()
     {
-      this.route.navigate(['../map-balcony']);
+      this.route.navigate(['../map-seats-balcony']);
     }
 }

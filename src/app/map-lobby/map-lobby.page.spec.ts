@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { MapLobbyPage } from './map-lobby.page';
 
 describe('MapLobbyPage', () => {
@@ -10,7 +10,7 @@ describe('MapLobbyPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MapLobbyPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MapLobbyPage);
