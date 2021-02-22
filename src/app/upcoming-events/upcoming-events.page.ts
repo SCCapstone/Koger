@@ -19,6 +19,8 @@ export class UpcomingEventsPage implements OnInit {
   }
 
   ngOnInit () {
+    this.generatePost();
+    this.prepareDataRequest();
     this.eventList = this.firestoreService.getEventData();
   }
   ionViewWillEnter() {
@@ -47,5 +49,12 @@ export class UpcomingEventsPage implements OnInit {
     // const options = {mode: 'no-cors', method: "get", headers: new Headers({ "Content Type": "application/json"})};
     const res = fetch(dataUrl, {mode: 'no-cors'});
     console.log(res);
+  }
+  private generatePost() {
+    this.http.post('https://jsonplaceholder.typicode.com/users', {
+
+    }).subscribe((response)=> {
+      console.log(response);
+    })
   }
 }
