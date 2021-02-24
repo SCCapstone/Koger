@@ -29,7 +29,7 @@
     <ion-grid>
       <ion-card-title class="ion-text-center">Enter your ticket information:</ion-card-title>
       <ion-card-subtitle class="ion-text-center">Section and Row Required</ion-card-subtitle>
-      <form class="form" [formGroup]="validations_form" (ngSubmit)="goToSeatDescription()">
+      <form class="form" [formGroup]="validations_form">
       <ion-item>
         <ion-label floating>Section</ion-label>
         <ion-select [(ngModel)]="seat.section" (ngModelChange)="setRows(seat.section)" formControlName="section" name="Section">
@@ -86,7 +86,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="garnet" type="submit" [disabled]="!validations_form.valid">Find Seat</ion-button>
+          <ion-button expand="block" color="garnet" type="submit" (click)="goToSeatDescription()" [disabled]="!validations_form.valid">Find Seat</ion-button>
         </ion-col>
       </ion-row>
 
