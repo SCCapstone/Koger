@@ -1,27 +1,53 @@
-import { Component, QueryList } from '@angular/core';
+import { Component, QueryList, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
 import { AlertController, Platform } from '@ionic/angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
   data: any;
   image = '';
+
+  validations_form: FormGroup;
+  errorMessage: string = '';
 
   constructor(
     private router: Router,
     public photoService: PhotoService,
     public alertController: AlertController,
     public platform: Platform,
-    private barcodeScanner: BarcodeScanner
+    private barcodeScanner: BarcodeScanner,
+    private formBuilder: FormBuilder
   ) {
     // this.loadWorker();
   }
+  ngOnInit()
+  {
+    this.validations_form = this.formBuilder.group({
+      section: new FormControl('', Validators.compose([
+        Validators.required,
+      ])),
+      row: new FormControl('', Validators.compose
+      ([
+        Validators.required
+      ]))
+    });
+  }
+
+  validation_messages = {
+    'section': [
+      { type: 'required', message: 'Section is required.'}
+    ],
+    'row' : [
+      {type: 'required', message: 'Row is required.'}
+    ]
+  };
 
   // Hard-wired array to mock a database until we connect to an
   // actual database
