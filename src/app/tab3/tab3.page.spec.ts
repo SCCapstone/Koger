@@ -1,8 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 import { RouterTestingModule } from '@angular/router/testing';
 import { Tab3Page } from './tab3.page';
+import { Inject, InjectionToken, NgModule } from '@angular/core';
 
 describe('Tab3Page', () => {
   let component: Tab3Page;
@@ -10,10 +17,18 @@ describe('Tab3Page', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [Tab3Page],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule, RouterTestingModule]
+      declarations: [Tab3Page,],
+      imports: [IonicModule.forRoot(),
+        ExploreContainerComponentModule, 
+        RouterTestingModule, 
+        AngularFireAuthModule, 
+        AngularFireModule,
+        AngularFirestoreModule],
+      providers: [AngularFirestoreModule, AngularFirestore]
     }).compileComponents();
+  }));
 
+  beforeEach(async(() =>{
     fixture = TestBed.createComponent(Tab3Page);
     component = fixture.componentInstance;
     fixture.detectChanges();
