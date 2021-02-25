@@ -3,17 +3,26 @@ import { fromEventPattern } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import { Event } from '../../shared/event';
+import { Message } from '../../shared/message';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
-
+  notification: any;
   constructor(public firestore: AngularFirestore) { }
 
   getEventData(): Observable<Event[]> {
     return this.firestore.collection<Event>('Event').valueChanges();
+  }
+
+  getLastMessage(): Observable<Message[]> {
+    return this.firestore.collection<Message>('push').valueChanges();
+  }
+
+  updateMessage(title: string, body: string) {
+    return this.firestore.collection('push').doc('message').update({ title: title, body: body});
   }
   
   createEvent(

@@ -35,4 +35,9 @@ export class AdminDashboardPage implements OnInit {
     this.router.navigate(['delete-event']);
   }
 
+  sendPush() 
+  {
+    this.router.navigate(['send-push']);
+  }
+
 }
