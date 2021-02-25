@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { Tab3Page } from './tab3.page';
-import { Inject, InjectionToken, NgModule } from '@angular/core';
+
 
 describe('Tab3Page', () => {
   let component: Tab3Page;
@@ -24,7 +24,7 @@ describe('Tab3Page', () => {
         AngularFireAuthModule, 
         AngularFireModule,
         AngularFirestoreModule],
-      providers: [AngularFirestoreModule, AngularFirestore]
+      providers: [AngularFireAuthModule]
     }).compileComponents();
   }));
 

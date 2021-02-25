@@ -24,12 +24,12 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
     HttpClientModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
