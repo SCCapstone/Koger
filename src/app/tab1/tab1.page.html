@@ -66,13 +66,13 @@
          </div>
         </ion-col>
       </ion-row>
+      </form>
       <ion-item>
         <ion-label floating>Seat Number: </ion-label>
         <ion-select [(ngModel)]="seat.seatNum" name="SeatNum">
           <ion-select-option *ngFor="let i of seats">{{ i }}</ion-select-option>
         </ion-select>
       </ion-item>
-      </form>
     </ion-grid>
 
     <ion-grid>
