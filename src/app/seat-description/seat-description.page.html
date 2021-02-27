@@ -37,6 +37,7 @@
       <ion-slide *ngFor="let i of carousel.items">
         <div class="slide">
           <img [src]="i.image"/>
+          <img *ngIf="i.id==2 || i.id==3" src="../../assets/img/symbolkey.png">
           <ion-card-title class="ion-text-center">Directions for Finding Your Seat</ion-card-title>
           <p class="ion-text-center">Step {{ i.id }}: {{ i.description }}</p>
         </div>
