@@ -50,8 +50,12 @@ export class SeatDescriptionPage implements OnInit {
 
   generateMessagesAndPictures() {
     this.pictures.picture1="../../assets/img/KogerCenterFront.jpg";
-    this.message.message1="Enter the Koger Center through either the Greene Street Entrance or the Assembly Street Entrance"
-    this.message.message4="There are ushers available near the doors to help you find your seat. You are SEAT " + this.inputSeat.seatNum + " in ROW " + this.inputSeat.row + ".";
+    this.message.message1="Enter the Koger Center through either the Greene Street Entrance or the Assembly Street Entrance";
+    if(this.inputSeat.seatNum==null) {
+      this.message.message4="There are ushers available near the doors to help you find your seat in ROW " + this.inputSeat.row;
+    } else {
+      this.message.message4="There are ushers available near the doors to help you find your seat. You are in SEAT " + this.inputSeat.seatNum + " in ROW " + this.inputSeat.row;
+    }
 
     if(this.inputSeat.section=='LORC: Left Orchestra') {
       this.pictures.picture2="../../assets/img/LobbyLeft.jpg";

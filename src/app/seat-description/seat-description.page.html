@@ -32,7 +32,7 @@
     <ion-card-title class="ion-text-center">Seat Description</ion-card-title>
     <p class="ion-text-center"><strong>Section:</strong> {{ inputSeat.section }}</p>
     <p class="ion-text-center"><strong>Row:</strong> {{ inputSeat.row }}</p>
-    <p class="ion-text-center"><strong>Seat Number:</strong> {{ inputSeat.seatNum }}</p>
+    <p class="ion-text-center" *ngIf="inputSeat.seatNum != null"><strong>Seat Number:</strong> {{ inputSeat.seatNum }}</p>
     <ion-slides pager>
       <ion-slide *ngFor="let i of carousel.items">
         <div class="slide">
