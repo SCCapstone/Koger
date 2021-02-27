@@ -30,12 +30,15 @@
 <ion-content [fullscreen]="true">
   <ion-card class="ion-padding">
     <ion-card-title class="ion-text-center">Seat Description</ion-card-title>
-    <p class="ion-text-center">Section: {{ inputSeat.section }}, Row: {{ inputSeat.row }}, Seat Number: {{ inputSeat.seatNum }}</p>
-    <ion-slides>
+    <p class="ion-text-center"><strong>Section:</strong> {{ inputSeat.section }}</p>
+    <p class="ion-text-center"><strong>Row:</strong> {{ inputSeat.row }}</p>
+    <p class="ion-text-center" *ngIf="inputSeat.seatNum != null"><strong>Seat Number:</strong> {{ inputSeat.seatNum }}</p>
+    <ion-slides pager>
       <ion-slide *ngFor="let i of carousel.items">
         <div class="slide">
           <img [src]="i.image"/>
-          <ion-card-subtitle class="ion-text-center">Directions for Finding Your Seat</ion-card-subtitle>
+          <img *ngIf="i.id==2 || i.id==3" src="../../assets/img/symbolkey.png">
+          <ion-card-title class="ion-text-center">Directions for Finding Your Seat</ion-card-title>
           <p class="ion-text-center">Step {{ i.id }}: {{ i.description }}</p>
         </div>
       </ion-slide>
