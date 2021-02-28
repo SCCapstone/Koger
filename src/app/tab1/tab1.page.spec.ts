@@ -44,7 +44,7 @@ describe('Tab1Page', () => {
     properly based on given input in related ts file 
   */
   it('should track the proper assignment of rows based on user input', () =>{
-    let testIn : string = "RORC";
+    let testIn : string = "RORC: Right Orchestra";
 
     component.setRows(testIn);
 
@@ -77,7 +77,7 @@ describe('Tab1Page', () => {
     that should set seat selection to null
    */
   it('should nullify row selection', () => {
-    component.setRows('RORC');
+    component.setRows('RORC: Right Orchestra');
     
     component.removeRowSelection();
 

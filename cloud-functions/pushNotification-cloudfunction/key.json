@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "koger-center-app",
+  "private_key_id": "5d88e6795acea611725456671ab5cdfd7d8977c9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+uMiqZyTdKsPe\ni1oElEKD0gG0jbp2ZKbBoRQFyGihUft9fSvlztVDWpKPlmbSoY3fAb/twOnDoPFg\nI861w7qaKBt0qGEjIho/qY6v7WfYpgFwMRZNEVUzLCrEG4vuyarlG8bjv5um8WZN\nzpH6kYm2oJt+EABbx/HwR3Aicfn8uPd/v4yESUruItXQZt8MS21kj1z2OitTQiNt\nP/bMpUBtbP0GiTYuB9gvn0lUMLcIwPpyO783PsnWH+5cdyeAF3Y9ZJYo4YK7NSgY\nuDSRr6YDlBIBxoCB4JeiZn/nM6hDGLC863tGowzq2/2sWlKX1TWSi5acAacRgov6\nOEpljHwbAgMBAAECggEAFiPtZ5rBtMsaIeObd5yefB8NA6DQXJ4inafNYz54pwGV\naGP3jJ4OM9t32CNlnF4U0iap2Tfj60nru3Vssb0fFHZDea9yV1nGIk3UuqecvpHG\n6PdJ13iDo4UlEc8A15+hryciV54Ou7qaXb31RFlQ21qZsnC5Ge6EL5ibc+Q3WRcM\njdz+kqkEU1nYt46rRI7X4AAn707GQ7WX6rz8Tt0CJRKIABQqkS5W9/alv3aNA6mJ\nHbmgU/N0QN54MtdUDyL0oJSMnr9z2IKhqWjdTNcEK7SSVGTrMfBVhnTk1MuBXc7l\n5jL6fABF6Q+rurRF597WV6/yxwqxsleF8opx3TSbQQKBgQDlROkwFHB8oq6cYCSD\nrVrHZToaE3F+NIXfEdINzTyV1JJFAwDZlhQbX6tI14BFtZoJwXNznij515EU+FLy\ndxcsT00HHGOc333h4ddD0MVPbr5I5ZsJGfpDxhG4xx/47m0B8X1nXsEC+AFAY/kT\ntnu5fTSw20K6gIZ/zCeVeejXjwKBgQDU9VWJ8RJyWpcVDPLZyB9WoAnj4TZRgwN6\n/dr23bc8baBnKzuNrOseUPm7XmUwGzWVuqZxXbxvNaaAg6cSF5IQNE+lAu7e3E43\nisfy+/30gSjDJ8UwG96KAjSiMHx2N9u+PHXcfKcFmMHQC8/cwWztMWSLEdtu9EZV\nmXWBP2istQKBgGcTDCNpjQj7urTjJIdusJlkkTKX+zZaNrWLNXyvAMX7w6bzKrao\nGnIUGNWuzSSJ+K7aIiWgvZtVpwxeeCw6DlkFbgP8Z2xnrhiXiEgc3BhSGYp8b68v\n1qwRqHYCUAWCa8+r2k1W9D95cFaam6iZKhbCi6XXbbCbh9x81G8HV/9RAoGAHJ78\naBWmTQgv1fxvhyWGULYhnibejgX1qcoEa7lQryZssHD3CAt9bg2kArKlFtoRUZZM\nWGAouymSvyLyiVPxpYviSGMkh39EY+KbDOUhNINHXzMxJU4ZkqLJQCMUFy9asS6f\nCIsYR4BITBXKUfkNErPYt3gm7bqW2VpOmJhVESECgYEAiSrZXx8HyDqJ+S88UzV/\niAJdnplgiajIoEh0+FmB6c3fGuwi1J4c7ho0X+igwSdT6EHrJNQUorw+chjIDWGn\nQ7ARFn9Z30MCxRZq2pvI9QAXLhQSy7TYtsFUq3VD+fWuwxLXu2+aMNAhOUBT2FjI\nKJ20jGWx5GAFaAv0iBuLHk0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "koger-center-app@appspot.gserviceaccount.com",
+  "client_id": "101474944240526501778",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/koger-center-app%40appspot.gserviceaccount.com"
+}
