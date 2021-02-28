@@ -72,6 +72,10 @@ const routes: Routes = [
   {
     path: 'delete-event',
     loadChildren: () => import('./delete-event/delete-event.module').then( m => m.DeleteEventPageModule)
+  },
+  {
+    path: 'send-push',
+    loadChildren: () => import('./send-push/send-push.module').then( m => m.SendPushPageModule)
   }
 
 

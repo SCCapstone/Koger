@@ -6,6 +6,9 @@ import {
   PushNotificationActionPerformed,
   Capacitor
 } from '@capacitor/core'
+import { FormGroup, FormBuilder,  Validators} from '@angular/forms';
+import { LoadingController, AlertController } from '@ionic/angular';
+import { FirestoreService } from '../services/data/firestore.service';
 
 const { PushNotifications } = Plugins;
 const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
@@ -16,7 +19,9 @@ const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotificati
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor() { }
+  constructor(
+    private firestoreService: FirestoreService,
+  ) { }
 
   ngOnInit() {
     if (isPushNotificationsAvailable) {
@@ -39,6 +44,7 @@ export class HomePage implements OnInit {
       PushNotifications.addListener('registration',
         (token: PushNotificationToken) => {
           alert('Push registration success, token: ' + token.value);
+          this.firestoreService.createUser(token.value);
         }
       );
 

@@ -1,35 +1,61 @@
-import { Component, QueryList } from '@angular/core';
+import { Component, QueryList, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { PhotoService } from '../services/photo.service';
 import { AlertController, Platform } from '@ionic/angular';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
   data: any;
   image = '';
+
+  validations_form: FormGroup;
+  errorMessage: string = '';
 
   constructor(
     private router: Router,
     public photoService: PhotoService,
     public alertController: AlertController,
     public platform: Platform,
-    private barcodeScanner: BarcodeScanner
+    private barcodeScanner: BarcodeScanner,
+    private formBuilder: FormBuilder
   ) {
     // this.loadWorker();
   }
+  ngOnInit()
+  {
+    this.validations_form = this.formBuilder.group({
+      section: new FormControl('', Validators.compose([
+        Validators.required,
+      ])),
+      row: new FormControl('', Validators.compose
+      ([
+        Validators.required
+      ]))
+    });
+  }
+
+  validation_messages = {
+    'section': [
+      { type: 'required', message: 'Section is required.'}
+    ],
+    'row' : [
+      {type: 'required', message: 'Row is required.'}
+    ]
+  };
 
   // Hard-wired array to mock a database until we connect to an
   // actual database
   barcode_mapping = [
-    '0821858040', 'LORC', 'D', '35',
-    '0821848687', 'LORC', 'E', '36',
-    '0821859186', 'LORC', 'D', '36',
-    '0821849369', 'LORC', 'E', '37',
+    '0821858040', 'LORC: Left Orchestra', 'D', '35',
+    '0821848687', 'LORC: Left Orchestra', 'E', '36',
+    '0821859186', 'LORC: Left Orchestra', 'D', '36',
+    '0821849369', 'LORC: Left Orchestra', 'E', '37',
   ]
 
   seat = {
@@ -41,9 +67,9 @@ export class Tab1Page {
   sectionView: any;
 
   sections = [
-    'RORC', 'LORC', 'RGTR', 'LGTR', 'RBAL', 'LBAL', 'HC'
-    // 'RORC: Rear Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
-    // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HC: ADA Accesible'
+    //'RORC', 'LORC', 'RGTR', 'LGTR', 'RBAL', 'LBAL', 'HC'
+    'RORC: Right Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
+    'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
   ]
 
   rows: string[];
@@ -264,7 +290,7 @@ export class Tab1Page {
     '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
     '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74'
   ]
-  HCseats = ['HC Left', 'HC Right']
+  HCPseats = ['HCP Left', 'HCP Right']
 
   goToSeatDescription() {
     let navigationExtras: NavigationExtras = {
@@ -301,17 +327,17 @@ export class Tab1Page {
     if (this.seat.row != null) {
       this.removeRowSelection();
     }
-    if(inputSection=="RORC" || inputSection=="LORC") {
-    // if(inputSection=='RORC: Rear Orchestra' || inputSection=='LORC: Left Orchestra') {
+    //if(inputSection=="RORC" || inputSection=="LORC") {
+    if(inputSection=='RORC: Right Orchestra' || inputSection=='LORC: Left Orchestra') {
       this.rows = this.ORCrows;
-    } else if(inputSection=="RGTR" || inputSection=="LGTR") {
-    // else if(inputSection=='RGTR: Right Grand Tier' || inputSection=='LGTR: Left Grand Tier') {
+    } //else if(inputSection=="RGTR" || inputSection=="LGTR") {
+    else if(inputSection=='RGTR: Right Grand Tier' || inputSection=='LGTR: Left Grand Tier') {
       this.rows = this.GTRrows;
-    } else if(inputSection=="RBAL" || inputSection=="LBAL") {
-    // else if(inputSection=='RBAL: Right Balcony' || inputSection=='LBAL: Left Balcony') {
+    } //else if(inputSection=="RBAL" || inputSection=="LBAL") {
+    else if(inputSection=='RBAL: Right Balcony' || inputSection=='LBAL: Left Balcony') {
       this.rows = this.BALrows;
     } else {
-      this.rows = ['HC'];
+      this.rows = ['HCP: ADA Accessible'];
     }
   }
 
@@ -393,8 +419,8 @@ export class Tab1Page {
       this.seats = this.CCCseats;
     } else if (inputRow == "DDD") {
       this.seats = this.DDDseats;
-    } else if (inputRow=="HC") {
-      this.seats = this.HCseats;
+    } else if (inputRow=="HCP: ADA Accessible") {
+      this.seats = this.HCPseats;
     } else {
       this.seats = ['Invalid Section/Row']
     }
@@ -503,18 +529,21 @@ export class Tab1Page {
     this.invalidScan();
   }
 
+  // 'RORC: Right Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
+  // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
+
   generateSectionView() {
-    if(this.seat.section=='RORC') {
+    if(this.seat.section=='RORC: Right Orchestra') {
       this.sectionView='<img src="../../assets/img/RORC.jpg"/>';
-    } else if(this.seat.section=='LORC') {
+    } else if(this.seat.section=='LORC: Left Orchestra') {
       this.sectionView='<img src="../../assets/img/LORC.jpg"/>';
-    } else if(this.seat.section=='RGTR') {
+    } else if(this.seat.section=='RGTR: Right Grand Tier') {
       this.sectionView='<img src="../../assets/img/RGTR.jpg"/>';
-    } else if(this.seat.section=='LGTR') {
+    } else if(this.seat.section=='LGTR: Left Grand Tier') {
       this.sectionView='<img src="../../assets/img/LGTR.jpg"/>';
-    } else if(this.seat.section=='RBAL') {
+    } else if(this.seat.section=='RBAL: Right Balcony') {
       this.sectionView='<img src="../../assets/img/RBAL.jpg"/>';
-    } else if(this.seat.section=='LBAL') {
+    } else if(this.seat.section=='LBAL: Left Balcony') {
       this.sectionView='<img src="../../assets/img/LBAL.jpg"/>';
     } else {
       this.sectionView='<img src="../../assets/img/uofsclogo.jpg"/>';
