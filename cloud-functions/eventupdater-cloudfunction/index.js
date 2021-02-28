@@ -31,6 +31,7 @@ exports.webScraper = functions
         const text = await koger_response.text();
         const dom = new JSDOM(text);
 
+        const event_desc = "";
         const event_title = dom.window.document.querySelector("span.eventtitle").textContent;
         const event_dates = dom.window.document.querySelector("span.date").textContent;
 
@@ -48,6 +49,7 @@ exports.webScraper = functions
             } else {
               eventRef.set({
                 updatedAt: new Date(),
+                description: event_desc,
                 dates: event_dates,
                 title: event_title,
                 link: tested_url
