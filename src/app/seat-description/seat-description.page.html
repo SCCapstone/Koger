@@ -33,13 +33,14 @@
     <p class="ion-text-center"><strong>Section:</strong> {{ inputSeat.section }}</p>
     <p class="ion-text-center"><strong>Row:</strong> {{ inputSeat.row }}</p>
     <p class="ion-text-center" *ngIf="inputSeat.seatNum != null"><strong>Seat Number:</strong> {{ inputSeat.seatNum }}</p>
+    <p class="ion-text-center"><strong>Swipe for the next step →</strong> </p>
     <ion-slides pager>
       <ion-slide *ngFor="let i of carousel.items">
         <div class="slide">
-          <img [src]="i.image"/>
-          <img *ngIf="i.id==2 || i.id==3" src="../../assets/img/symbolkey.png">
           <ion-card-title class="ion-text-center">Directions for Finding Your Seat</ion-card-title>
           <p class="ion-text-center">Step {{ i.id }}: {{ i.description }}</p>
+          <img [src]="i.image"/>
+          <img *ngIf="i.id==2 || i.id==3" src="../../assets/img/symbolkey.png">
         </div>
       </ion-slide>
       <ion-slide>
