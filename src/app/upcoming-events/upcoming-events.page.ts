@@ -43,6 +43,10 @@ export class UpcomingEventsPage implements OnInit {
     else
       window.open(url, "_blank")
   }
+  openPurchaseTicket()
+  {
+    window.open("https://itkt.choicecrm.net/templates/USCK/#/events")
+  }
   private prepareDataRequest() {
     // const dataUrl = 'https://www.kogercenterforthearts.com/upcoming.php';
     const dataUrl = 'https://jsonplaceholder.typicode.com/users';
