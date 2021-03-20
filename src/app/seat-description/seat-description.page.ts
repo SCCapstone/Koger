@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,21 +10,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SeatDescriptionPage implements OnInit {
 
   inputSeat: any;
-  carousel: any;
+  otherCarousel: any;
+  balconyCarousel: any;
+
+  appSlides: any;
+
 
   message = {
-    message1: '',
-    message2: '',
-    message3: '',
-    message4: '',
+    entranceMessage: '',
+    levelMessage: '',
+    doorMessage: '',
+    continueMessage: '',
+    seatMessage: '',
     doorNumber: 0
   };
 
   pictures = {
-    picture1: '',
-    picture2: '',
-    picture3: '',
-    picture4: ''
+    entrancePic: '',
+    levelPic: '',
+    doorPic: '',
+    sectionPic: '',
+    continuePic: ''
   }
 
   seatView: any;
@@ -42,101 +49,148 @@ export class SeatDescriptionPage implements OnInit {
   ngOnInit() {
     this.generateDoorNumber();
     this.generateMessagesAndPictures();
-    this.generateCarousel();
+    if(this.inputSeat.section=="LBAL: Left Balcony" || this.inputSeat.section=="RBAL: Right Balcony") {
+      this.generateBalconyCarousel();
+      this.appSlides = this.balconyCarousel;
+    } else {
+      this.generateOtherCarousel();
+      this.appSlides = this.otherCarousel;
+    }
   }
 
   // 'RORC: Right Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
   // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
 
   generateMessagesAndPictures() {
-    this.pictures.picture1="../../assets/img/KogerCenterFront.jpg";
-    this.message.message1="Enter the Koger Center through either the Greene Street Entrance or the Assembly Street Entrance";
+    this.pictures.entrancePic="../../assets/img/KogerCenterFront.jpg";
+    this.message.entranceMessage="Enter the Koger Center through either the Greene Street Entrance or the Assembly Street Entrance";
     if(this.inputSeat.seatNum==null) {
-      this.message.message4="There are ushers available near the doors to help you find your seat in ROW " + this.inputSeat.row;
+      this.message.seatMessage="There are ushers available near the doors to help you find your seat in ROW " + this.inputSeat.row;
     } else {
-      this.message.message4="There are ushers available near the doors to help you find your seat. You are in SEAT " + this.inputSeat.seatNum + " in ROW " + this.inputSeat.row;
+      this.message.seatMessage="There are ushers available near the doors to help you find your seat. You are in SEAT " + this.inputSeat.seatNum + " in ROW " + this.inputSeat.row;
     }
 
     if(this.inputSeat.section=='LORC: Left Orchestra') {
-      this.pictures.picture2="../../assets/img/LobbyLeft.jpg";
-      this.message.message2="Stay on the first level and walk to the left side of the theatre";
-      this.pictures.picture3="../../assets/img/LobbyLeft.jpg";
-      this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.picture4="../../assets/img/MapOrchestra.jpg";
+      this.pictures.levelPic="../../assets/img/LobbyLeft.jpg";
+      this.message.levelMessage="Stay on the first level and walk to the left side of the theatre";
+      this.pictures.doorPic="../../assets/img/LobbyLeft.jpg";
+      this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
+      this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
       this.seatView="../../assets/img/LORC.jpg";
 
     } else if(this.inputSeat.section=='RORC: Right Orchestra') {
-      this.pictures.picture2="../../assets/img/LobbyRight.jpg";
-      this.message.message2="Stay on the first level and walk to the right side of the theatre";
-      this.pictures.picture3="../../assets/img/LobbyRight.jpg";
-      this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.picture4="../../assets/img/MapOrchestra.jpg";
+      this.pictures.levelPic="../../assets/img/LobbyRight.jpg";
+      this.message.levelMessage="Stay on the first level and walk to the right side of the theatre";
+      this.pictures.doorPic="../../assets/img/LobbyRight.jpg";
+      this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
+      this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
       this.seatView="../../assets/img/RORC.jpg";
 
     } else if(this.inputSeat.section=='LGTR: Left Grand Tier') {
-      this.pictures.picture2="../../assets/img/LobbyStairs.jpg";
-      this.message.message2="Go to the second floor via the stairs or elevator";
-      this.pictures.picture3="../../assets/img/GrandTierLeft.jpg";
-      this.message.message3="Walk to the left side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.picture4="../../assets/img/MapGrand.jpg";
+      this.pictures.levelPic="../../assets/img/LobbyStairs.jpg";
+      this.message.levelMessage="Go to the second floor via the stairs or elevator";
+      this.pictures.doorPic="../../assets/img/GrandTierLeft.jpg";
+      this.message.doorMessage="Walk to the left side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
+      this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
       this.seatView="../../assets/img/LGTR.jpg";
 
     }else if(this.inputSeat.section=='RGTR: Right Grand Tier') {
-      this.pictures.picture2="../../assets/img/LobbyStairs.jpg";
-      this.message.message2="Go to the second floor via the stairs or elevator";
-      this.pictures.picture3="../../assets/img/GrandTierRight.jpg";
-      this.message.message3="Walk to the right side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.picture4="../../assets/img/MapGrand.jpg";
+      this.pictures.levelPic="../../assets/img/LobbyStairs.jpg";
+      this.message.levelMessage="Go to the second floor via the stairs or elevator";
+      this.pictures.doorPic="../../assets/img/GrandTierRight.jpg";
+      this.message.doorMessage="Walk to the right side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
+      this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
       this.seatView="../../assets/img/RGTR.jpg";
 
     } else if(this.inputSeat.section=='LBAL: Left Balcony') {
-      this.pictures.picture2="../../assets/img/LobbyStairsLeft.jpg";
-      this.message.message2="Go to the third floor via the stairs on the left side of the building";
-      this.pictures.picture3="../../assets/img/BalconyLeft.jpg";
-      this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.picture4="../../assets/img/MapBalcony.jpg";
+      this.pictures.levelPic="../../assets/img/LobbyStairsLeft.jpg";
+      this.message.levelMessage="Go to the third floor via the stairs on the left side of the building";
+      this.pictures.continuePic="../../assets/img/GrandTierStairsLeft.jpg";
+      this.message.continueMessage="Continue up to the third floor";
+      this.pictures.doorPic="../../assets/img/BalconyLeft.jpg";
+      this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
+      this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
       this.seatView="../../assets/img/LBAL.jpg";
 
     } else if(this.inputSeat.section=='RBAL: Right Balcony') {
-      this.pictures.picture2="../../assets/img/LobbyStairsRight.jpg";
-      this.message.message2="Go to the third floor via the stairs on the right side of the building or the elevator";
-      this.pictures.picture3="../../assets/img/BalconyRight.jpg";
-      this.message.message3="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.picture4="../../assets/img/MapBalcony.jpg";
+      this.pictures.levelPic="../../assets/img/LobbyStairsRight.jpg";
+      this.message.levelMessage="Go to the third floor via the stairs on the right side of the building or the elevator";
+      this.pictures.continuePic="../../assets/img/GrandTierStairsRight.jpg";
+      this.message.continueMessage="Continue up to the third floor";
+      this.pictures.doorPic="../../assets/img/BalconyRight.jpg";
+      this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
+      this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
       this.seatView="../../assets/img/RBAL.jpg";
 
     } else {
-      this.pictures.picture2="../../assets/img/NewLobby.jpg";
-      this.message.message2="Please see an usher to help you find your seat";
-      this.pictures.picture3="../../assets/img/NewLobby.jpg";
-      this.message.message3="Enter the theatre on either side through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.picture4="../../assets/img/MapOrchestra.jpg";
+      this.pictures.levelPic="../../assets/img/NewLobby.jpg";
+      this.message.levelMessage="Please see an usher to help you find your seat";
+      this.pictures.doorPic="../../assets/img/NewLobby.jpg";
+      this.message.doorMessage="Enter the theatre on either side through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
+      this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
     }
 
   }
 
-  generateCarousel() {
-    this.carousel = {
+  generateOtherCarousel() {
+    this.otherCarousel = {
       items: [
         {
           id: 1,
-          image: this.pictures.picture1,
-          description: this.message.message1
+          image: this.pictures.entrancePic,
+          description: this.message.entranceMessage
         },
         {
           id: 2,
-          image: this.pictures.picture2,
-          description: this.message.message2
+          image: this.pictures.levelPic,
+          description: this.message.levelMessage,
+          symbolKey: true
         },
         {
           id: 3,
-          image: this.pictures.picture3,
-          description: this.message.message3
+          image: this.pictures.doorPic,
+          description: this.message.doorMessage,
+          symbolKey: true
         },
         {
           id: 4,
-          image: this.pictures.picture4,
-          description: this.message.message4
+          image: this.pictures.sectionPic,
+          description: this.message.seatMessage
+        }
+      ]
+    }
+  }
+
+  generateBalconyCarousel() {
+    this.balconyCarousel = {
+      items: [
+        {
+          id: 1,
+          image: this.pictures.entrancePic,
+          description: this.message.entranceMessage
+        },
+        {
+          id: 2,
+          image: this.pictures.levelPic,
+          description: this.message.levelMessage,
+          symbolKey: true
+        },
+        {
+          id: 3,
+          image: this.pictures.continuePic,
+          description: this.message.continueMessage,
+          symbolKey: true
+        },
+        {
+          id: 4,
+          image: this.pictures.doorPic,
+          description: this.message.doorMessage,
+          symbolKey: true
+        },
+        {
+          id: 5,
+          image: this.pictures.sectionPic,
+          description: this.message.seatMessage
         }
       ]
     }
