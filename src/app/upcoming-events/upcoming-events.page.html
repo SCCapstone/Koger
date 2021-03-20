@@ -52,7 +52,12 @@
       <!--<ion-card-subtitle color = "primary">Tag</ion-card-subtitle>
       <p>{{event.tag}}</p>-->
       <!--<ion-card-subtitle color = "primary">Link</ion-card-subtitle>
-      <p>{{event.link}}</p>-->
+      <p>{{event.link}}</p>
+      <ion-button color="garnet">Bruh</ion-button> -->
+
+      <!-- I do not think that these buttons work in ionic serve, I believe they only work on mobile devices with the app installed -->
+      <ion-button color= "garnet" onclick="shareViaFacebookWithPasteMessageHint('Check out this show I\'m going to see at the Koger Center!', null, event.link, 'Check out this show I\'m going to see at the Koger Center!')">Share on Facebook!</ion-button>
+      <ion-button color= "garnet" onclick="shareViaTwitter('Check out this show I\'m going to see at the Koger Center!', null, event.link)">Share on Twitter!</ion-button>
       <ion-button type = "tabopen" expand="block" color="garnet" (click)="openPurchaseTicket()">Purchase Tickets</ion-button>
     </ion-card-content>
   </ion-card>

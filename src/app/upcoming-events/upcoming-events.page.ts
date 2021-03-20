@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FirestoreService } from '../services/data/firestore.service';
 import { AuthenticateService } from '../services/authentication.service';
 import { HttpClient } from '@angular/common/http';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-upcoming-events',
@@ -14,9 +15,11 @@ export class UpcomingEventsPage implements OnInit {
   public eventList: Observable<Event[]>
   public afStore: AuthenticateService;
   data: string;
+  private socialSharing: SocialSharing
   constructor (private firestoreService: FirestoreService, private http: HttpClient) {
     // this.data = '';
   }
+
 
   ngOnInit () {
     this.generatePost();
@@ -60,5 +63,31 @@ export class UpcomingEventsPage implements OnInit {
     }).subscribe((response)=> {
       console.log(response);
     })
+  }
+
+  //method to share to facebook (hopefully)
+  /*As far as I know, these methods
+    only work on devices rather than in
+    ionic serve, as well as working whenever
+    the apps being shared to are installed simultaneously */
+  shareViaFacebookWithPasteMessageHint(message, image, url, message2){
+    this.socialSharing.shareViaFacebookWithPasteMessageHint(message, null, url, message2).then((success) =>{
+      alert("Success");
+    }).catch((e) =>{
+      alert("Could not share");
+    });
+  }
+
+  //method to share to twitter
+  /*As far as I know, these methods
+    only work on devices rather than in
+    ionic serve, as well as working whenever
+    the apps being shared to are installed simultaneously */
+  shareViaTwitter(message, image, url){
+    this.socialSharing.shareViaTwitter(message, null, url).then((success) =>{
+      alert("Success");
+    }).catch((e)=>{
+      alert("Could not share");
+    });
   }
 }
