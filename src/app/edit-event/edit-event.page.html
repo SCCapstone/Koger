@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="auto">
+          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
+        </ion-col>
+        <ion-col>
+          <ion-grid>
+            <ion-row>
+              <ion-col> 
+                <ion-text>Welcome to the</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-text><h1>Koger Center</h1></ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup] = "editEventForm" (submit)="editEvent()">
+    <ion-item>
+      <ion-label stacked> Event Name</ion-label>
+      <ion-input formControlName="eventName"
+      type="text"
+      placeholder="What is the name of the event?"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Event Description</ion-label>
+      <ion-input formControlName="description"
+      type="text"
+      placeholder="Describe the event"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked> Date and Time</ion-label>
+      <ion-input formControlName="dates"
+      type="text"
+      placeholder="What are the dates and times?"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Tag</ion-label>
+      <ion-input formControlName="tag"
+      type="text"
+      placeholder="What is the tag?"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Link</ion-label>
+      <ion-input formControlName="link"
+      type="text"
+      placeholder="Please paste the link to the event"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit">
+      Update Event
+    </ion-button>
+  </form>
+</ion-content>

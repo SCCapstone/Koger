@@ -11,7 +11,10 @@ import { Observable } from 'rxjs';
 })
 export class FirestoreService {
   notification: any;
-  constructor(public firestore: AngularFirestore) { }
+  isLoggedIn: boolean;
+  constructor(public firestore: AngularFirestore) { 
+    this.isLoggedIn = false;
+  }
 
   getEventData(): Observable<Event[]> {
     return this.firestore.collection<Event>('Event').valueChanges();
@@ -45,7 +48,6 @@ export class FirestoreService {
   ): Promise<void> {
     return this.firestore.doc('Event/' + eventName).delete();
   }
-
   createUser(
     token: string
   ): Promise<void> {
@@ -61,5 +63,13 @@ export class FirestoreService {
       }
     });
     return;
+  }
+  editEvent(title: string,
+    new_description: string,
+    new_dates: string,
+    new_link: string,
+    new_tag: string,): Promise<void> {
+    return this.firestore.doc('Event/' + title).update({ description: new_description, dates: new_dates, link: new_link, tag: new_tag
+    });
   }
 }

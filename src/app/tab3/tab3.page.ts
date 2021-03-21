@@ -6,6 +6,7 @@ import { AuthenticateService } from '../services/authentication.service';
 import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
 import { ParkingInfoPage } from '../parking-info/parking-info.page';
+import { FirestoreService } from '../services/data/firestore.service';
 //import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
@@ -24,13 +25,18 @@ export class Tab3Page {
     private formBuilder: FormBuilder,
     private route: Router,
     private modalController: ModalController,
-    public platform: Platform
+    public platform: Platform,
+    private firestoreService: FirestoreService,
     
   ) {}
   
   jumpToLogin()
   {
-    this.route.navigate(['../admin-login']);
+    if(!this.firestoreService.isLoggedIn) {
+      this.route.navigate(['../admin-login']);
+    } else {
+      this.route.navigate(['../admin-dashboard']);
+    }
   }
 
 
