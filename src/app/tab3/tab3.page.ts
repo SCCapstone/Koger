@@ -38,8 +38,6 @@ export class Tab3Page {
       this.route.navigate(['../admin-dashboard']);
     }
   }
-
-
   jumpToEvents()
   {
     this.route.navigate(['../upcoming-events']);

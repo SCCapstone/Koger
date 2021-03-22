@@ -28,49 +28,63 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup] = "editEventForm" (submit)="editEvent()">
-    <ion-item>
-      <ion-label stacked> Event Name</ion-label>
-      <ion-input formControlName="eventName"
-      type="text"
-      placeholder="What is the name of the event?"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Event Description</ion-label>
-      <ion-input formControlName="description"
-      type="text"
-      placeholder="Describe the event"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked> Date and Time</ion-label>
-      <ion-input formControlName="dates"
-      type="text"
-      placeholder="What are the dates and times?"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Tag</ion-label>
-      <ion-input formControlName="tag"
-      type="text"
-      placeholder="What is the tag?"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Link</ion-label>
-      <ion-input formControlName="link"
-      type="text"
-      placeholder="Please paste the link to the event"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-button expand="block" type="submit">
-      Update Event
-    </ion-button>
-  </form>
+  <ion-card *ngFor="let event of eventList" color="primary">
+    <span *ngIf="!event.isEdit; else elseBlock">
+      <ion-card-header>
+        <ion-card-title>{{event.title}}</ion-card-title>
+        <ion-card-subtitle>{{event.dates}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-button shape="round" color="secondary" size="small" (click)="EditEvent(event)">
+          <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </span>
+    <ng-template #elseBlock>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Edit
+              </ion-col>
+              <ion-col>
+                <ion-button fill="solid" color="medium" size="small" (click)="event.isEdit = false">
+                  Cancel
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button fill="solid" color="success" size="small" (click)="UpdateEvent(event)">
+                  Update
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label><strong>Title</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="event.EditTitle"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Description</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="event.EditDescription"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Dates</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="event.EditDates"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Link</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="event.EditLink"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Tag</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="event.EditTag"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
 </ion-content>

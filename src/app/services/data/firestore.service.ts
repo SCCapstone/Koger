@@ -19,6 +19,9 @@ export class FirestoreService {
   getEventData(): Observable<Event[]> {
     return this.firestore.collection<Event>('Event').valueChanges();
   }
+  read_events() {
+    return this.firestore.collection('Event').snapshotChanges();
+  }
 
   getLastMessage(): Observable<Message[]> {
     return this.firestore.collection<Message>('push').valueChanges();
@@ -69,6 +72,7 @@ export class FirestoreService {
     new_dates: string,
     new_link: string,
     new_tag: string,): Promise<void> {
+      // Add functionality to edit event title by just creating a new event
     return this.firestore.doc('Event/' + title).update({ description: new_description, dates: new_dates, link: new_link, tag: new_tag
     });
   }
