@@ -1,72 +1,48 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="auto">
-          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
-        </ion-col>
-        <ion-col>
-          <ion-grid>
-            <ion-row>
-              <ion-col> 
-                <ion-text>Welcome to the</ion-text>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-text><h1>Koger Center</h1></ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
+<ion-header>
+  <img src="../../assets/img/BlueKogerWoodmark.jpg">
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card class="ion-padding">
+    <ion-card-title class="ion-text-center">Information Center</ion-card-title>
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-text><h3>Information Center</h3></ion-text>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button expand="block" color="garnet" (click) = "jumpToEvents()">Upcoming Events</ion-button>
+          <ion-button expand="block" color="kogerblue" (click) = "jumpToEvents()">Upcoming Events</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="garnet" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
+          <ion-button expand="block" color="kogerblue" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="garnet" (click) = "jumpToParking()">Parking Information</ion-button>
+          <ion-button expand="block" color="kogerblue" (click) = "jumpToParking()">Parking Information</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="garnet" (click) = "jumpToHandicapped()">Handicapped Accessibility</ion-button>
+          <ion-button expand="block" color="kogerblue" (click) = "jumpToHandicapped()">ADA Accessibility</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button type = "button" expand="block" color="garnet" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
+          <ion-button expand="block" color="kogerblue" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
-          <ion-button type = "button" expand="block" color="garnet" (click) = "jumpToLogin()" id="adminlogin">Admin Login</ion-button>
+          <ion-button expand="block" color="kogerblue" (click)="jumpToLogin()" id="adminlogin">Admin Login</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <img src="../../assets/img/WhiteKogerWoodmark.jpg">
   </ion-card>
 </ion-content>

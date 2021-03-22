@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { SeatDescriptionPage } from '../seat-description/seat-description.page';
+
+import { FormBuilder } from '@angular/forms';
+
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -16,7 +20,8 @@ describe('Tab1Page', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [Tab1Page],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule, RouterTestingModule]
+      imports: [IonicModule.forRoot(), ExploreContainerComponentModule, RouterTestingModule],
+      providers: [BarcodeScanner, FormBuilder]
     }).compileComponents();
   }));
 

@@ -15,6 +15,7 @@ import { FirestoreService } from '../services/data/firestore.service';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
+
 export class Tab3Page {
 
 
