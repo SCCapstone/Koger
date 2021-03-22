@@ -76,6 +76,10 @@ const routes: Routes = [
   {
     path: 'send-push',
     loadChildren: () => import('./send-push/send-push.module').then( m => m.SendPushPageModule)
+  },
+  {
+    path: 'edit-event',
+    loadChildren: () => import('./edit-event/edit-event.module').then( m => m.EditEventPageModule)
   }
 
 
