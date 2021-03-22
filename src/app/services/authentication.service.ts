@@ -39,7 +39,7 @@ export class AuthenticateService {
   }
   // Logs out user and returns to console that user is logged out
   logoutUser() {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       if (this.afAuth.currentUser) {
         this.afAuth.signOut()
         .then(() => {

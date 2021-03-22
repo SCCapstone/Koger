@@ -1,3 +1,4 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-button slot="start" (click)=jumpToHomePage() fill="clear" color="dark">
@@ -37,7 +38,6 @@
       </ion-row>
     </ion-grid>
   </ion-card>
-  
   <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
     
     <!--Reads in email and outputs errors if not correct format or not filled out-->
