@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapSeatsBalconyPage implements OnInit {
 
+  sliderOpts = {
+    zoom: {
+      maxRatio:2
+    }
+  };
+
   constructor(
     // private photoViewer: PhotoViewer
     ) { }

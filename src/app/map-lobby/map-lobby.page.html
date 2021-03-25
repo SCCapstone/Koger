@@ -38,7 +38,13 @@
     </ion-grid>
     <!-- <ion-card-subtitle>Tap to zoom in on map</ion-card-subtitle> -->
     <!-- <img src="../../assets/img/MapLobby.jpeg" (click) = "zoomImage('../../assets/img/MapLobby.jpeg')" > -->
-    <img src="../../assets/img/NewLobby.jpg"/>
+    <ion-slides [options]="sliderOpts" zoom>
+      <ion-slide>
+        <div class="swiper-zoom-container">
+          <img src="../../assets/img/NewLobby.jpg"/>
+        </div>
+      </ion-slide>
+    </ion-slides>
     <img src="../../assets/img/KogerCenterLogo.jpg"/>
   </ion-card>
 </ion-content>

@@ -13,6 +13,7 @@ export class MapBalconyPage implements OnInit {
       maxRatio:2
     }
   };
+  
   constructor(
     // private photoViewer: PhotoViewer
     ) { }
