@@ -1,8 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+      <ion-button slot="start" (click)=jumpToHomePage() fill="clear" color="dark">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
     <ion-grid>
       <ion-row>
         <ion-col size="auto">
@@ -39,6 +39,7 @@
   </ion-card>
   <ion-button type="submit" (click)="createEvent()" expand="block">Add an Event</ion-button>
   <ion-button type="submit" (click)="deleteEvent()" expand="block">Delete an Event</ion-button>
+  <ion-button type="submit" (click)="editEvent()" expand="block">Edit an Event</ion-button>
   <ion-button type="submit" (click)="sendPush()" expand="block">Send Push Notification</ion-button>
-  <ion-button type="submit" (click)="authService.logoutUser()" expand="block">Logout</ion-button>
+  <ion-button type="submit" (click)="logOut()" expand="block">Logout</ion-button>
 </ion-content>

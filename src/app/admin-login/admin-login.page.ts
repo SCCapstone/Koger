@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticateService } from '../services/authentication.service';
+import { FirestoreService} from '../services/data/firestore.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -16,7 +17,8 @@ export class AdminLoginPage  implements OnInit {
   constructor(
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
-    public router: Router
+    public router: Router,
+    private firestoreService: FirestoreService,
   ) {}
   ngOnInit()
   {
@@ -49,10 +51,11 @@ export class AdminLoginPage  implements OnInit {
   {
     this.authService.loginUser(value)
       .then(res=> {
-        console.log(res);
+        // console.log(res);
         console.log('Succesfully Logged In')
         this.errorMessage = "";
-        console.log("UID: " + this.authService.userData.uid);
+        // console.log("UID: " + this.authService.userData.uid);
+        this.firestoreService.isLoggedIn = true;
         // Redirects user on login to dashboard
         this.router.navigate(['admin-dashboard'])
       }, err=> {
@@ -61,6 +64,6 @@ export class AdminLoginPage  implements OnInit {
   }
   jumpToHomePage()
   {
-    this.router.navigate(['tabs/tab3'])
+    this.router.navigate(["tabs/tab3"])
   }
 }

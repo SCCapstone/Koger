@@ -33,7 +33,7 @@
     "@ionic/pwa-elements": "^3.0.1",
     "angularfire2": "^5.4.2",
     "com-sarriaroman-photoviewer": "^1.2.5",
-    "firebase": "^8.0.1",
+    "firebase": "^8.3.1",
     "ionic-img-viewer": "^2.9.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.5.5",

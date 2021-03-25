@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../services/authentication.service'
 import { Router } from '@angular/router';
+import { FirestoreService } from '../services/data/firestore.service'
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,7 +12,7 @@ export class AdminDashboardPage implements OnInit {
 
   userEmail: string;
 
-  constructor( public authService: AuthenticateService, public router: Router) { }
+  constructor( public authService: AuthenticateService, public router: Router, private fireStoreService: FirestoreService) { }
 
   ngOnInit() {
     this.authService.userDetails().subscribe(res => {
@@ -20,7 +21,7 @@ export class AdminDashboardPage implements OnInit {
       {
         this.userEmail = res.email;
       } else {
-        this.router.navigate(['admin-login']);
+        this.router.navigate(['tab3']);
       }
     }, err => {
       console.log('error', err);
@@ -34,10 +35,24 @@ export class AdminDashboardPage implements OnInit {
   {
     this.router.navigate(['delete-event']);
   }
+  editEvent()
+  {
+    this.router.navigate(['edit-event']);
+  }
 
   sendPush() 
   {
     this.router.navigate(['send-push']);
+  }
+  logOut()
+  {
+    this.authService.logoutUser();
+    this.fireStoreService.isLoggedIn = false;
+    this.router.navigate(["tabs/tab3"]);
+  }
+  jumpToHomePage()
+  {
+    this.router.navigate(["tabs/tab3"])
   }
 
 }

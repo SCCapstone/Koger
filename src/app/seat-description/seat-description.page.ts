@@ -30,10 +30,9 @@ export class SeatDescriptionPage implements OnInit {
     levelPic: '',
     doorPic: '',
     sectionPic: '',
-    continuePic: ''
+    continuePic: '',
+    seatView: ''
   }
-
-  seatView: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -75,32 +74,32 @@ export class SeatDescriptionPage implements OnInit {
       this.message.levelMessage="Stay on the first level and walk to the left side of the theatre";
       this.pictures.doorPic="../../assets/img/LobbyLeft.jpg";
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
-      this.seatView="../../assets/img/LORC.jpg";
+      //this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
+      this.pictures.seatView="../../assets/img/LORC.jpg";
 
     } else if(this.inputSeat.section=='RORC: Right Orchestra') {
       this.pictures.levelPic="../../assets/img/LobbyRight.jpg";
       this.message.levelMessage="Stay on the first level and walk to the right side of the theatre";
       this.pictures.doorPic="../../assets/img/LobbyRight.jpg";
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
-      this.seatView="../../assets/img/RORC.jpg";
+      //this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
+      this.pictures.seatView="../../assets/img/RORC.jpg";
 
     } else if(this.inputSeat.section=='LGTR: Left Grand Tier') {
       this.pictures.levelPic="../../assets/img/LobbyStairs.jpg";
       this.message.levelMessage="Go to the second floor via the stairs or elevator";
       this.pictures.doorPic="../../assets/img/GrandTierLeft.jpg";
       this.message.doorMessage="Walk to the left side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
-      this.seatView="../../assets/img/LGTR.jpg";
+      //this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
+      this.pictures.seatView="../../assets/img/LGTR.jpg";
 
     }else if(this.inputSeat.section=='RGTR: Right Grand Tier') {
       this.pictures.levelPic="../../assets/img/LobbyStairs.jpg";
       this.message.levelMessage="Go to the second floor via the stairs or elevator";
       this.pictures.doorPic="../../assets/img/GrandTierRight.jpg";
       this.message.doorMessage="Walk to the right side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
-      this.seatView="../../assets/img/RGTR.jpg";
+      //this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
+      this.pictures.seatView="../../assets/img/RGTR.jpg";
 
     } else if(this.inputSeat.section=='LBAL: Left Balcony') {
       this.pictures.levelPic="../../assets/img/LobbyStairsLeft.jpg";
@@ -109,8 +108,8 @@ export class SeatDescriptionPage implements OnInit {
       this.message.continueMessage="Continue up to the third floor";
       this.pictures.doorPic="../../assets/img/BalconyLeft.jpg";
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
-      this.seatView="../../assets/img/LBAL.jpg";
+      //this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
+      this.pictures.seatView="../../assets/img/LBAL.jpg";
 
     } else if(this.inputSeat.section=='RBAL: Right Balcony') {
       this.pictures.levelPic="../../assets/img/LobbyStairsRight.jpg";
@@ -119,15 +118,16 @@ export class SeatDescriptionPage implements OnInit {
       this.message.continueMessage="Continue up to the third floor";
       this.pictures.doorPic="../../assets/img/BalconyRight.jpg";
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
-      this.seatView="../../assets/img/RBAL.jpg";
+      //this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
+      this.pictures.seatView="../../assets/img/RBAL.jpg";
 
     } else {
       this.pictures.levelPic="../../assets/img/NewLobby.jpg";
       this.message.levelMessage="Please see an usher to help you find your seat";
       this.pictures.doorPic="../../assets/img/NewLobby.jpg";
       this.message.doorMessage="Enter the theatre on either side through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
-      this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
+      //this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
+      this.pictures.seatView="../../assets/img/LORC.jpg";
     }
 
   }
@@ -138,24 +138,28 @@ export class SeatDescriptionPage implements OnInit {
         {
           id: 1,
           image: this.pictures.entrancePic,
-          description: this.message.entranceMessage
+          description: this.message.entranceMessage,
+          lastSlide: false
         },
         {
           id: 2,
           image: this.pictures.levelPic,
           description: this.message.levelMessage,
-          symbolKey: true
+          symbolKey: true,
+          lastSlide: false
         },
         {
           id: 3,
           image: this.pictures.doorPic,
           description: this.message.doorMessage,
-          symbolKey: true
+          symbolKey: true,
+          lastSlide: false
         },
         {
           id: 4,
-          image: this.pictures.sectionPic,
-          description: this.message.seatMessage
+          image: this.pictures.seatView,
+          description: this.message.seatMessage,
+          lastSlide: true
         }
       ]
     }
@@ -167,30 +171,35 @@ export class SeatDescriptionPage implements OnInit {
         {
           id: 1,
           image: this.pictures.entrancePic,
-          description: this.message.entranceMessage
+          description: this.message.entranceMessage,
+          lastSlide: false
         },
         {
           id: 2,
           image: this.pictures.levelPic,
           description: this.message.levelMessage,
-          symbolKey: true
+          symbolKey: true,
+          lastSlide: false
         },
         {
           id: 3,
           image: this.pictures.continuePic,
           description: this.message.continueMessage,
-          symbolKey: true
+          symbolKey: true,
+          lastSlide: false
         },
         {
           id: 4,
           image: this.pictures.doorPic,
           description: this.message.doorMessage,
-          symbolKey: true
+          symbolKey: true,
+          lastSlide: false
         },
         {
           id: 5,
-          image: this.pictures.sectionPic,
-          description: this.message.seatMessage
+          image: this.pictures.seatView,
+          description: this.message.seatMessage,
+          lastSlide: true
         }
       ]
     }
