@@ -83,7 +83,7 @@ export class UpcomingEventsPage implements OnInit {
     ionic serve, as well as working whenever
     the apps being shared to are installed simultaneously */
   public shareViaTwitter(message, image, url){
-    this.socialSharing.shareViaTwitter(message, null, url).then((success) =>{
+    this.socialSharing.shareViaTwitter(message, image, url).then((success) =>{
       alert("Success");
     }).catch((e)=>{
       alert("Could not share");
