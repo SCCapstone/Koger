@@ -34,7 +34,7 @@
     "@ionic/pwa-elements": "^3.0.1",
     "angularfire2": "^5.4.2",
     "com-sarriaroman-photoviewer": "^1.2.5",
-    "cordova-plugin-x-socialsharing": "git+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git",
+    "cordova-plugin-x-socialsharing": "^6.0.3",
     "firebase": "^8.3.1",
     "ionic-img-viewer": "^2.9.0",
     "ng-cordova": "^0.1.27-alpha",
