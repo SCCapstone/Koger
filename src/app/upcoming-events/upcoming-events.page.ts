@@ -68,14 +68,14 @@ export class UpcomingEventsPage implements OnInit {
   /*As far as I know, these methods
     only work on devices rather than in
     ionic serve, as well as working whenever
-    the apps being shared to are installed simultaneously 
+    the apps being shared to are installed simultaneously*/
   public shareViaFacebookWithPasteMessageHint(message, image, url, message2){
-    this.socialSharing.shareViaFacebookWithPasteMessageHint(message, null, url, message2).then((success) =>{
+    this.socialSharing.shareViaFacebookWithPasteMessageHint(message, image, url, message2).then((success) =>{
       alert("Success");
     }).catch((e) =>{
       alert("Could not share");
     });
-  }*/
+  }
 
   //method to share to twitter
   /*As far as I know, these methods
@@ -96,7 +96,7 @@ export class UpcomingEventsPage implements OnInit {
            alert("Success");
        })
        .catch((err)=>{
-          alert("Could not share information");
+          alert("Could not share");
         });
     }
 }
