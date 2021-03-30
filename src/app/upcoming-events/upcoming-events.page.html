@@ -54,17 +54,16 @@
       <p>{{event.tag}}</p>-->
       <!--<ion-card-subtitle color = "primary">Link</ion-card-subtitle>
       <p>{{event.link}}</p>
-      <ion-button color="garnet">Bruh</ion-button> -->
 
-      <!-- Hopefully this snippet of code can let me send the link to the onclick for facebook and whatnot 
+      <ion-button color="garnet">Bruh</ion-button> --> 
       <script>
-        var eventURL = '{{event.link}}';
-      </script> -->
+      
+      </script>
 
       <!-- update: They work for now, just trying to get the event link to populate is the task now -->
-      <!-- The semi largest issue is facebook will not allow any sort of prefilled messages, apparently it's against terms, not sure if a link will populate though -->
-      <ion-button color= "garnet" onclick = "window.plugins.socialsharing.shareViaFacebook('Check out this show I\'m going to see at the Koger Center!', null /* img */, 'https://www.google.com' /* test url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">Share on Facebook!</ion-button>
-      <ion-button color= "garnet" onclick = "window.plugins.socialsharing.shareViaTwitter('Check out this show I\'m going to see at the Koger Center!', null /* img */, '{{event.link}}')">Share on Twitter!</ion-button>
+      <!-- The semi largest issue is facebook will not allow any sort of prefilled messages, apparently it's against terms -->
+      <ion-button color= "garnet" onclick = "window.plugins.socialsharing.shareViaFacebook('Check out this show I\'m going to see at the Koger Center!', null, 'https://kogercenterforthearts.com/upcoming.php' /* test url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">Share on Facebook!</ion-button>
+      <ion-button (ngModel)="{{event.link}}" color= "garnet" onclick = "window.plugins.socialsharing.shareViaTwitter('Check out this show I\'m going to see at the Koger Center!', null, 'event.link')">Share on Twitter!</ion-button>
       <ion-button type = "tabopen" expand="block" color="garnet" (click)="openPurchaseTicket()">Purchase Tickets</ion-button>
     </ion-card-content>
   </ion-card>
