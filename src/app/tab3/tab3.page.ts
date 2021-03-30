@@ -7,6 +7,7 @@ import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
 import { ParkingInfoPage } from '../parking-info/parking-info.page';
 import { FirestoreService } from '../services/data/firestore.service';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 //import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
@@ -21,6 +22,7 @@ export class Tab3Page {
 
   constructor(
 
+    private emailComposer: EmailComposer,
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
@@ -59,6 +61,17 @@ export class Tab3Page {
     this.route.navigate(['../handicapped']);
   }
 
+  sendEmail()
+  {
+    let email = {
+      to: 'kogercenter@sc.edu',
+      subject: 'Koger Center App Customer Feedback',
+      body: 'Dear Koger Center, ',
+      isHtml: true
+    }
+    // Send a text message using default options
+    this.emailComposer.open(email);
+  }
 
   /*openUrl(){
     this.platform.ready().then(() => {

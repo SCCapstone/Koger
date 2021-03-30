@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    EmailComposer,
     PhotoViewer,
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
