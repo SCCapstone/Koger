@@ -61,8 +61,9 @@
       <!-- The largest issue is facebook will not allow any sort of prefilled messages, apparently it's against terms -->
       
       
-      <ion-button [(ngModel)]="event.link" color = "garnet" (click) = "shareViaFacebook('Check out this show I am going to see at the Koger Center!', null, event.link)">Share on Facebook!</ion-button>
-      <p><a href = "{{'http://www.twitter.com/intent/tweet?text=Check out this show at the Koger Center!&url=' + event.link}}" target="_blank">Share on Twitter!</a></p> 
+      <ion-button #{{event.link}} color = "garnet" (click) = "shareViaFacebook('Check out this show I am going to see at the Koger Center!', null, event.link)">Share on Facebook!</ion-button>
+      <!--<ion-button color = "garnet"><a href = "{{'http://www.facebook.com/post/?url=' + event.link}}" target="_blank">Share on Facebook!</a></ion-button> -->
+      <ion-button color = "garnet"><a href = "{{'http://www.twitter.com/intent/tweet?text=Check out this show at the Koger Center!&url=' + event.link}}" target="_blank">Share on Twitter!</a></ion-button> 
       
       <!--
       <ion-button color = "garnet" onclick = "window.plugins.socialsharing.shareViaFacebook('Check out this show I\'m going to see at the Koger Center!', null, 'https://kogercenterforthearts.com/upcoming.php' /* test url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">Share on Facebook!</ion-button>
