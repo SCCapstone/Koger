@@ -69,9 +69,29 @@ export class UpcomingEventsPage implements OnInit {
     only work on devices rather than in
     ionic serve, as well as working whenever
     the apps being shared to are installed simultaneously*/
+  public shareViaFacebook(message, image, url){
+    this.socialSharing.shareViaFacebook(message,image, url)
+      .then((success) =>{
+            
+        })
+        .catch((err)=>{
+          alert("Could not share");
+        });
+  }
+
+  //method to share to facebook (hopefully)
+  /*As far as I know, these methods
+    only work on devices rather than in
+    ionic serve, as well as working whenever
+    the apps being shared to are installed simultaneously
+    
+    The difference between this method and the one above is
+    that this method is supposed to work around the facebook terms
+    and allow to add a prefilled message but this method
+    would just open then close the post dialogue on facebook app*/
   public shareViaFacebookWithPasteMessageHint(message, image, url, message2){
     this.socialSharing.shareViaFacebookWithPasteMessageHint(message, image, url, message2).then((success) =>{
-      alert("Success");
+      
     }).catch((e) =>{
       alert("Could not share");
     });
@@ -84,19 +104,9 @@ export class UpcomingEventsPage implements OnInit {
     the apps being shared to are installed simultaneously */
   public shareViaTwitter(message, image, url){
     this.socialSharing.shareViaTwitter(message, image, url).then((success) =>{
-      alert("Success");
+      
     }).catch((e)=>{
       alert("Could not share");
     });
   }
-
-  public shareViaFacebook(message, image, url){
-    this.socialSharing.shareViaFacebook(message,image, url)
-      .then((success) =>{
-           alert("Success");
-       })
-       .catch((err)=>{
-          alert("Could not share");
-        });
-    }
 }
