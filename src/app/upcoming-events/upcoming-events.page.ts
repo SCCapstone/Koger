@@ -90,7 +90,7 @@ export class UpcomingEventsPage implements OnInit {
     });
   }
 
-  shareviaFacebook(message, image, url){
+  public shareViaFacebook(message, image, url){
     this.socialSharing.shareViaFacebook(message,image, url)
       .then((success) =>{
            alert("Success");
