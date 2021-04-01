@@ -1,41 +1,17 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar color="kogerblue">
+    <ion-buttons slot="start" color="light">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="auto">
-          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
-        </ion-col>
-        <ion-col>
-          <ion-grid>
-            <ion-row>
-              <ion-col> 
-                <ion-text>Welcome to the</ion-text>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-text><h1>Koger Center</h1></ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <img src="../../assets/img/BlueKoger.jpg" slot="end" height=80>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-text><h3> ADA Accessibility Information</h3></ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-card class="ion-padding">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">ADA Accessibility Information</ion-card-title>
+    </ion-card-header>
     <ion-card-subtitle>Parking</ion-card-subtitle>
       <p>There are a limited number of ADA spaces in front of the Koger Center at the drop off area.
          During ticketed events the metered parking spaces on Assembly Street in front of the Koger 
@@ -47,6 +23,6 @@
       <p>If you have tickets for seats on the Grand Tier or Balcony levels, there are elevators 
          available at the North end of the Lobby, just past the Assembly Street Entrance from the
          parking lot. Please see an Usher if you need assistance in reaching or operating the elevator.</p>
-    <img src="../../assets/img/KogerCenterLogo.jpg">
+    <img src="../../assets/img/WhiteKogerWoodmark.jpg">
   </ion-card>
 </ion-content>

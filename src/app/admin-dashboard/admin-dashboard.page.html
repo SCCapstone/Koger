@@ -1,45 +1,22 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-      <ion-button slot="start" (click)=jumpToHomePage() fill="clear" color="dark">
-        <ion-icon name="arrow-back-outline"></ion-icon>
-      </ion-button>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="auto">
-          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
-        </ion-col>
-        <ion-col>
-          <ion-grid>
-            <ion-row>
-              <ion-col> 
-                <ion-text>Welcome to the</ion-text>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-text><h1>Koger Center</h1></ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-toolbar color="kogerblue">
+    <ion-buttons slot="start" color="light">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <img src="../../assets/img/BlueKoger.jpg" slot="end" height=80>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-text><h3>Admin Dashboard</h3></ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-card class="ion-padding">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Admin Dashboard</ion-card-title>
+    </ion-card-header>
+    <ion-button type="submit" (click)="createEvent()" expand="block" color="kogerblue">Add an Event</ion-button>
+    <ion-button type="submit" (click)="deleteEvent()" expand="block" color="kogerblue">Delete an Event</ion-button>
+    <ion-button type="submit" (click)="editEvent()" expand="block" color="kogerblue">Edit an Event</ion-button>
+    <ion-button type="submit" (click)="sendPush()" expand="block" color="kogerblue">Send Push Notification</ion-button>
+    <ion-button type="submit" (click)="logOut()" expand="block" color="kogerblue">Logout</ion-button>
+    <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
   </ion-card>
-  <ion-button type="submit" (click)="createEvent()" expand="block">Add an Event</ion-button>
-  <ion-button type="submit" (click)="deleteEvent()" expand="block">Delete an Event</ion-button>
-  <ion-button type="submit" (click)="editEvent()" expand="block">Edit an Event</ion-button>
-  <ion-button type="submit" (click)="sendPush()" expand="block">Send Push Notification</ion-button>
-  <ion-button type="submit" (click)="logOut()" expand="block">Logout</ion-button>
 </ion-content>
