@@ -66,7 +66,12 @@
           </ion-item>
           <ion-item>
             <ion-label><strong>Tag</strong></ion-label>
-            <ion-input type="text" [(ngModel)]="event.EditTag"></ion-input>
+            <ion-select [(ngModel)]="event.EditTag">
+              <ion-select-option>Broadway</ion-select-option>
+              <ion-select-option>Dance</ion-select-option>
+              <ion-select-option>Theatre</ion-select-option>
+              <ion-select-option>Concert</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-card-content>
       </ng-template>
