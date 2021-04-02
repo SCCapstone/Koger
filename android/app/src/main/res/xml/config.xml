@@ -6,25 +6,13 @@
     <param name="android-package" value="com.sarriaroman.PhotoViewer.PhotoViewer"/>
   </feature>
 
+  <feature name="SocialSharing">
+    <param name="android-package" value="nl.xservices.plugins.SocialSharing"/>
+  </feature>
+
   <feature name="BarcodeScanner">
     <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner"/>
   </feature>
 
-  <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.4">
-    <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.1+" />
-  </plugin>
   
-  <!-- for iOS -->
-  <feature name="SocialSharing">
-    <param name="ios-package" value="SocialSharing" />
-  </feature>
-  <!-- for Android (you will find one in res/xml) -->
-  <feature name="SocialSharing">
-    <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
-  </feature>
-  <!-- for Windows Phone -->
-  <feature name="SocialSharing">
-    <param name="wp-package" value="SocialSharing"/>
-  </feature>
-
 </widget>

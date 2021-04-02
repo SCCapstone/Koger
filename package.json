@@ -35,6 +35,7 @@
     "angularfire2": "^5.4.2",
     "com-sarriaroman-photoviewer": "^1.2.5",
     "cordova-plugin-x-socialsharing": "^6.0.3",
+    "es6-promise-plugin": "^4.2.2",
     "firebase": "^8.3.1",
     "ionic-img-viewer": "^2.9.0",
     "ng-cordova": "^0.1.27-alpha",
