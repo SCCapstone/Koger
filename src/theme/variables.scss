@@ -1,6 +1,11 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+@font-face {   
+  font-family: 'Gotham';
+  src: url('../assets/Gotham.otf');
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

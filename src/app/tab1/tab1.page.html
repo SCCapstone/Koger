@@ -5,8 +5,10 @@
 <ion-content [fullscreen]="true">
   <ion-card class="ion-padding">
     <ion-grid>
-      <ion-card-title class="ion-text-center">Enter your ticket information:</ion-card-title>
-      <ion-card-subtitle class="ion-text-center">Section and Row Required</ion-card-subtitle>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Enter Ticket Information:</ion-card-title>
+        <ion-card-subtitle class="ion-text-center">Section and Row Required</ion-card-subtitle>
+      </ion-card-header>
       <form class="form" [formGroup]="validations_form">
       <ion-item>
         <ion-label floating>Section</ion-label>
@@ -76,7 +78,7 @@
     </ion-grid>
 
     <ion-grid>
-      <ion-card-title class="ion-text-center">Scan Ticket for Seat Information</ion-card-title>
+      <ion-card-title class="ion-text-center">Scan Ticket Information</ion-card-title>
       <ion-row>
         <ion-col>
           <ion-button expand="block" color="kogerblue" (click)="scanBarcode()">Scan Barcode</ion-button>

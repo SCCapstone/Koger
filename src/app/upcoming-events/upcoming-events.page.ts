@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FirestoreService } from '../services/data/firestore.service';
 import { AuthenticateService } from '../services/authentication.service';
 import { HttpClient } from '@angular/common/http';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-upcoming-events',
@@ -14,9 +15,10 @@ export class UpcomingEventsPage implements OnInit {
   public eventList: Observable<Event[]>
   public afStore: AuthenticateService;
   data: string;
-  constructor (private firestoreService: FirestoreService, private http: HttpClient) {
+  constructor (private socialSharing: SocialSharing, private firestoreService: FirestoreService, private http: HttpClient) {
     // this.data = '';
   }
+
 
   ngOnInit () {
     this.generatePost();
@@ -60,5 +62,51 @@ export class UpcomingEventsPage implements OnInit {
     }).subscribe((response)=> {
       console.log(response);
     })
+  }
+
+  //method to share to facebook (hopefully)
+  /*As far as I know, these methods
+    only work on devices rather than in
+    ionic serve, as well as working whenever
+    the apps being shared to are installed simultaneously*/
+  public shareViaFacebook(message, image, url){
+    this.socialSharing.shareViaFacebook(message,image, url)
+      .then((success) =>{
+            
+        })
+        .catch((err)=>{
+          alert("Could not share");
+        });
+  }
+
+  //method to share to facebook (hopefully)
+  /*As far as I know, these methods
+    only work on devices rather than in
+    ionic serve, as well as working whenever
+    the apps being shared to are installed simultaneously
+    
+    The difference between this method and the one above is
+    that this method is supposed to work around the facebook terms
+    and allow to add a prefilled message but this method
+    would just open then close the post dialogue on facebook app*/
+  public shareViaFacebookWithPasteMessageHint(message, image, url, message2){
+    this.socialSharing.shareViaFacebookWithPasteMessageHint(message, image, url, message2).then((success) =>{
+      
+    }).catch((e) =>{
+      alert("Could not share");
+    });
+  }
+
+  //method to share to twitter
+  /*As far as I know, these methods
+    only work on devices rather than in
+    ionic serve, as well as working whenever
+    the apps being shared to are installed simultaneously */
+  public shareViaTwitter(message, image, url){
+    this.socialSharing.shareViaTwitter(message, image, url).then((success) =>{
+      
+    }).catch((e)=>{
+      alert("Could not share");
+    });
   }
 }
