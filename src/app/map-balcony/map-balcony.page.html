@@ -12,7 +12,13 @@
     <ion-card-title class="ion-text-center">3rd Floor: Balcony</ion-card-title>
     <!-- <ion-card-subtitle>Tap to zoom in on map</ion-card-subtitle> -->
     <!-- <img src="../../assets/img/MapFloor2.jpeg" (click) = "zoomImage('../../assets/img/MapFloor2')" > -->
-    <img src="../../assets/img/NewBalcony.jpg" />
+    <ion-slides [options]="sliderOpts" zoom>
+      <ion-slide>
+        <div class="swiper-zoom-container">
+          <img src="../../assets/img/NewBalcony.jpg" />
+        </div>
+      </ion-slide>
+    </ion-slides>
     <img src="../../assets/img/symbolkey.png" />
     <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
   </ion-card>

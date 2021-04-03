@@ -4,7 +4,9 @@
 
 <ion-content [fullscreen]="true">
   <ion-card class="ion-padding">
-    <ion-card-title class="ion-text-center">Information Center</ion-card-title>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Information Center</ion-card-title>
+    </ion-card-header>
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -33,6 +35,12 @@
       <ion-row>
         <ion-col>
           <ion-button expand="block" color="kogerblue" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+            <ion-button expand="block" color="kogerbluelight" (click)="sendEmail()">Contact Us</ion-button>
         </ion-col>
       </ion-row>
 

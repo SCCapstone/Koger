@@ -1,90 +1,81 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar color="kogerblue">
+    <ion-buttons slot="start" color="light">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="auto">
-          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
-        </ion-col>
-        <ion-col>
-          <ion-grid>
-            <ion-row>
-              <ion-col> 
-                <ion-text>Welcome to the</ion-text>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-text><h1>Koger Center</h1></ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <img src="../../assets/img/BlueKoger.jpg" slot="end" height=80>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngFor="let event of eventList" color="primary">
-    <span *ngIf="!event.isEdit; else elseBlock">
-      <ion-card-header>
-        <ion-card-title>{{event.title}}</ion-card-title>
-        <ion-card-subtitle>{{event.dates}}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-
-        <ion-button shape="round" color="secondary" size="small" (click)="EditEvent(event)">
-          <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
-        </ion-button>
-      </ion-card-content>
-    </span>
-    <ng-template #elseBlock>
-      <ion-card-header>
-        <ion-card-title>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                Edit
-              </ion-col>
-              <ion-col>
-                <ion-button fill="solid" color="medium" size="small" (click)="event.isEdit = false">
-                  Cancel
-                </ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button fill="solid" color="success" size="small" (click)="UpdateEvent(event)">
-                  Update
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-item>
-          <ion-label><strong>Title</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="event.EditTitle"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Description</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="event.EditDescription"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Dates</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="event.EditDates"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Link</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="event.EditLink"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><strong>Tag</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="event.EditTag"></ion-input>
-        </ion-item>
-      </ion-card-content>
-    </ng-template>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Edit an Event</ion-card-title>
+      <ion-card-subtitle class="ion-text-center">Choose from the Events Below</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card *ngFor="let event of eventList" class="ion-padding">
+      <span *ngIf="!event.isEdit; else elseBlock">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">{{event.title}}</ion-card-title>
+          <ion-card-subtitle>{{event.dates}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button shape="round" color="kogerblue" size="small" (click)="EditEvent(event)">
+            <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </span>
+      <ng-template #elseBlock>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  Edit
+                </ion-col>
+                <ion-col>
+                  <ion-button fill="solid" color="danger" size="small" (click)="event.isEdit = false">
+                    Cancel
+                  </ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button fill="solid" color="success" size="small" (click)="UpdateEvent(event)">
+                    Update
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label><strong>Title</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="event.EditTitle"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Description</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="event.EditDescription"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Dates</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="event.EditDates"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Link</strong></ion-label>
+            <ion-input type="text" [(ngModel)]="event.EditLink"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Tag</strong></ion-label>
+            <ion-select [(ngModel)]="event.EditTag">
+              <ion-select-option>Broadway</ion-select-option>
+              <ion-select-option>Dance</ion-select-option>
+              <ion-select-option>Theatre</ion-select-option>
+              <ion-select-option>Concert</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card-content>
+      </ng-template>
+    </ion-card>
+    <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
   </ion-card>
 </ion-content>

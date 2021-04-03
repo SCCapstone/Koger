@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapGrandPage implements OnInit {
 
+  sliderOpts = {
+    zoom: {
+      maxRatio:2
+    }
+  };
+  
   constructor(
     // private photoViewer: PhotoViewer
     ) { }

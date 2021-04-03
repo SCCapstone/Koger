@@ -1,41 +1,18 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar color="kogerblue">
+    <ion-buttons slot="start" color="light">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="auto">
-          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
-        </ion-col>
-        <ion-col>
-          <ion-grid>
-            <ion-row>
-              <ion-col> 
-                <ion-text>Welcome to the</ion-text>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-text><h1>Koger Center</h1></ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <img src="../../assets/img/BlueKoger.jpg" slot="end" height=80>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-text><h3>Art in the Koger Center</h3></ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-card class="ion-padding">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Art in the Koger Center</ion-card-title>
+      <ion-card-title class="ion-text-center" color="kogerblue"><strong>Phillip Mullen</strong></ion-card-title>
+    </ion-card-header>
     <img src="../../assets/img/PhillipMullenArt.jpg">
     <ion-card-content>
       <p>Philip Mullen came to South Carolina in 1969 and is one of the most renowned artists 
@@ -46,16 +23,15 @@
         of thought-out technique and carefree fluidity. From the Whitney Museum to the San Francisco 
         Museum of Art, Mullen’s pieces have showcased his abilities all across America and the Koger 
         Center is proud to house a permanent exhibit.</p>
-      <ion-card-subtitle>Philip Mullen Art at the Koger Center is located on all three levels throughout 
-        the building.</ion-card-subtitle>
+      <ion-card-subtitle><strong>Philip Mullen Art at the Koger Center is located on all three levels throughout the building.</strong></ion-card-subtitle>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
-        <ion-button type = "button" expand="block" color="garnet" onclick="window.open('https://izi.travel/en/87a1-philip-mullen-art-at-the-koger-center/en', '_system', 'location=yes'); return false;">Click for an Audio Tour!</ion-button>
+        <ion-button type = "button" expand="block" color="kogerblue" onclick="window.open('https://izi.travel/en/87a1-philip-mullen-art-at-the-koger-center/en', '_system', 'location=yes'); return false;">Audio Tour</ion-button>
       </ion-col>
     </ion-row>
 
-    <img src="../../assets/img/KogerCenterLogo.jpg">
+    <img src="../../assets/img/WhiteKogerWoodmark.jpg">
   </ion-card>
 </ion-content>

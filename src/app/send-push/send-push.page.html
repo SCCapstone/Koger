@@ -1,60 +1,41 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar color="kogerblue">
+    <ion-buttons slot="start" color="light">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="auto">
-          <img alt="logo" height="100" src="../../assets/img/uofsclogo.jpg">
-        </ion-col>
-        <ion-col>
-          <ion-grid>
-            <ion-row>
-              <ion-col> 
-                <ion-text>Welcome to the</ion-text>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-text><h1>Koger Center</h1></ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <img src="../../assets/img/BlueKoger.jpg" slot="end" height=80>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
-    <ion-text><h2>Send a push notification to all devices!</h2></ion-text>
-  <form [formGroup] = "sendPushForm" (submit)="sendPushNotif()">
-    <ion-item>
-      <ion-label stacked>Notification Title:</ion-label>
-      <ion-input formControlName="pushTitle"
-      type="text"
-      placeholder="title of notification"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Notification Body:</ion-label>
-      <ion-input formControlName="pushBody"
-      type="text"
-      placeholder="body of notification"
-      >
-      </ion-input>
-    </ion-item>
-    <ion-button expand="block" type="submit">
-      Send Push!
-    </ion-button>
-    <div *ngFor = "let mes of message | async">
-      <h3>New notifications cannot have the same title AND body of the most recent notification sent!</h3>
-      <h4>Previous push title: {{mes.title}}</h4>
-      <h4>Previous push body: {{mes.body}}</h4>
-    </div>
-  </form>
-</ion-card>
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-padding">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Send Push Notification to All Devices</ion-card-title>
+    </ion-card-header>
+    <form [formGroup] = "sendPushForm" (submit)="sendPushNotif()">
+      <ion-item>
+        <ion-label stacked>Notification Title:</ion-label>
+        <ion-input formControlName="pushTitle"
+        type="text"
+        placeholder="title of notification"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Notification Body:</ion-label>
+        <ion-input formControlName="pushBody"
+        type="text"
+        placeholder="body of notification"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit" color="kogerblue">Send Push</ion-button>
+      <div *ngFor = "let mes of message | async">
+        <h3>New notifications cannot have the same title AND body of the most recent notification sent!</h3>
+        <h4>Previous push title: {{mes.title}}</h4>
+        <h4>Previous push body: {{mes.body}}</h4>
+      </div>
+    </form>
+    <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
+  </ion-card>
 </ion-content>
