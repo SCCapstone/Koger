@@ -533,9 +533,9 @@ export class Tab1Page implements OnInit {
   // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
 
   generateSectionView() {
-    if(this.seat.section=='RORC: Right Orchestra') {
+    if(this.seat.section=='RORC: Right Orchestra' || this.seat.seatNum == 'HCP Right') {
       this.sectionView='<img src="../../assets/img/RORC.jpg"/>';
-    } else if(this.seat.section=='LORC: Left Orchestra') {
+    } else if(this.seat.section=='LORC: Left Orchestra' || this.seat.seatNum == 'HCP Left') {
       this.sectionView='<img src="../../assets/img/LORC.jpg"/>';
     } else if(this.seat.section=='RGTR: Right Grand Tier') {
       this.sectionView='<img src="../../assets/img/RGTR.jpg"/>';
