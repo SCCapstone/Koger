@@ -23,6 +23,9 @@
           <ion-button shape="round" color="kogerblue" size="small" (click)="EditEvent(event)">
             <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
           </ion-button>
+        <ion-button shape="round" color="danger" size="small" (click)="DeleteEvent(event)">
+          <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
         </ion-card-content>
       </span>
       <ng-template #elseBlock>
