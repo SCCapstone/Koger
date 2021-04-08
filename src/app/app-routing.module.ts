@@ -65,13 +65,10 @@ const routes: Routes = [
   {
     path: 'create-event',
     loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
-  },  {
-    path: 'create-event',
-    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
   },
   {
-    path: 'delete-event',
-    loadChildren: () => import('./delete-event/delete-event.module').then( m => m.DeleteEventPageModule)
+    path: 'create-event',
+    loadChildren: () => import('./create-event/create-event.module').then( m => m.CreateEventPageModule)
   },
   {
     path: 'send-push',
