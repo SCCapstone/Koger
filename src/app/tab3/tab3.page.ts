@@ -5,7 +5,6 @@ import { NavController, ModalController, Platform } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
-import { ParkingInfoPage } from '../parking-info/parking-info.page';
 import { FirestoreService } from '../services/data/firestore.service';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 //import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -79,10 +78,4 @@ export class Tab3Page {
     })
   }*/
 
-  async openParking() {
-    const modal = await this.modalController.create({
-      component: ParkingInfoPage
-    });
-    return await modal.present();
-  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
 // import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
@@ -10,6 +11,7 @@ export class ParkingPage implements OnInit {
 
   constructor(
     // private photoViewer: PhotoViewer
+    private launchNavigator: LaunchNavigator
     ) { }
 
   ngOnInit() {
@@ -18,5 +20,9 @@ export class ParkingPage implements OnInit {
   // zoomImage(imageData) {
   //   this.photoViewer.show(imageData);
   // }
+
+  navme(address) {
+    this.launchNavigator.navigate(address);
+  }
 
 }

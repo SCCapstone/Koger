@@ -23,6 +23,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -41,7 +43,8 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     PhotoViewer,
     BarcodeScanner,
     SocialSharing,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LaunchNavigator
   ],
   bootstrap: [AppComponent]
 })

@@ -13,6 +13,7 @@ dependencies {
     implementation "com.android.support:support-v4:27.+"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "com.android.support:support-v4:27.+"
+    implementation "com.squareup.okhttp3:okhttp:3.12.0"
 }
 apply from: "../../node_modules/com-sarriaroman-photoviewer/src/android/photoviewer.gradle"
 apply from: "../../node_modules/phonegap-plugin-barcodescanner/src/android/barcodescanner.gradle"
