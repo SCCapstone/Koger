@@ -48,13 +48,10 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
+            <ion-label><strong>EVENT:   {{event.EditTitle}}</strong></ion-label>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-item>
-            <ion-label><strong>Title</strong></ion-label>
-            <ion-input type="text" [(ngModel)]="event.EditTitle"></ion-input>
-          </ion-item>
           <ion-item>
             <ion-label><strong>Description</strong></ion-label>
             <ion-input type="text" [(ngModel)]="event.EditDescription"></ion-input>
