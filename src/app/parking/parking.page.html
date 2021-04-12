@@ -1,3 +1,4 @@
+<!-- Header with back button -->
 <ion-header [translucent]="true">
   <ion-toolbar color="kogerblue">
     <ion-buttons slot="start" color="light">
@@ -7,7 +8,9 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- Content of the parking page -->
 <ion-content [fullscreen]="true">
+  <!-- Card for all parking content -->
   <ion-card class="ion-padding">
     <ion-card-header>
       <ion-card-title class="ion-text-center">Parking Information</ion-card-title>
@@ -18,14 +21,17 @@
         <ion-card-title>Koger Center for the Arts</ion-card-title>
         <a (click)="navme('1051 Greene St, Columbia, SC 29201')"><p>1051 Greene Street</p><p>Columbia, SC 29201</p></a>
       </ion-card>
+      <!-- Card for the general parking -->
       <ion-card class="ion-padding">
         <ion-card-title>General Parking</ion-card-title>
         <p>Cost: $10 - $20</p>
+        <!-- List of the general parking areas with clickable navigation links for their respective addresses -->
         <ul style="list-style-type:disc;">
           <li><ion-card-subtitle><a (click)="navme('1007 Park St, Columbia, SC 29201')">1007 Park Street Garage (Next to SCDOT)</a></ion-card-subtitle></li>
           <li><ion-card-subtitle><a (click)="navme('821 Park St, Columbia, SC 29201')">Discovery Plaza Garage (Behind Koger Center)</a></ion-card-subtitle></li>
-          <li><ion-card-subtitle><a (click)="navme('[33.99332938899058, -81.03620917595558]')">General Parking Lots</a></ion-card-subtitle></li>
+          <li><ion-card-subtitle><a (click)="navme('33.99332938899058, -81.03620917595558')">General Parking Lots</a></ion-card-subtitle></li>
         </ul>
+      <!-- Card for valet parking -->
       </ion-card>
       <ion-card class="ion-padding">
         <ion-card-title>Valet Parking</ion-card-title>
@@ -33,6 +39,7 @@
         offlocation is in front of the USC School of Music. Enter the drop off area on College Street.
         Please call (803) 777-7500 to see if valet service will be used for a particular event.</p>
       </ion-card>
+      <!-- Card for Accessible Parking -->
       <ion-card class="ion-padding">
         <ion-card-title>Accessible Parking</ion-card-title>
         <p>There are a limited number of ADA spaces in front of the Koger Center at the drop off area.
