@@ -1,3 +1,4 @@
+<!-- Header with back button -->
 <ion-header [translucent]="true">
   <ion-toolbar color="kogerblue">
     <ion-buttons slot="start" color="light">
@@ -7,33 +8,44 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- Content of the parking page -->
 <ion-content [fullscreen]="true">
+  <!-- Card for all parking content -->
   <ion-card class="ion-padding">
     <ion-card-header>
       <ion-card-title class="ion-text-center">Parking Information</ion-card-title>
     </ion-card-header>
-    <img src="../../assets/img/GoogleMap.png" (click) = "zoomImage('../../assets/img/GoogleMap.png')" >
+    <img src="../../assets/img/KogerParking.jpg" />
     <ion-card-content>
-      <img height="25" src="../../assets/img/RedPin.png">
-      <p>Koger Center for the Arts is located at 1051 Greene Street, Columbia, SC 29201</p>
-      <img height="25" src="../../assets/img/GreenStar.png">
-      <ion-card-subtitle>General Parking</ion-card-subtitle>
-      <p>General parking for the Koger Center is available in the parking garages at 1007 Park 
-        Street, and at 821 Park Street (Innovista Parking), and in the two general USC parking
-        lots. 1007 Park Street Garage is located next to SCDOT, 821 Park Street Garage is 
-        located behind the Koger Center on the corner of Park and College Streets. The general 
-        parking lots are located between Lincoln and Gadsden Streets and Greene and Blossom
-        Streets. For ticketed events there is a $10.00 - $20.00 charge for parking in these areas.</p>
-      <img height="25" src="../../assets/img/YellowPin.png">
-      <ion-card-subtitle>Valet Parking</ion-card-subtitle>
-      <p>Valet parking is offered at some, but not all Koger Center events. When available, the drop
+      <ion-card class="ion-padding">
+        <ion-card-title>Koger Center for the Arts</ion-card-title>
+        <a (click)="navme('1051 Greene St, Columbia, SC 29201')"><p>1051 Greene Street</p><p>Columbia, SC 29201</p></a>
+      </ion-card>
+      <!-- Card for the general parking -->
+      <ion-card class="ion-padding">
+        <ion-card-title>General Parking</ion-card-title>
+        <p>Cost: $10 - $20</p>
+        <!-- List of the general parking areas with clickable navigation links for their respective addresses -->
+        <ul style="list-style-type:disc;">
+          <li><ion-card-subtitle><a (click)="navme('1007 Park St, Columbia, SC 29201')">1007 Park Street Garage (Next to SCDOT)</a></ion-card-subtitle></li>
+          <li><ion-card-subtitle><a (click)="navme('821 Park St, Columbia, SC 29201')">Discovery Plaza Garage (Behind Koger Center)</a></ion-card-subtitle></li>
+          <li><ion-card-subtitle><a (click)="navme('33.99332938899058, -81.03620917595558')">General Parking Lots</a></ion-card-subtitle></li>
+        </ul>
+      <!-- Card for valet parking -->
+      </ion-card>
+      <ion-card class="ion-padding">
+        <ion-card-title>Valet Parking</ion-card-title>
+        <p>Valet parking is offered at some, but not all Koger Center events. When available, the drop
         offlocation is in front of the USC School of Music. Enter the drop off area on College Street.
         Please call (803) 777-7500 to see if valet service will be used for a particular event.</p>
-      <img height="25" src="../../assets/img/BlueStar.png">
-      <ion-card-subtitle>Accessible Parking</ion-card-subtitle>
-      <p>There are a limited number of ADA spaces in front of the Koger Center at the drop off area.
+      </ion-card>
+      <!-- Card for Accessible Parking -->
+      <ion-card class="ion-padding">
+        <ion-card-title>Accessible Parking</ion-card-title>
+        <p>There are a limited number of ADA spaces in front of the Koger Center at the drop off area.
         During ticketed events the metered parking spaces on Assembly Street in front of the Koger 
         Center and on College Street are bagged and reserved as accessible parking as well.</p>
+      </ion-card>
     </ion-card-content>
     <img src="../../assets/img/WhiteKogerWoodmark.jpg">
   </ion-card>
