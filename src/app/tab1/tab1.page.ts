@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms
 export class Tab1Page implements OnInit {
   data: any;
   image = '';
+  barcode_active = false;
 
   validations_form: FormGroup;
   errorMessage: string = '';
@@ -24,11 +25,9 @@ export class Tab1Page implements OnInit {
     public platform: Platform,
     private barcodeScanner: BarcodeScanner,
     private formBuilder: FormBuilder
-  ) {
-    // this.loadWorker();
-  }
-  ngOnInit()
-  {
+  ) { }
+  
+  ngOnInit() {
     this.validations_form = this.formBuilder.group({
       section: new FormControl('', Validators.compose([
         Validators.required,
@@ -50,7 +49,7 @@ export class Tab1Page implements OnInit {
   };
 
   // Hard-wired array to mock a database until we connect to an
-  // actual database
+  // actual database, which as of spring 2021 that has not happened
   barcode_mapping = [
     '0821858040', 'LORC: Left Orchestra', 'D', '35',
     '0821848687', 'LORC: Left Orchestra', 'E', '36',
@@ -67,7 +66,6 @@ export class Tab1Page implements OnInit {
   sectionView: any;
 
   sections = [
-    //'RORC', 'LORC', 'RGTR', 'LGTR', 'RBAL', 'LBAL', 'HC'
     'RORC: Right Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
     'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
   ]
@@ -292,6 +290,7 @@ export class Tab1Page implements OnInit {
   ]
   HCPseats = ['HCP Left', 'HCP Right']
 
+  // Function to route to seat description
   goToSeatDescription() {
     let navigationExtras: NavigationExtras = {
       state: {
@@ -301,6 +300,8 @@ export class Tab1Page implements OnInit {
     this.router.navigate(['seat-description'], navigationExtras);
   }
 
+  // Function to show the section view if there is
+  // a section selected
   async showSectionView() {
     if(this.seat.section=='') {
       const alert = await this.alertController.create({
@@ -323,26 +324,27 @@ export class Tab1Page implements OnInit {
     }
   }
 
+  // Function to set the rows selection
   setRows(inputSection: string) {
-    if (this.seat.row != null) {
+    if (this.seat.row != null && !this.barcode_active) {
       this.removeRowSelection();
     }
-    //if(inputSection=="RORC" || inputSection=="LORC") {
     if(inputSection=='RORC: Right Orchestra' || inputSection=='LORC: Left Orchestra') {
       this.rows = this.ORCrows;
-    } //else if(inputSection=="RGTR" || inputSection=="LGTR") {
+    }
     else if(inputSection=='RGTR: Right Grand Tier' || inputSection=='LGTR: Left Grand Tier') {
       this.rows = this.GTRrows;
-    } //else if(inputSection=="RBAL" || inputSection=="LBAL") {
+    }
     else if(inputSection=='RBAL: Right Balcony' || inputSection=='LBAL: Left Balcony') {
       this.rows = this.BALrows;
     } else {
       this.rows = ['HCP: ADA Accessible'];
     }
   }
-
+  
+  // Function to set the seats selection
   setSeats(inputRow: string) {
-    if (this.seat.seatNum != null) {
+    if (this.seat.seatNum != null && !this.barcode_active) {
       this.removeSeatSelection();
     }
     if (inputRow == "A") {
@@ -424,29 +426,38 @@ export class Tab1Page implements OnInit {
     } else {
       this.seats = ['Invalid Section/Row']
     }
+    this.barcode_active = false;
   }
 
+  // Function to remove data from row selection
+  // which also removes data from seat selection,
+  // since seat is dependent on row.
   removeRowSelection() {
     this.seat.row = null;
     this.seat.seatNum = null;
   }
 
+  // Function to remove data from seat selection
   removeSeatSelection() {
     this.seat.seatNum = null;
   }
 
-  // Alert window for good barcode scan
-  async confirmation() {
+  // Function for alert window for good barcode scan.
+  // Will show the user the results of the scan to ensure if 
+  // the scan returned the correct information
+  async confirmation(temp_section: string, temp_row: string, temp_seat: string) {
+    this.seat.section = null;
     const alert = await this.alertController.create({
       header: 'Scan Confirmation',
       message: '<b> Is this the information found on your ticket? </b> <br/>' + 
-               'Section: ' + this.seat.section + '<br/> Row: ' + this.seat.row 
-                + '<br/> Seat: ' + this.seat.seatNum,
+               'Section: ' + temp_section + '<br/> Row: ' + temp_row 
+                + '<br/> Seat: ' + temp_seat,
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
+            this.seat.section = null;
             console.log('CONFIRM CANCEL');
           }
         }, 
@@ -454,6 +465,10 @@ export class Tab1Page implements OnInit {
           text: 'Find Seat',
           handler: () => {
             console.log('CONFIRM OK');
+            this.barcode_active = true;
+            this.seat.section = temp_section;
+            this.seat.row = temp_row;
+            this.seat.seatNum = temp_seat;
             this.goToSeatDescription();
           }
         }
@@ -463,7 +478,7 @@ export class Tab1Page implements OnInit {
     await alert.present();
   }
 
-  // Alert window for an invalid scan
+  // Function for invalid scan alert window
   async invalidScan() {
     const alert = await this.alertController.create({
       header: 'Scan Ticket Error',
@@ -488,7 +503,8 @@ export class Tab1Page implements OnInit {
     await alert.present();
   }
 
-  // Scans barcode from ticket
+  // Function that scans the barcode from the Koger 
+  // center Tickets. 
   async scanBarcode() {
     if (!this.platform.is('cordova'))
       this.notCordova();
@@ -513,29 +529,31 @@ export class Tab1Page implements OnInit {
     });
   }
 
-  // Processes text from barcode
+  // Function that processes text from barcode
+  // This would be where the code queries a database
+  // but the Koger Center and their partners could
+  // not provide us with this, so just looks for seat 
+  // info from an array barcode_mapping
   process_barcode() {
     for (let i = 0; i < this.barcode_mapping.length; i++) {
       if (this.barcode_mapping[i] == this.data) {
-        this.seat.section = this.barcode_mapping[i + 1];
-        this.setRows(this.seat.section);
-        this.seat.row = this.barcode_mapping[i + 2];
-        this.setSeats(this.seat.row);
-        this.seat.seatNum = this.barcode_mapping[i + 3];
-        this.confirmation();
+        var temp_section = this.barcode_mapping[i + 1];
+        var temp_row = this.barcode_mapping[i + 2];
+        var temp_seat = this.barcode_mapping[i + 3];
+        this.setRows(temp_row);
+        this.setSeats(temp_seat)
+        this.confirmation(temp_section, temp_row, temp_seat);
         return;
       }
     }
     this.invalidScan();
   }
 
-  // 'RORC: Right Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
-  // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
-
+  // Function that generates the section view
   generateSectionView() {
-    if(this.seat.section=='RORC: Right Orchestra') {
+    if(this.seat.section=='RORC: Right Orchestra' || this.seat.seatNum == 'HCP Right') {
       this.sectionView='<img src="../../assets/img/RORC.jpg"/>';
-    } else if(this.seat.section=='LORC: Left Orchestra') {
+    } else if(this.seat.section=='LORC: Left Orchestra' || this.seat.seatNum == 'HCP Left') {
       this.sectionView='<img src="../../assets/img/LORC.jpg"/>';
     } else if(this.seat.section=='RGTR: Right Grand Tier') {
       this.sectionView='<img src="../../assets/img/RGTR.jpg"/>';
@@ -550,7 +568,8 @@ export class Tab1Page implements OnInit {
     }
   }
 
-  // Alert for barcode scanner not working on ionic serve
+  // Function that displays an Alert for barcode scanner 
+  // not working on ionic serve, not needed on device
   async notCordova() {
     const alert = await this.alertController.create({
       header: 'Barcode Scanner only works on a device, not on ionic serve',
@@ -563,8 +582,6 @@ export class Tab1Page implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
-
 }

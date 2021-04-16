@@ -53,8 +53,13 @@
       </div>
       <ion-item>
         <ion-label stacked>Tag</ion-label>
-        <ion-input formControlName="tag" type="text" placeholder="Select a Tag" required>
-        </ion-input>
+        <ion-select formControlName="tag" required>
+          <ion-select-option>None</ion-select-option>
+          <ion-select-option>Broadway</ion-select-option>
+          <ion-select-option>Dance</ion-select-option>
+          <ion-select-option>Theatre</ion-select-option>
+          <ion-select-option>Concert</ion-select-option>
+        </ion-select>
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.tag">
