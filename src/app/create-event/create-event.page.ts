@@ -1,3 +1,4 @@
+// Joshua Acree
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,  Validators, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,25 +22,31 @@ export class CreateEventPage implements OnInit {
       this.createEventForm = formBuilder.group({
       eventName: ['', Validators.required],
       eventDescription: ['', Validators.required],
-      link: ['', Validators.required],
+      link: ['', Validators.compose([Validators.pattern('(http|https)://kogercenterforthearts.com/(.*)'), Validators.required])],
       tag: ['', Validators.required],
       dates: ['', Validators.required]
     });
   }
   ngOnInit() {
-    this.createEventForm = this.formBuilder.group({
-      eventName: new FormControl('', Validators.compose([
-        Validators.required,
-        // Pattern must match ___@___.___
-        // Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      eventDescription: new FormControl('', Validators.compose
-      ([
-        Validators.minLength(1),
-        Validators.required
-      ])),
-      
-    });
+  }
+
+  validation_messages = {
+    'eventName': [
+      { type: 'required', message: 'Title is required.'}
+    ],
+    'eventDescription':[
+      { type: 'required', message: 'Description is required.'}
+    ],
+    'link': [
+      { type: 'required', message: 'Link is required.'},
+      { type: 'pattern', message: 'Link must follow URL Pattern'      }
+    ],
+    'tag': [
+      { type: 'required', message: 'Tag is required.'}
+    ],
+    'dates': [
+      { type: 'required', message: 'Date is required.'}
+    ]
   }
   async createEvent() {  
     const loading = await this.loadingCtrl.create();

@@ -17,31 +17,43 @@
     <form [formGroup] = "createEventForm" (submit)="createEvent()">
       <ion-item>
         <ion-label stacked> Event Name</ion-label>
-        <ion-input formControlName="eventName"
-        type="text"
-        placeholder="What is the name of the event?"
-        >
+        <ion-input formControlName="eventName" type="text" placeholder="Enter Title" required >
         </ion-input>
       </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.eventName">
+          <div class="error-message" *ngIf="createEventForm.get('eventName').hasError(validation.type) && (createEventForm.get('eventName').dirty || createEventForm.get('eventName').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
       <ion-item>
         <ion-label stacked>Event Description</ion-label>
-        <ion-input formControlName="eventDescription"
-        type="text"
-        placeholder="Describe the event"
-        >
+        <ion-input formControlName="eventDescription" type="text" placeholder="Enter Description" required>
         </ion-input>
       </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.eventDescription">
+          <div class="error-message" *ngIf="createEventForm.get('eventDescription').hasError(validation.type) && (createEventForm.get('eventDescription').dirty || createEventForm.get('eventDescription').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
       <ion-item>
         <ion-label stacked> Date and Time</ion-label>
-        <ion-input formControlName="dates"
-        type="text"
-        placeholder="What are the dates and times?"
-        >
+        <ion-input formControlName="dates" type="text" placeholder="Enter dates" required >
         </ion-input>
       </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.dates">
+          <div class="error-message" *ngIf="createEventForm.get('dates').hasError(validation.type) && (createEventForm.get('dates').dirty || createEventForm.get('dates').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
       <ion-item>
         <ion-label stacked>Tag</ion-label>
-        <ion-select formControlName="tag">
+        <ion-select formControlName="tag" required>
           <ion-select-option>None</ion-select-option>
           <ion-select-option>Broadway</ion-select-option>
           <ion-select-option>Dance</ion-select-option>
@@ -49,15 +61,27 @@
           <ion-select-option>Concert</ion-select-option>
         </ion-select>
       </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.tag">
+          <div class="error-message" *ngIf="createEventForm.get('tag').hasError(validation.type) && (createEventForm.get('tag').dirty || createEventForm.get('tag').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
       <ion-item>
         <ion-label stacked>Link</ion-label>
-        <ion-input formControlName="link"
-        type="text"
-        placeholder="Please paste the link to the event"
-        >
+        <ion-input formControlName="link" type="url" placeholder="Enter Link" required>
         </ion-input>
       </ion-item>
-      <ion-button expand="block" type="submit" color="kogerblue">Add Event</ion-button>
+
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.link">
+          <div class="error-message" *ngIf="createEventForm.get('link').hasError(validation.type) && (createEventForm.get('link').dirty || createEventForm.get('link').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-button expand="block" type="submit" color="kogerblue" [disabled]="!createEventForm.valid">Add Event</ion-button>
     </form>
     <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
   </ion-card>
