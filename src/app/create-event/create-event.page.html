@@ -17,7 +17,7 @@
     <form [formGroup] = "createEventForm" (submit)="createEvent()">
       <ion-item>
         <ion-label stacked> Event Name</ion-label>
-        <ion-input formControlName="eventName" type="text" placeholder="Enter Title" required >
+        <ion-input formControlName="eventName" type="text" placeholder="Title" required >
         </ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -29,7 +29,7 @@
       </div>
       <ion-item>
         <ion-label stacked>Event Description</ion-label>
-        <ion-input formControlName="eventDescription" type="text" placeholder="Enter Description" required>
+        <ion-input formControlName="eventDescription" type="text" placeholder="Description" required>
         </ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -41,7 +41,7 @@
       </div>
       <ion-item>
         <ion-label stacked> Date and Time</ion-label>
-        <ion-input formControlName="dates" type="text" placeholder="Enter dates" required >
+        <ion-input formControlName="dates" type="text" placeholder="Dates" required >
         </ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -70,7 +70,7 @@
       </div>
       <ion-item>
         <ion-label stacked>Link</ion-label>
-        <ion-input formControlName="link" type="url" placeholder="Enter Link" required>
+        <ion-input formControlName="link" type="url" placeholder="URL" required>
         </ion-input>
       </ion-item>
 
