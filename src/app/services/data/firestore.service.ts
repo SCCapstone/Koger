@@ -46,15 +46,19 @@ export class FirestoreService {
       tag
     });
   }
+  
   deleteEvent(
     eventName: string
   ): Promise<void> {
     return this.firestore.doc('Event/' + eventName).delete();
   }
+
+  // This function ensures only unique tokens are stored in the firebase Users collection.
+  // Storing tokens in the firebase db allows for push notifications to be sent out to all
+  // users from a single device
   createUser(
     token: string
   ): Promise<void> {
-    // ensures only unique tokens are stored
     const id = this.firestore.createId();
     const query$ = this.firestore.collection('Users', ref => ref.where('token', '==', token));
     query$.valueChanges().subscribe(data => {
@@ -67,6 +71,7 @@ export class FirestoreService {
     });
     return;
   }
+
   editEvent(title: string,
     new_description: string,
     new_dates: string,

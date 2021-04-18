@@ -15,6 +15,7 @@ export class UpcomingEventsPage implements OnInit {
   public eventList: Observable<Event[]>
   public afStore: AuthenticateService;
   data: string;
+  filterValue: string;
   constructor (private socialSharing: SocialSharing, private firestoreService: FirestoreService, private http: HttpClient) {
     // this.data = '';
   }
@@ -24,6 +25,7 @@ export class UpcomingEventsPage implements OnInit {
     this.generatePost();
     this.prepareDataRequest();
     this.eventList = this.firestoreService.getEventData();
+    this.filterValue = "All Events";
   }
   ionViewWillEnter() {
     this.prepareDataRequest();

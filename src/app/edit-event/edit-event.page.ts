@@ -88,4 +88,9 @@ export class EditEventPage implements OnInit {
     this.firestoreService.editEvent(event['title'], event['description'], event['date'], event['link'], event['tag']);
     eventRow.isEdit = false;
   }
+  
+  DeleteEvent(event) {
+    var eventName = event.title;
+    this.firestoreService.deleteEvent(eventName);
+  }
 } 

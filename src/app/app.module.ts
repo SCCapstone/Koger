@@ -19,8 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,10 +39,12 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    EmailComposer,
     PhotoViewer,
     BarcodeScanner,
     SocialSharing,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LaunchNavigator
   ],
   bootstrap: [AppComponent]
 })

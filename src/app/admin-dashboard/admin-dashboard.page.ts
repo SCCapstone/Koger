@@ -31,10 +31,6 @@ export class AdminDashboardPage implements OnInit {
   {
     this.router.navigate(['create-event']);
   }
-  deleteEvent()
-  {
-    this.router.navigate(['delete-event']);
-  }
   editEvent()
   {
     this.router.navigate(['edit-event']);

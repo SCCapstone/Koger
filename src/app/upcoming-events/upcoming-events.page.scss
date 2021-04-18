@@ -1,15 +1,12 @@
 a:link, a:visited {
-    background-color: white;
-    color: black;
-    border: 2px solid #73000A;
-    padding: 2px 20px;
-    // text-align: center;
-    text-decoration: none;
-    border-radius: 25px;
-    display: inline-block;
-  }
+  background-color: white;
+  color: var(--ion-color-kogerblue);
+  // text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  display: inline-block;
+}
   
-  a:hover, a:active {
-    background-color: #73000A;
-    color: white;
-  }
+a:hover, a:active {
+  color: var(--ion-color-kogerblue);
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+
+// Importing Launch Navigator from Ionic Native to lauch navigation on device
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
 
 @Component({
   selector: 'app-parking',
@@ -8,15 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParkingPage implements OnInit {
 
-  constructor(
-    // private photoViewer: PhotoViewer
-    ) { }
+  // Constructor creates a private instance of the Launch Navigator
+  constructor(private launchNavigator: LaunchNavigator) {}
 
   ngOnInit() {
   }
 
-  // zoomImage(imageData) {
-  //   this.photoViewer.show(imageData);
-  // }
+  // Method that takes in an address and launches the native navigation app with that address
+  navme(address) {
+    this.launchNavigator.navigate(address);
+  }
 
 }
