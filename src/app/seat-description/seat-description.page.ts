@@ -9,13 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SeatDescriptionPage implements OnInit {
 
+  // Instance variables for the input seat, the two carousels, and the slides presented on the app
   inputSeat: any;
   otherCarousel: any;
   balconyCarousel: any;
-
   appSlides: any;
 
-
+  // Messages to be presented to the user in the carousel
   message = {
     entranceMessage: '',
     levelMessage: '',
@@ -25,6 +25,7 @@ export class SeatDescriptionPage implements OnInit {
     doorNumber: 0
   };
 
+  // Images presented to the user in the carousel
   pictures = {
     entrancePic: '',
     levelPic: '',
@@ -34,6 +35,7 @@ export class SeatDescriptionPage implements OnInit {
     seatView: ''
   }
 
+  // Constructor gets the input seat information from tab1
   constructor(
     private route: ActivatedRoute,
     private router: Router
@@ -45,6 +47,7 @@ export class SeatDescriptionPage implements OnInit {
     })
   }
 
+  // Generates the door number, messages and pictures, and the app slides/carousels
   ngOnInit() {
     this.generateDoorNumber();
     this.generateMessagesAndPictures();
@@ -60,6 +63,7 @@ export class SeatDescriptionPage implements OnInit {
   // 'RORC: Right Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
   // 'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
 
+  // Method generates the different messages and pictures based off input seat information
   generateMessagesAndPictures() {
     this.pictures.entrancePic="../../assets/img/KogerCenterFront.jpg";
     this.message.entranceMessage="Enter the Koger Center through either the Greene Street Entrance or the Assembly Street Entrance";
@@ -69,22 +73,20 @@ export class SeatDescriptionPage implements OnInit {
       this.message.seatMessage="There are ushers available near the doors to help you find your seat. You are in SEAT " + this.inputSeat.seatNum + " in ROW " + this.inputSeat.row;
     }
 
-    if(this.inputSeat.section=='LORC: Left Orchestra') {
+    if(this.inputSeat.section=='LORC: Left Orchestra' || this.inputSeat.row=='HCP: Left') {
       this.pictures.levelPic="../../assets/img/LobbyLeft.jpg";
       this.message.levelMessage="Stay on the first level and walk to the left side of the theatre";
       this.pictures.doorPic="../../assets/img/LobbyLeft.jpg";
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       //this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
       this.pictures.seatView="../../assets/img/LORC.jpg";
-
-    } else if(this.inputSeat.section=='RORC: Right Orchestra') {
+    } else if(this.inputSeat.section=='RORC: Right Orchestra' || this.inputSeat.row=='HCP: Right') {
       this.pictures.levelPic="../../assets/img/LobbyRight.jpg";
       this.message.levelMessage="Stay on the first level and walk to the right side of the theatre";
       this.pictures.doorPic="../../assets/img/LobbyRight.jpg";
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       //this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
       this.pictures.seatView="../../assets/img/RORC.jpg";
-
     } else if(this.inputSeat.section=='LGTR: Left Grand Tier') {
       this.pictures.levelPic="../../assets/img/LobbyStairs.jpg";
       this.message.levelMessage="Go to the second floor via the stairs or elevator";
@@ -92,15 +94,13 @@ export class SeatDescriptionPage implements OnInit {
       this.message.doorMessage="Walk to the left side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       //this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
       this.pictures.seatView="../../assets/img/LGTR.jpg";
-
-    }else if(this.inputSeat.section=='RGTR: Right Grand Tier') {
+    } else if(this.inputSeat.section=='RGTR: Right Grand Tier') {
       this.pictures.levelPic="../../assets/img/LobbyStairs.jpg";
       this.message.levelMessage="Go to the second floor via the stairs or elevator";
       this.pictures.doorPic="../../assets/img/GrandTierRight.jpg";
       this.message.doorMessage="Walk to the right side of the theatre and enter the seating area through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       //this.pictures.sectionPic="../../assets/img/MapGrand.jpg";
       this.pictures.seatView="../../assets/img/RGTR.jpg";
-
     } else if(this.inputSeat.section=='LBAL: Left Balcony') {
       this.pictures.levelPic="../../assets/img/LobbyStairsLeft.jpg";
       this.message.levelMessage="Go to the third floor via the stairs on the left side of the building";
@@ -110,7 +110,6 @@ export class SeatDescriptionPage implements OnInit {
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       //this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
       this.pictures.seatView="../../assets/img/LBAL.jpg";
-
     } else if(this.inputSeat.section=='RBAL: Right Balcony') {
       this.pictures.levelPic="../../assets/img/LobbyStairsRight.jpg";
       this.message.levelMessage="Go to the third floor via the stairs on the right side of the building or the elevator";
@@ -120,7 +119,6 @@ export class SeatDescriptionPage implements OnInit {
       this.message.doorMessage="Enter the theatre through DOOR " + this.message.doorNumber + " for ROW " + this.inputSeat.row;
       //this.pictures.sectionPic="../../assets/img/MapBalcony.jpg";
       this.pictures.seatView="../../assets/img/RBAL.jpg";
-
     } else {
       this.pictures.levelPic="../../assets/img/NewLobby.jpg";
       this.message.levelMessage="Please see an usher to help you find your seat";
@@ -129,9 +127,9 @@ export class SeatDescriptionPage implements OnInit {
       //this.pictures.sectionPic="../../assets/img/MapOrchestra.jpg";
       this.pictures.seatView="../../assets/img/LORC.jpg";
     }
-
   }
 
+  // Method to generate the non-balcony level carousel
   generateOtherCarousel() {
     this.otherCarousel = {
       items: [
@@ -165,6 +163,7 @@ export class SeatDescriptionPage implements OnInit {
     }
   }
 
+  // Method to generate the balcony level carousel
   generateBalconyCarousel() {
     this.balconyCarousel = {
       items: [
@@ -205,8 +204,9 @@ export class SeatDescriptionPage implements OnInit {
     }
   }
 
+  // Method to generate the door number based off the input row
   generateDoorNumber() {
-    if(this.inputSeat.row=="JJ" || this.inputSeat.row=="KK" || this.inputSeat.row=="LL" || this.inputSeat.row=="DDD" || this.inputSeat.section=="HCP") {
+    if(this.inputSeat.row=="JJ" || this.inputSeat.row=="KK" || this.inputSeat.row=="LL" || this.inputSeat.row=="DDD" || this.inputSeat.section=="HCP: ADA Accessible") {
       this.message.doorNumber=1;
     } else if(this.inputSeat.row=="T" || this.inputSeat.row=="U" || this.inputSeat.row=="GG" || this.inputSeat.row=="HH" || this.inputSeat.row=="II" || this.inputSeat.row=="AAA" || this.inputSeat.row=="BBB" || this.inputSeat.row=="CCC") {
       this.message.doorNumber=2;
