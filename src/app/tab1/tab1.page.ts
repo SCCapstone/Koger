@@ -28,6 +28,8 @@ export class Tab1Page implements OnInit {
   ) { }
   
   ngOnInit() {
+    // Initializes the validation form for the seat input
+    // Section and Row are required
     this.validations_form = this.formBuilder.group({
       section: new FormControl('', Validators.compose([
         Validators.required,
@@ -39,6 +41,7 @@ export class Tab1Page implements OnInit {
     });
   }
 
+  // Validation messages for section and row
   validation_messages = {
     'section': [
       { type: 'required', message: 'Section is required.'}
@@ -57,21 +60,26 @@ export class Tab1Page implements OnInit {
     '0821849369', 'LORC: Left Orchestra', 'E', '37',
   ]
 
+  // Instance of a seat to be passed to seat desciption page
   seat = {
     section: '',
     row: '',
     seatNum: ''
   }
 
+  // Instance of section view for picture
   sectionView: any;
 
+  // Array of the different sections
   sections = [
     'RORC: Right Orchestra', 'LORC: Left Orchestra', 'RGTR: Right Grand Tier', 'LGTR: Left Grand Tier',
     'RBAL: Right Balcony', 'LBAL: Left Balcony', 'HCP: ADA Accessible'
   ]
 
+  // Instance variable to be set to the proper rows given the section
   rows: string[];
 
+  // Instance variables for the rows in different sections
   ORCrows = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U'
   ]
@@ -81,9 +89,14 @@ export class Tab1Page implements OnInit {
   BALrows = [
     'AAA', 'BBB', 'CCC', 'DDD'
   ]
+  HCProws = [
+    'HCP: Left', 'HCP: Right'
+  ]
 
+  // Instance variable to be set to the proper seat numbers given the section and row
   seats: string[];
 
+  // Instance variables for the seat numbers in different sections and rows
   Aseats = [
     '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
     '21', '22'
@@ -288,7 +301,7 @@ export class Tab1Page implements OnInit {
     '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
     '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74'
   ]
-  HCPseats = ['HCP Left', 'HCP Right']
+  HCPseats = ['HCP: Left', 'HCP: Right']
 
   // Function to route to seat description
   goToSeatDescription() {
@@ -337,8 +350,9 @@ export class Tab1Page implements OnInit {
     }
     else if(inputSection=='RBAL: Right Balcony' || inputSection=='LBAL: Left Balcony') {
       this.rows = this.BALrows;
-    } else {
-      this.rows = ['HCP: ADA Accessible'];
+    } 
+    else if(inputSection='HCP: ADA Accessible') {
+      this.rows = this.HCProws;
     }
   }
   
@@ -421,7 +435,7 @@ export class Tab1Page implements OnInit {
       this.seats = this.CCCseats;
     } else if (inputRow == "DDD") {
       this.seats = this.DDDseats;
-    } else if (inputRow=="HCP: ADA Accessible") {
+    } else if (inputRow=="HCP: Left" || inputRow=="HCP: Right") {
       this.seats = this.HCPseats;
     } else {
       this.seats = ['Invalid Section/Row']
