@@ -17,7 +17,7 @@ export class FirestoreService {
   }
 
   getEventData(): Observable<Event[]> {
-    return this.firestore.collection<Event>('Event').valueChanges();
+    return this.firestore.collection<Event>('Event', ref=> ref.orderBy("index")).valueChanges();
   }
   read_events() {
     return this.firestore.collection('Event').snapshotChanges();
@@ -38,6 +38,7 @@ export class FirestoreService {
     link: string,
     tag: string,
   ): Promise<void> {
+    const eventRef = this.firestore.doc('Event/' + title);
     return this.firestore.doc('Event/' + title).set({
       title,
       description,
