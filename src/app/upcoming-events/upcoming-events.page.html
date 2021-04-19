@@ -30,6 +30,7 @@
           <ion-card-subtitle>{{event.dates}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
+          <!-- Description is shortened to 400 characters per Koger Center request -->
           <ion-card-subtitle><strong>Description</strong></ion-card-subtitle>
           <p>{{event.description | slice:0:400}}{{ event.description.length > 400 ? '...':''}} <a href={{event.link}}
               target="_blank">Click Here to Read More</a></p>

@@ -30,6 +30,7 @@ export class CreateEventPage implements OnInit {
   ngOnInit() {
   }
 
+  // Various error messages for a field touched but not filled out or not following proper pattern
   validation_messages = {
     'eventName': [
       { type: 'required', message: 'Title is required.'}
@@ -48,6 +49,8 @@ export class CreateEventPage implements OnInit {
       { type: 'required', message: 'Date is required.'}
     ]
   }
+  // Pulls event data from forum and uses firestore service to create event in firestore
+  // On creation of event it redirects to edit event page
   async createEvent() {  
     const loading = await this.loadingCtrl.create();
     
