@@ -51,12 +51,9 @@ export class AdminLoginPage  implements OnInit {
   {
     this.authService.loginUser(value)
       .then(res=> {
-        // console.log(res);
         console.log('Succesfully Logged In')
         this.errorMessage = "";
-        // console.log("UID: " + this.authService.userData.uid);
         this.firestoreService.isLoggedIn = true;
-        // Redirects user on login to dashboard
         this.router.navigate(['admin-dashboard'])
       }, err=> {
         this.errorMessage = err.message;

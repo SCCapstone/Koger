@@ -29,17 +29,15 @@ export class UpcomingEventsPage implements OnInit {
   }
   ionViewWillEnter() {
     this.prepareDataRequest();
-      /*.subscribe(
-        data => {
-          this.data = JSON.stringify(data);
-          console.log(this.data);
-        }*/
   }
+
   userExists()
   {
     console.log(this.afStore.userExists())
     return this.afStore.userExists()
   }
+
+  // Uses url provided to open a new window for an upcoming event
   openURL(url: string) 
   {
     if (url == null || url === "")
@@ -47,10 +45,13 @@ export class UpcomingEventsPage implements OnInit {
     else
       window.open(url, "_blank")
   }
+
+  // Opens purchase ticket tab in new window
   openPurchaseTicket()
   {
     window.open("https://itkt.choicecrm.net/templates/USCK/#/events")
   }
+
   private prepareDataRequest() {
     // const dataUrl = 'https://www.kogercenterforthearts.com/upcoming.php';
     const dataUrl = 'https://jsonplaceholder.typicode.com/users';

@@ -50,25 +50,8 @@ export class EditEventPage implements OnInit {
       console.log(this.eventList);
     });
   }
-  /* async editEvent() {
-    const loading = await this.loadingCtrl.create();
 
-    this.firestoreService.
-    editEvent(eventName, description, dates, link, tag).
-    then(
-      () => {
-        loading.dismiss().then(()=> {
-          this.router.navigateByUrl('');
-        });
-      },
-      error => {
-        loading.dismiss().then(() => {
-          console.error(error);
-        });
-      }
-    );
-    return await loading.present();
-  } */
+  //  Prefills event data for form
   EditEvent(event)
   {
     event.isEdit = true;
@@ -78,6 +61,7 @@ export class EditEventPage implements OnInit {
     event.EditTag = event.tag;
     event.EditLink = event.link;
   }
+  //  Update event using provided data, whether edited or not, and updates event using firestore service
   UpdateEvent(eventRow) {
     let event = {};
     event['title'] = eventRow.EditTitle;
@@ -88,7 +72,7 @@ export class EditEventPage implements OnInit {
     this.firestoreService.editEvent(event['title'], event['description'], event['date'], event['link'], event['tag']);
     eventRow.isEdit = false;
   }
-  
+  //  Uses firestore service to delete event when button clicked
   DeleteEvent(event) {
     var eventName = event.title;
     this.firestoreService.deleteEvent(eventName);
