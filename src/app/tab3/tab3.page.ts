@@ -7,6 +7,7 @@ import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
 import { FirestoreService } from '../services/data/firestore.service';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 //import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
@@ -29,6 +30,7 @@ export class Tab3Page {
     private modalController: ModalController,
     public platform: Platform,
     private firestoreService: FirestoreService,
+    private callNumber: CallNumber
     
   ) {}
   
@@ -70,6 +72,10 @@ export class Tab3Page {
     }
     // Send a text message using default options
     this.emailComposer.open(email);
+  }
+
+  callPhone() {
+    this.callNumber.callNumber("18037777500", true).then(res => console.log('Launched dialer!', res)).catch(err => console.log('Error launching dialer', err));
   }
 
   /*openUrl(){

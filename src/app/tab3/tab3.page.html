@@ -38,9 +38,22 @@
         </ion-col>
       </ion-row>
 
+      <p class="ion-text-center">Contact Us</p>
       <ion-row>
         <ion-col>
-            <ion-button expand="block" fill="outline" color="kogerblue" (click)="sendEmail()">Contact Us</ion-button>
+          <ion-button expand="block" fill="outline" color="kogerblue" (click)="callPhone()">
+            <ion-icon name="call-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" fill="outline" color="kogerblue" (click)="sendEmail()">
+            <ion-icon name="mail-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" fill="outline" color="kogerblue" onclick="window.open('https://kogercenterforthearts.com')">
+            <ion-icon name="globe-outline"></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
