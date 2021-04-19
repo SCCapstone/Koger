@@ -8,11 +8,8 @@ const cors = require('cors')({ origin: true});
 
 admin.initializeApp();
 var options={ memory: '2GB', timeoutSeconds: 300, };
-const parse_description = (a_description) =>
-{
 
-}
-const findEventInfo = async (event_link) =>
+const findEventInfo = async (event_link, index) =>
 {
     const {JSDOM} = jsdom;
     const event_response = await fetch(event_link, {redirect: 'error'})
@@ -52,7 +49,8 @@ const findEventInfo = async (event_link) =>
                             description: event_desc,
                             dates: event_dates,
                             title: event_title,
-                            link: event_link
+                            link: event_link,
+                            index: index
                         });
                     }
                 })
@@ -74,7 +72,9 @@ exports.webScraper =
         const dom = new JSDOM(text);
 
         const allEvents = dom.window.document.querySelectorAll("div.col-sm-8")
+        var index = 0;
         allEvents.forEach(function(eventContainer){
+            ++index;
             const event_link_cont = eventContainer.querySelector("h3 > a");
             // console.log("EVENT LINK: " + event_link_cont.href);
             const event_link = "https://kogercenterforthearts.com/" + event_link_cont.href;
@@ -90,7 +90,7 @@ exports.webScraper =
                 const event_dates = event_dom.window.document.querySelector("span.date").textContent;
 
                 console.log(event_title + " " + event_dates + " \n" + event_link + " \n"); */
-            console.log("FINISHED " + findEventInfo(event_link));
+            console.log("FINISHED " + findEventInfo(event_link, index));
         });
     });
     return response.send("");
