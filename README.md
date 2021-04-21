@@ -4,9 +4,18 @@
 This app will help users find their seats in the Koger Center as well as provide other services relevant to the Koger Center and their showings.
 [Description Page](https://github.com/SCCapstone/Koger/wiki/Project-Description).
 
-## External Requirements
-In order to build this project, you will need:
-* [Node.js](https://nodejs.org/en/)
+## Screenshots
+<img src="https://user-images.githubusercontent.com/26389507/115489231-d4a6eb80-a229-11eb-98ca-4cdd485c94ff.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489230-d4a6eb80-a229-11eb-88a5-ef25ff1ff614.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489228-d40e5500-a229-11eb-9013-357acbe86d79.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489227-d40e5500-a229-11eb-863f-26c6b9261e23.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489234-d4a6eb80-a229-11eb-9d7c-4a4d75752d1f.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489226-d40e5500-a229-11eb-9890-eb7f47edaaa6.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489233-d4a6eb80-a229-11eb-8cc3-c204e3377f1f.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489219-d375be80-a229-11eb-83f0-db318507758c.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489223-d375be80-a229-11eb-8a19-6c76c1ea1002.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489221-d375be80-a229-11eb-9c47-ae28c0a84ae2.png">
+<img src="https://user-images.githubusercontent.com/26389507/115489224-d40e5500-a229-11eb-909e-adcca3963e3e.png">
 
 ## Setup
 To set up your environment to run this project, you will need to:
