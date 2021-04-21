@@ -1,4 +1,5 @@
 <img src="https://user-images.githubusercontent.com/26389507/115490357-f0ab8c80-a22b-11eb-8399-688774ed2934.jpg">
+### 1051 Greene St, Columbia, SC 29201
 
 ## Video Presentation
 Video coming soon... (April 26th)
@@ -29,10 +30,13 @@ Per the request of the Koger Center employees, this app will be released for dow
 
 * Ionic
 * Angular
+* Node.js
+* Google Firebase
 
 # Authors
-James Cochran - jdc7@email.sc.edu<br />
-Joshua Acree - jgacree@email.sc.edu<br />
-Tyler Beagle - wbeagle@email.sc.edu; tylerbeagle34@gmail.com - [LinkedIn](https://linkedin.com/in/warren-tyler-beagle-a50175195)<br />
-Justin Brown - justinhb@email.sc.edu<br />
-Devon Harant - dharant@email.sc.edu; devharant@gmail.com
+* James Cochran - jdc7@email.sc.edu<br />
+* Joshua Acree - jgacree@email.sc.edu<br />
+* Tyler Beagle - wbeagle@email.sc.edu; tylerbeagle34@gmail.com - [LinkedIn](https://linkedin.com/in/warren-tyler-beagle-a50175195)<br />
+* Justin Brown - justinhb@email.sc.edu - [LinkedIn](https://linkedin.com/in/justinhb)<br />
+* Devon Harant - dharant@email.sc.edu; devharant@gmail.com - [LinkedIn](https://linkedin.com/in/devonharant)<br /><br />
+Koger Center for the Arts - kogercenter@sc.edu - (803) 777-7500
