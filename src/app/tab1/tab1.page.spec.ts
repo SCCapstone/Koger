@@ -97,7 +97,7 @@ describe('Tab1Page', () => {
     let testIn : string = 'HCP: ADA Accessible';
 
     component.setRows(testIn);
-    expect<any>(component.rows).toEqual(['HCP: ADA Accessible']);
+    expect<any>(component.rows).toEqual(component.HCPseats);
   });
 
   /**Tests to see if rows are set correctly based on
@@ -108,9 +108,8 @@ describe('Tab1Page', () => {
     let testIn : string = "Deez";
 
     component.setRows(testIn);
-    component.setSeats(component.rows[0]);
 
-    expect<any>(component.seats).toEqual(['HCP Left', 'HCP Right']);
+    expect<any>(component.rows).toEqual(['HCP: Left', 'HCP: Right']);
   });
 
   /*Tests to see if seats are set based off 
@@ -119,7 +118,7 @@ describe('Tab1Page', () => {
     let testIn : string = 'HCP: ADA Accessible';
 
     component.setRows(testIn);
-    component.setSeats(testIn);
+    component.setSeats(component.rows[0]);
     expect<any>(component.seats).toBe(component.HCPseats);
   });
 
