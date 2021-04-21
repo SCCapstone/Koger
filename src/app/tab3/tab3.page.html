@@ -1,56 +1,65 @@
+<!-- Header -->
 <ion-header>
   <img src="../../assets/img/BlueKogerWoodmark.jpg">
 </ion-header>
 
+<!-- Content -->
 <ion-content [fullscreen]="true">
+  <!-- Card with the different information buttons-->
   <ion-card class="ion-padding">
     <ion-card-header>
       <ion-card-title class="ion-text-center">Information Center</ion-card-title>
     </ion-card-header>
+    <!-- Buttons -->
     <ion-grid>
       <ion-row>
         <ion-col>
+          <!-- Upcoming Events -->
           <ion-button expand="block" color="kogerblue" (click) = "jumpToEvents()">Upcoming Events</ion-button>
         </ion-col>
       </ion-row>
-  
       <ion-row>
         <ion-col>
+          <!-- Art -->
           <ion-button expand="block" color="kogerblue" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
         </ion-col>
       </ion-row>
-  
       <ion-row>
         <ion-col>
+          <!-- Parking -->
           <ion-button expand="block" color="kogerblue" (click) = "jumpToParking()">Parking Information</ion-button>
         </ion-col>
       </ion-row>
-  
       <ion-row>
         <ion-col>
+          <!-- ADA Accessibility -->
           <ion-button expand="block" color="kogerblue" (click) = "jumpToHandicapped()">ADA Accessibility</ion-button>
         </ion-col>
       </ion-row>
-  
       <ion-row>
         <ion-col>
+          <!-- Purchase Tickets -->
           <ion-button expand="block" color="kogerblue" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
         </ion-col>
       </ion-row>
 
+      <!-- Contact Us Section -->
       <p class="ion-text-center">Contact Us</p>
       <ion-row>
         <ion-col>
+          <!-- Phone -->
           <ion-button expand="block" fill="outline" color="kogerblue" (click)="callPhone()">
             <ion-icon name="call-outline"></ion-icon>
           </ion-button>
         </ion-col>
         <ion-col>
+          <!-- Email -->
           <ion-button expand="block" fill="outline" color="kogerblue" (click)="sendEmail()">
             <ion-icon name="mail-outline"></ion-icon>
           </ion-button>
         </ion-col>
         <ion-col>
+          <!-- Website -->
           <ion-button expand="block" fill="outline" color="kogerblue" onclick="window.open('https://kogercenterforthearts.com')">
             <ion-icon name="globe-outline"></ion-icon>
           </ion-button>
@@ -60,6 +69,7 @@
 
     <img src="../../assets/img/WhiteKogerWoodmark.jpg">
 
+    <!-- Admin Login Section -->
     <ion-grid>
       <ion-row>
         <ion-col>

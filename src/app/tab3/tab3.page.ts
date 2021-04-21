@@ -34,6 +34,8 @@ export class Tab3Page {
     
   ) {}
   
+  // Methods to route to different pages
+  // When the different buttons are clicked, the app is routed to different pages by these methods
   jumpToLogin()
   {
     if(!this.firestoreService.isLoggedIn) {
@@ -62,6 +64,7 @@ export class Tab3Page {
     this.route.navigate(['../handicapped']);
   }
 
+  // Method to send an email to the Koger Center
   sendEmail()
   {
     let email = {
@@ -74,6 +77,7 @@ export class Tab3Page {
     this.emailComposer.open(email);
   }
 
+  // Method to call the Koger Center
   callPhone() {
     this.callNumber.callNumber("18037777500", true).then(res => console.log('Launched dialer!', res)).catch(err => console.log('Error launching dialer', err));
   }
