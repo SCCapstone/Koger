@@ -56,6 +56,7 @@ export class AuthenticateService {
     return this.afAuth.user
   }
 
+  // Creates user in firestore under user tab
   SetUserData(user)
   {
       const userRef: AngularFirestoreDocument<any> = this.afStore.doc('users/${user.uid}');
@@ -67,6 +68,8 @@ export class AuthenticateService {
         merge: true
       })
   }
+
+  // Checks to see if a user exists
   userExists(){
     if(this.userData.id != null) {
       return true;

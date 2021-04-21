@@ -6,6 +6,7 @@ import 'firebase/firestore';
 import { Event } from '../../shared/event';
 import { Message } from '../../shared/message';
 import { Observable } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,27 @@ import { Observable } from 'rxjs';
 export class FirestoreService {
   notification: any;
   isLoggedIn: boolean;
-  constructor(public firestore: AngularFirestore) { 
+  constructor(public firestore: AngularFirestore, public alertController: AlertController) { 
     this.isLoggedIn = false;
   }
+ // Creates alert for when an event already exists
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Event exists',
+      subHeader: 'The event you are creating already exists',
+      message: 'Overwriting...',
+      buttons: ['OK']
+    });
+    console.log("HERE!");
+    await alert.present();
 
-  getEventData(): Observable<Event[]> {
-    return this.firestore.collection<Event>('Event').valueChanges();
   }
+  /*  Returns event data in order of index from Firestore 
+      (index is based on order of events pulled from https://kogercenterforthearts.com/upcoming.php) */
+  getEventData(): Observable<Event[]> {
+    return this.firestore.collection<Event>('Event', ref=> ref.orderBy("index")).valueChanges();
+  }
+  // Updates events based on changes to Firestore
   read_events() {
     return this.firestore.collection('Event').snapshotChanges();
   }
@@ -32,6 +47,8 @@ export class FirestoreService {
     return this.firestore.collection('push').doc('message').update({ title: title, body: body});
   }
   
+  /*Event is created using provided information from user in Firestore
+    If the event already exists then it notifies the user and overwrites the data of the previous event*/
   createEvent(
     title: string,
     description: string,
@@ -39,6 +56,10 @@ export class FirestoreService {
     link: string,
     tag: string,
   ): Promise<void> {
+    this.firestore.doc('Event/' + title).ref.get().then((documentSnapshot) => {
+      console.log('Event exists ovewriting');
+      this.presentAlert();
+    })
     return this.firestore.doc('Event/' + title).set({
       title,
       description,
@@ -46,8 +67,9 @@ export class FirestoreService {
       link,
       tag
     });
+
   }
-  
+  // Deletes an event from the Firestore database given the event's title
   deleteEvent(
     eventName: string
   ): Promise<void> {
@@ -73,6 +95,7 @@ export class FirestoreService {
     return;
   }
 
+  // Editing event function that provided with new data updates the existing event.
   editEvent(title: string,
     new_description: string,
     new_dates: string,

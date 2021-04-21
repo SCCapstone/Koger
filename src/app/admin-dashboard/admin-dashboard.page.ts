@@ -27,10 +27,12 @@ export class AdminDashboardPage implements OnInit {
       console.log('error', err);
     })
   }
+
   createEvent()
   {
     this.router.navigate(['create-event']);
   }
+
   editEvent()
   {
     this.router.navigate(['edit-event']);
@@ -40,6 +42,8 @@ export class AdminDashboardPage implements OnInit {
   {
     this.router.navigate(['send-push']);
   }
+  
+  // Logs out user and redirects to previous page
   logOut()
   {
     this.authService.logoutUser();

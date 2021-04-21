@@ -27,6 +27,8 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -49,7 +51,8 @@ import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-na
     BarcodeScanner,
     SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    LaunchNavigator
+    LaunchNavigator,
+    CallNumber
   ],
   bootstrap: [AppComponent]
 })
