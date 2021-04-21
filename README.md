@@ -1,5 +1,5 @@
 <img src="https://user-images.githubusercontent.com/26389507/115490357-f0ab8c80-a22b-11eb-8399-688774ed2934.jpg">
-### 1051 Greene St, Columbia, SC 29201
+1051 Greene St, Columbia, SC 29201
 
 ## Video Presentation
 Video coming soon... (April 26th)
