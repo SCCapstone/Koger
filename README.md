@@ -4,8 +4,9 @@
 Video coming soon... (April 26th)
 
 ## Project Description
-The employees at the Koger Center wanted an app to be made so that patrons will be able to put in their ticket information before coming to the Koger Center so they know how to get to their seats.  With this app, a user can put in their section and row (both of these are required) and seat number (optional) to get a detailed description of how to get to their seats.<br />
-Also, with this app, there is an admin login that takes registered admins to a dashborad where they can add events, edit/delete events, and send push notifications to users.  Finally, there is additional functionality we added in to make the app useful for multiple uses.  The upcoming events from the Koger Center website are scraped and addded to this app; parking information is included with links to navigation; events can be shared on social media; the rotating art gallery and art audio tour are included; and the users can contact the Koger Center through phone, email, or access the Koger Center website on the app.
+The employees at the Koger Center wanted an app to be made so that patrons will be able to put in their ticket information before coming to the Koger Center so they know how to get to their seats.  With this app, a user can put in their section and row (both of these are required) and seat number (optional) to get a detailed description of how to get to their seats.<br /><br />
+Also, with this app, there is an admin login that takes registered admins to a dashborad where they can add events, edit/delete events, and send push notifications to users.  Finally, there is additional functionality we added in to make the app useful for multiple uses.  The upcoming events from the Koger Center website are scraped and addded to this app; parking information is included with links to navigation; events can be shared on social media; the rotating art gallery and art audio tour are included; and the users can contact the Koger Center through phone, email, or access the Koger Center website on the app.<br /><br />
+Per the request of the Koger Center employees, this app will be released for download on the Google Play Store (Android devices) and the Apple App Store (Apple devices)
 
 * [Description Page](https://github.com/SCCapstone/Koger/wiki/Project-Description).
 
@@ -23,6 +24,11 @@ Also, with this app, there is an admin login that takes registered admins to a d
 <img src="https://user-images.githubusercontent.com/26389507/115489223-d375be80-a229-11eb-8a19-6c76c1ea1002.png" width=200>
 <img src="https://user-images.githubusercontent.com/26389507/115489221-d375be80-a229-11eb-9c47-ae28c0a84ae2.png" width=200>
 <img src="https://user-images.githubusercontent.com/26389507/115489224-d40e5500-a229-11eb-909e-adcca3963e3e.png" width=200>
+
+## Technologies Used
+
+* Ionic
+* Angular
 
 # Authors
 James Cochran - jdc7@email.sc.edu<br />
