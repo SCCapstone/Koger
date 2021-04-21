@@ -84,4 +84,85 @@ describe('Tab1Page', () => {
     expect<any>(component.seat.row).toBe(null);
     expect<any>(component.seat.seatNum).toBe(null);
   });
+
+  /*Tests to see if HCP seating input goes thru
+    loop correctly and return HCP correctly*/
+
+  //only discrepancy i am now noticing is 
+  //given any input into setRows, anything that isn't
+  //R/L ORC, R/L BAL, and R/L GT will set the seats to 
+  //HCP seats, but in actuality the input is controlled 
+  //through the UI by providing a list of section to choose
+  it('should set rows to proper HCP input', () => {
+    let testIn : string = 'HCP: ADA Accessible';
+
+    component.setRows(testIn);
+    expect<any>(component.rows).toEqual(['HCP: ADA Accessible']);
+  });
+
+  /**Tests to see if rows are set correctly based on
+   * given input of HCP sections
+   * going to use methods to build upon each other
+   */
+  it('should set correct seats based on HCP input', () =>{
+    let testIn : string = "Deez";
+
+    component.setRows(testIn);
+    component.setSeats(component.rows[0]);
+
+    expect<any>(component.seats).toEqual(['HCP Left', 'HCP Right']);
+  });
+
+  /*Tests to see if seats are set based off 
+    rows generated from another method*/
+  it('should set correct HCP seats based on rows', () =>{
+    let testIn : string = 'HCP: ADA Accessible';
+
+    component.setRows(testIn);
+    component.setSeats(testIn);
+    expect<any>(component.seats).toBe(component.HCPseats);
+  });
+
+  /*Tests to see if the correct picture is selected 
+   * based on seat section selection
+   */
+  it('should set the correct image based on section', () =>{
+    component.seat.section = 'RORC: Right Orchestra';
+    component.seat.row = 'E';
+    component.seat.seatNum = '24';
+
+    component.generateSectionView();
+    expect<any>(component.sectionView).toEqual('<img src="../../assets/img/RORC.jpg"/>');
+  });
+
+  /**Tests to see if RHCP brings up the same as RORC
+   * as defined in the ts file
+   */
+   it('should provide correct section view image for RHCP', () =>{
+    component.seat.seatNum = 'HCP Right';
+
+    component.generateSectionView();
+    expect<any>(component.sectionView).toEqual('<img src="../../assets/img/RORC.jpg"/>');
+    component.sectionView = '';
+  });
+  
+  /*Tests to see if correct picture selected based on
+   * non listed inputs
+   */
+  it('should select uofsc logo given insignificant input', () =>{
+    component.seat.section = 'random';
+
+    component.generateSectionView();
+    expect<any>(component.sectionView).toEqual('<img src="../../assets/img/uofsclogo.jpg"/>');
+  });
+
+  /**Tests to see if remove seat selection method 
+   * works properly
+   */
+  it('should remove seat selection properly', () =>{
+    component.seat.seatNum = '14';
+
+    component.removeSeatSelection();
+    expect<any>(component.seat.seatNum).toEqual(null);
+  });
 });

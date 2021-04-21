@@ -4,6 +4,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { AdminLoginPage } from './admin-login.page';
 
+import { InjectionToken } from '@angular/core';
+
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 describe('AdminLoginPage', () => {
   let component: AdminLoginPage;
   let fixture: ComponentFixture<AdminLoginPage>;
@@ -11,7 +17,8 @@ describe('AdminLoginPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminLoginPage ],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule, RouterTestingModule]
+      imports: [IonicModule.forRoot(), ExploreContainerComponentModule, RouterTestingModule],
+      providers:[AngularFireModule, AngularFirestore, AngularFirestore]
     }).compileComponents();
   }));
 

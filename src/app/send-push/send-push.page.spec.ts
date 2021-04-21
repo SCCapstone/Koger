@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { FirestoreService } from '../services/data/firestore.service';
 import { SendPushPage } from './send-push.page';
 
 describe('SendPushPage', () => {
@@ -21,4 +21,5 @@ describe('SendPushPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });
