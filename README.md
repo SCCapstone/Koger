@@ -5,8 +5,8 @@ This app will help users find their seats in the Koger Center as well as provide
 [Description Page](https://github.com/SCCapstone/Koger/wiki/Project-Description).
 
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/26389507/115489231-d4a6eb80-a229-11eb-98ca-4cdd485c94ff.png" width=50>
-<img src="https://user-images.githubusercontent.com/26389507/115489230-d4a6eb80-a229-11eb-88a5-ef25ff1ff614.png" width=50>
+<img src="https://user-images.githubusercontent.com/26389507/115489231-d4a6eb80-a229-11eb-98ca-4cdd485c94ff.png" width=200>
+<img src="https://user-images.githubusercontent.com/26389507/115489230-d4a6eb80-a229-11eb-88a5-ef25ff1ff614.png" width=200>
 <img src="https://user-images.githubusercontent.com/26389507/115489228-d40e5500-a229-11eb-9013-357acbe86d79.png">
 <img src="https://user-images.githubusercontent.com/26389507/115489227-d40e5500-a229-11eb-863f-26c6b9261e23.png">
 <img src="https://user-images.githubusercontent.com/26389507/115489234-d4a6eb80-a229-11eb-9d7c-4a4d75752d1f.png">
