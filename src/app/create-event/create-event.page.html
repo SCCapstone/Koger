@@ -23,7 +23,7 @@
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.eventName">
-          <div class="error-message" *ngIf="createEventForm.get('eventName').hasError(validation.type) && (createEventForm.get('eventName').dirty || createEventForm.get('eventName').touched)">
+          <div id ="title-error" class="error-message" *ngIf="createEventForm.get('eventName').hasError(validation.type) && (createEventForm.get('eventName').dirty || createEventForm.get('eventName').touched)">
             {{ validation.message }}
           </div>
         </ng-container>
@@ -35,7 +35,7 @@
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.eventDescription">
-          <div class="error-message" *ngIf="createEventForm.get('eventDescription').hasError(validation.type) && (createEventForm.get('eventDescription').dirty || createEventForm.get('eventDescription').touched)">
+          <div id ="desc-error" class="error-message" *ngIf="createEventForm.get('eventDescription').hasError(validation.type) && (createEventForm.get('eventDescription').dirty || createEventForm.get('eventDescription').touched)">
             {{ validation.message }}
           </div>
         </ng-container>
@@ -47,7 +47,7 @@
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.dates">
-          <div class="error-message" *ngIf="createEventForm.get('dates').hasError(validation.type) && (createEventForm.get('dates').dirty || createEventForm.get('dates').touched)">
+          <div id = "dates-error" class="error-message" *ngIf="createEventForm.get('dates').hasError(validation.type) && (createEventForm.get('dates').dirty || createEventForm.get('dates').touched)">
             {{ validation.message }}
           </div>
         </ng-container>
@@ -64,7 +64,7 @@
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.tag">
-          <div class="error-message" *ngIf="createEventForm.get('tag').hasError(validation.type) && (createEventForm.get('tag').dirty || createEventForm.get('tag').touched)">
+          <div id="tag-error" class="error-message" *ngIf="createEventForm.get('tag').hasError(validation.type) && (createEventForm.get('tag').dirty || createEventForm.get('tag').touched)">
             {{ validation.message }}
           </div>
         </ng-container>
@@ -77,12 +77,12 @@
 
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.link">
-          <div class="error-message" *ngIf="createEventForm.get('link').hasError(validation.type) && (createEventForm.get('link').dirty || createEventForm.get('link').touched)">
+          <div id ="link-error" class="error-message" *ngIf="createEventForm.get('link').hasError(validation.type) && (createEventForm.get('link').dirty || createEventForm.get('link').touched)">
             {{ validation.message }}
           </div>
         </ng-container>
       </div>
-      <ion-button expand="block" type="submit" color="kogerblue" [disabled]="!createEventForm.valid">Add Event</ion-button>
+      <ion-button id="submit-btn" expand="block" type="submit" color="kogerblue" [disabled]="!createEventForm.valid">Add Event</ion-button>
     </form>
     <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
   </ion-card>
