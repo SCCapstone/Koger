@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <ion-card class="ion-padding">
     <ion-card-header>
-      <ion-card-title class="ion-text-center">Add an Event</ion-card-title>
+      <ion-card-title id="create-event-title" class="ion-text-center">Add an Event</ion-card-title>
       <ion-card-subtitle class="ion-text-center">Enter Information Below</ion-card-subtitle>
     </ion-card-header>
     <form [formGroup] = "createEventForm" (submit)="createEvent()">
