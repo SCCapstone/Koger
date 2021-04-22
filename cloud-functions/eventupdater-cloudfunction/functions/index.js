@@ -25,7 +25,7 @@ const findEventInfo = async (event_link, index) =>
                 const all_description = event_dom.window.document.querySelectorAll("div.col-md-8 > div > p");
                 all_description.forEach(function(description_container)
                 {
-                    // description_container = description_container.textContent(/&nbsp;/gi, '');
+                  
                     const a_description = description_container.textContent;
         
                     event_desc = event_desc + " " + a_description;
@@ -39,10 +39,7 @@ const findEventInfo = async (event_link, index) =>
                             eventRef.set({
                                 updatedAt: new Date()
                             }, {merge: true})
-                    /*let new_dates = docSnapshot.data().dates + " " + event_dates;
-                    eventRef.update({
-                    dates: new_dates
-                    }); */
+                   
                     } else {
                         eventRef.set({
                             updatedAt: new Date(),
@@ -59,7 +56,7 @@ const findEventInfo = async (event_link, index) =>
 
 exports.webScraper = 
     functions.runWith({options}).https.onRequest( async (request, response) => {
-    //functions.runWith(options).pubsub.schedule('every 120 minutes').onRun(async (request, response) => {
+
 
     cors(request, response, async () => {
         const base_url = "https://kogercenterforthearts.com/upcoming.php";
@@ -76,20 +73,9 @@ exports.webScraper =
         allEvents.forEach(function(eventContainer){
             ++index;
             const event_link_cont = eventContainer.querySelector("h3 > a");
-            // console.log("EVENT LINK: " + event_link_cont.href);
+           
             const event_link = "https://kogercenterforthearts.com/" + event_link_cont.href;
-            // console.log("EVENT LINK FORMATTED: " + event_link);
-            /* const event_response = fetch(event_link, {redirect: 'error'})
-                .catch(error => {
-                    console.log("Event could not be fetched");
-                });
-                const event_text = event_response.text();
-                const event_dom = new JSDOM(event_text);const event_desc = "";
-
-                const event_title = event_dom.window.document.querySelector("span.eventtitle").textContent;
-                const event_dates = event_dom.window.document.querySelector("span.date").textContent;
-
-                console.log(event_title + " " + event_dates + " \n" + event_link + " \n"); */
+           
             console.log("FINISHED " + findEventInfo(event_link, index));
         });
     });
