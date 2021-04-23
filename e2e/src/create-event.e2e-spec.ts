@@ -32,4 +32,7 @@ describe('create event page behaviours', () => {
     it('Submit button should not be clickable with no data', ()=> {
         expect(createEventPage.isSubmitClickableWithNoInformation());
     })
+    it('Submit button should be clickable and redirect to admin dashboard', () => {
+        expect(createEventPage.isSubmitClickableWithInformation());
+    })
 });

@@ -5,42 +5,42 @@
 <ion-content [fullscreen]="true">
   <ion-card class="ion-padding">
     <ion-card-header>
-      <ion-card-title class="ion-text-center">Information Center</ion-card-title>
+      <ion-card-title id="info-title" class="ion-text-center">Information Center</ion-card-title>
     </ion-card-header>
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToEvents()">Upcoming Events</ion-button>
+          <ion-button id="upcomingEvents" expand="block" color="kogerblue" (click) = "jumpToEvents()">Upcoming Events</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
+          <ion-button id="art" expand="block" color="kogerblue" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToParking()">Parking Information</ion-button>
+          <ion-button id="parking" expand="block" color="kogerblue" (click) = "jumpToParking()">Parking Information</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToHandicapped()">ADA Accessibility</ion-button>
+          <ion-button id="ADA" expand="block" color="kogerblue" (click) = "jumpToHandicapped()">ADA Accessibility</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
+          <ion-button id="ticket" expand="block" color="kogerblue" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
-            <ion-button expand="block" fill="outline" color="kogerblue" (click)="sendEmail()">Contact Us</ion-button>
+            <ion-button id="contact" expand="block" fill="outline" color="kogerblue" (click)="sendEmail()">Contact Us</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

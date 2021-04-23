@@ -39,7 +39,6 @@ describe('admin-dashboard-behaviors', ()=> {
         adminDashboardPage.clickLogOut();
         browser.driver.sleep(1000);
         browser.waitForAngular();
-        var EC = protractor.ExpectedConditions;
         var scrollToScript = 'document.getElementById("admin-login-btn").scrollIntoView();';
         var loginButton = element(by.id('admin-login-btn'));
         browser.driver.executeScript(scrollToScript).then(function () {

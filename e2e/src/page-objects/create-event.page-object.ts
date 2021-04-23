@@ -1,4 +1,4 @@
-import { browser, element, by} from 'protractor';
+import { browser, element, by, ExpectedConditions, protractor} from 'protractor';
 
 export class CreateEventPageObject {
     navigateTo() {
@@ -49,11 +49,31 @@ export class CreateEventPageObject {
         return !submit_btn.isEnabled();
     }
     isSubmitClickableWithInformation(){
+        let title = "test_title";
+        let desc = "test_description";
+        let date = "test_date";
+        let link = "https://kogercenterforthearts.com/event.php?id=981"
         var title_input = element(by.css('ion-input[formControlName="eventName"] input'));
         var desc_input = element(by.css('ion-input[formControlName="eventDescription"] input'));
-        var tag_input = element(by.css('ion-select'));
+        var tag_select_input = element(by.css('#alert-input-1-1'));
         var date_input = element(by.css('ion-input[formControlName="dates"] input'));
+        var link_input = element(by.css('ion-input[formControlName="link"] input'));
+        var tag_input = element(by.css('ion-select'));
+        var ok_btn = element(by.css('div.alert-button-group.sc-ion-alert-md > button:nth-child(2)'));
         var submit_btn = element(by.css('#submit-btn'));
-    }
 
+        title_input.sendKeys(title);
+        desc_input.sendKeys(desc);
+        date_input.sendKeys(date);
+        link_input.sendKeys(link);
+        tag_input.click();
+        browser.driver.sleep(1000);
+        tag_select_input.click();
+        browser.driver.sleep(1000);
+        ok_btn.click();
+        browser.driver.sleep(1000);
+        submit_btn.click();
+
+        return browser.wait(protractor.ExpectedConditions.urlContains("admin-dashboard"), 5000);
+    }
 }
