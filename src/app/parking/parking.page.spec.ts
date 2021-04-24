@@ -11,7 +11,8 @@ describe('ParkingPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ParkingPage ],
-      imports: [IonicModule.forRoot(), RouterTestingModule]
+      imports: [IonicModule.forRoot(), RouterTestingModule],
+      providers: [LaunchNavigator]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ParkingPage);

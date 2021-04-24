@@ -1,5 +1,5 @@
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { Config, IonicModule } from '@ionic/angular';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -9,6 +9,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { Tab3Page } from './tab3.page';
+import { environment } from 'src/environments/environment';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { FormBuilder } from '@angular/forms';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 
 describe('Tab3Page', () => {
@@ -23,8 +27,9 @@ describe('Tab3Page', () => {
         RouterTestingModule, 
         AngularFireAuthModule, 
         AngularFireModule,
-        AngularFirestoreModule],
-      providers: [AngularFireAuthModule]
+        AngularFirestoreModule,
+        AngularFireModule.initializeApp(environment.firebase)],
+      providers: [AngularFireAuthModule, EmailComposer, FormBuilder, CallNumber]
     }).compileComponents();
   }));
 
