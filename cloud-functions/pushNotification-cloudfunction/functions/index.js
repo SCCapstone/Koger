@@ -25,7 +25,14 @@ exports.onPushUpdate = functions.firestore
 async function sendNotifications(title_msg, body_msg) {
   // Queries the Users collection to grab 
   const snapshot_tokens = await admin.firestore().collection('Users').get()
-  var tokens = snapshot_tokens.docs.map(doc => doc.data());
+  var all_tokens = snapshot_tokens.docs.map(doc => doc.data());
+  
+  // Ensures unique tokens
+  var tokens = Array.from(new Set(all_tokens.map(a => a.token)))
+    .map(token => {
+      return all_tokens.find(a => a.token === token)
+    });
+    
   for (var i = 0; i < tokens.length; i++) {
     var tokenMsg = tokens[i];
     // How to parse the token object returned from doc.data()
