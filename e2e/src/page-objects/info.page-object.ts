@@ -7,6 +7,7 @@ export class InfoPageObject {
     getCreatePageTitle() {
         return element(by.id('infoTitle')).getText();
     }
+    // Methods below click through routing on the info page to make sure each link works
     clickUpcomingEvents() {
         var upcomingEvents_btn = element(by.id('upcomingEvents'));
         upcomingEvents_btn.click();

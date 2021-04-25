@@ -6,13 +6,13 @@
   <ion-card class="ion-padding">
     <ion-grid>
       <ion-card-header>
-        <ion-card-title class="ion-text-center">Enter Ticket Information:</ion-card-title>
+        <ion-card-title id="ticket-title" class="ion-text-center">Enter Ticket Information:</ion-card-title>
         <ion-card-subtitle class="ion-text-center">Section and Row Required</ion-card-subtitle>
       </ion-card-header>
       <form class="form" [formGroup]="validations_form">
       <ion-item>
         <ion-label floating>Section</ion-label>
-        <ion-select [(ngModel)]="seat.section" (ngModelChange)="setRows(seat.section)" formControlName="section" name="Section">
+        <ion-select id="SectionSelect" [(ngModel)]="seat.section" (ngModelChange)="setRows(seat.section)" formControlName="section" name="Section">
           <ion-select-option *ngFor="let i of sections">{{ i }}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -30,7 +30,7 @@
       </ion-row>
       <ion-item>
         <ion-label floating>Row</ion-label>
-        <ion-select [(ngModel)]="seat.row" (ngModelChange)="setSeats(seat.row)" formControlName="row" name="Row">
+        <ion-select id="RowSelect" [(ngModel)]="seat.row" (ngModelChange)="setSeats(seat.row)" formControlName="row" name="Row">
           <ion-select-option *ngFor="let i of rows">{{ i }}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -49,7 +49,7 @@
       </form>
       <ion-item>
         <ion-label floating>Seat Number: </ion-label>
-        <ion-select [(ngModel)]="seat.seatNum" name="SeatNum">
+        <ion-select id="SeatSelect" [(ngModel)]="seat.seatNum" name="SeatNum">
           <ion-select-option *ngFor="let i of seats">{{ i }}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -66,7 +66,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" type="submit" (click)="goToSeatDescription()" [disabled]="!validations_form.valid">Find Seat</ion-button>
+          <ion-button id="submitbtn" expand="block" color="kogerblue" type="submit" (click)="goToSeatDescription()" [disabled]="!validations_form.valid">Find Seat</ion-button>
         </ion-col>
       </ion-row>
 

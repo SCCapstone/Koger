@@ -56,7 +56,8 @@ export class FirestoreService {
     link: string,
     tag: string,
   ): Promise<void> {
-    //Attempts to update if it cannot then it creates a new doc
+    //Attempts to update if it cannot then it creates a new doc and pushes that doc to the end of the upcoming events
+    let index = 100;
     return this.firestore.doc('Event/' + title).update({
       title,
       description,
@@ -75,7 +76,8 @@ export class FirestoreService {
         description,
         dates,
         link,
-        tag
+        tag,
+        index
       })
     });
 

@@ -8,7 +8,7 @@ describe('info-behavior', () => {
         
         infoPage.navigateTo();
     });
-
+    // Checks routing of all buttons for this page
     it('Clicking upcoming events redirects to that page', ()=> {
         infoPage.clickUpcomingEvents();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("upcoming-events"), 5000));

@@ -7,8 +7,9 @@ describe('edit-and-delete-behaviors', () => {
         editEventPage = new EditEventPageObject();
         editEventPage.navigateTo();
     });
+    // Checks deleting and editing events
     it('Edit the test event', () => {
-        expect(editEventPage.editTestEvent()).toBe(0);
+        expect(editEventPage.editTestEvent());
     });
     it('Delete the test event', ()=> {
         expect(editEventPage.deleteTestEvent());

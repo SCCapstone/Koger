@@ -6,11 +6,12 @@ export class AdminLoginPageObject {
     navigateTo() {
         return browser.get('/admin-login');
     }
-    
+    //Returns admin page title
     getAdminPageTitle() {
         return element(by.css('#admin-title')).getText();
     }
 
+    //Uses provided log in information to check to make sure user is able to enter information and log in to page
     loginSuccessAdminPage() {
         let username = "jgeneacree@gmail.com";
         let password = "123456";
@@ -23,6 +24,7 @@ export class AdminLoginPageObject {
         return;
     }
 
+    //Returns element with error message given incorrect information
     loginUnsuccessfulAdminPage() {
         let username = "jgacree@gmail.com";
         let password = "123456";

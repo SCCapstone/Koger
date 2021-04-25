@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,  Validators, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { FirestoreService } from '../services/data/firestore.service';
 @Component({
@@ -17,14 +18,15 @@ export class CreateEventPage implements OnInit {
     public alertCtrol:AlertController, 
     private firestoreService: FirestoreService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private location: Location
     ) { 
       this.createEventForm = formBuilder.group({
       eventName: ['', Validators.required],
       eventDescription: ['', Validators.required],
       link: ['', Validators.compose([Validators.pattern('(http|https)://kogercenterforthearts.com/(.*)'), Validators.required])],
       tag: ['', Validators.required],
-      dates: ['', Validators.required]
+      dates: ['', Validators.required],
     });
   }
   ngOnInit() {
@@ -65,7 +67,8 @@ export class CreateEventPage implements OnInit {
     then(
       () => {
         loading.dismiss().then(()=> {
-          this.router.navigateByUrl('admin-dashboard');
+          //this.router.navigateBack('admin-dashboard');
+          this.location.back();
         });
       },
       error => {

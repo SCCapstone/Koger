@@ -7,6 +7,7 @@ export class MapsPageObject {
     getCreatePageTitle() {
         return element(by.id('mapsTitle')).getText();
     }
+    // Methods below click through each of the links below to make sure routing works
     clickLobbyMap() {
         var lobbyMap_btn = element(by.id('lobbyMap'));
         lobbyMap_btn.click();

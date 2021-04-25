@@ -7,6 +7,7 @@ export class EditEventPageObject {
     getCreatePageTitle() {
         return element(by.css('#edit-event-title')).getText();
     }
+    //Checks editing event to see if new test event is edited
     editTestEvent(){
         browser.waitForAngular();
         var scrollToScript = 'document.getElementById("bottomimage").scrollIntoView();';
@@ -19,15 +20,18 @@ export class EditEventPageObject {
             return test_event_title.isDisplayed();
         })
     }
+    //Checks deleting events by returning error if delete button is not clickable and does not return
     deleteTestEvent(){
         browser.waitForAngular();
         var scrollToScript = 'document.getElementById("bottomimage").scrollIntoView();';
         browser.executeScript(scrollToScript).then(function() {
             var test_event_delete_button = element(by.css('#test_date'));
-            test_event_delete_button.click();
-            browser.driver.sleep(1000);
-            element.all(by.id('Broadway')).then(function(items) {
-                return items.length;
+            test_event_delete_button.click().then(() => {
+                browser.driver.sleep(1000);
+                return true;
+            }).catch((error) => {
+                console.log(error);
+                return false;
             });
         })
     }

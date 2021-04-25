@@ -14,7 +14,7 @@ describe('admin-dashboard-behaviors', ()=> {
     it('Admin Dashboard Title Should be Correct', () => {
         expect(adminDashboardPage.getAdminPageTitle()).toContain("Admin Dashboard");
     });
-
+    // Tests below check routing by clicking the buttons on the page
     it('Clicking on Add an Event redirects to that page', () => {
         adminDashboardPage.clickAddAnEvent();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("create-event"), 5000));
@@ -29,7 +29,7 @@ describe('admin-dashboard-behaviors', ()=> {
         adminDashboardPage.clickSendPushNotifications();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("send-push"), 5000));
     });
-
+    // Tests below ensures routing for logout and requires user to relogin after logging out
     it('Clicking on Logout redirects user to correct page', () => {
         adminDashboardPage.clickLogOut();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("tab3"), 5000));

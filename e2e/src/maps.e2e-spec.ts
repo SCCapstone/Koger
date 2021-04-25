@@ -8,7 +8,7 @@ describe('maps-behavior', () => {
         
         mapsPage.navigateTo();
     });
-
+    // Checks routing for all buttons on this page
     it('Clicking lobby map redirects to that page', ()=> {
         mapsPage.clickLobbyMap();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("map-lobby"), 5000));
