@@ -7,6 +7,7 @@ import { Event } from '../../shared/event';
 import { Message } from '../../shared/message';
 import { Observable } from 'rxjs';
 import { AlertController } from '@ionic/angular';
+import { element } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -56,16 +57,27 @@ export class FirestoreService {
     link: string,
     tag: string,
   ): Promise<void> {
-    this.firestore.doc('Event/' + title).ref.get().then((documentSnapshot) => {
-      console.log('Event exists ovewriting');
-      this.presentAlert();
-    })
-    return this.firestore.doc('Event/' + title).set({
+    //Attempts to update if it cannot then it creates a new doc
+    return this.firestore.doc('Event/' + title).update({
       title,
       description,
       dates,
       link,
       tag
+      // Event exists
+    }).then(()=> {
+      console.log("EXISTS");
+      this.presentAlert();
+      // Event does not exist
+    }).catch((error) => {
+      console.log("DOES NOT EXIST");
+      return this.firestore.doc('Event/' + title).set({
+        title,
+        description,
+        dates,
+        link,
+        tag
+      })
     });
 
   }

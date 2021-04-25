@@ -11,12 +11,12 @@
 <ion-content [fullscreen]="true">
   <ion-card class="ion-padding">
     <ion-card-header>
-      <ion-card-title class="ion-text-center">Admin Dashboard</ion-card-title>
+      <ion-card-title class="ion-text-center" id="admin-dashboard-title">Admin Dashboard</ion-card-title>
     </ion-card-header>
-    <ion-button type="submit" (click)="createEvent()" expand="block" color="kogerblue">Add an Event</ion-button>
-    <ion-button type="submit" (click)="editEvent()" expand="block" color="kogerblue">Edit or Delete an Event</ion-button>
-    <ion-button type="submit" (click)="sendPush()" expand="block" color="kogerblue">Send Push Notification</ion-button>
-    <ion-button type="submit" (click)="logOut()" expand="block" color="kogerblue">Logout</ion-button>
+    <ion-button id="create-event-btn" type="submit" (click)="createEvent()" expand="block" color="kogerblue">Add an Event</ion-button>
+    <ion-button id="edit-event-btn" type="submit" (click)="editEvent()" expand="block" color="kogerblue">Edit or Delete an Event</ion-button>
+    <ion-button id="send-push-notifications-btn" type="submit" (click)="sendPush()" expand="block" color="kogerblue">Send Push Notification</ion-button>
+    <ion-button id="log-out-btn" type="submit" (click)="logOut()" expand="block" color="kogerblue">Logout</ion-button>
     <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
   </ion-card>
 </ion-content>

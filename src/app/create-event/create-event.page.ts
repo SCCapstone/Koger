@@ -65,7 +65,7 @@ export class CreateEventPage implements OnInit {
     then(
       () => {
         loading.dismiss().then(()=> {
-          this.router.navigateByUrl('edit-event');
+          this.router.navigateByUrl('admin-dashboard');
         });
       },
       error => {
