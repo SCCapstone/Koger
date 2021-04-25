@@ -4,6 +4,14 @@
 This app will help users find their seats in the Koger Center as well as provide other services relevant to the Koger Center and their showings.
 [Description Page](https://github.com/SCCapstone/Koger/wiki/Project-Description).
 
+# Technologies
+This project has the following dependencies:  
+* [Ionic Framework](https://ionicframework.com/)
+* [Node.js](https://nodejs.org/en/)
+
+Google Firebase is used for our backend database:
+* [Google Firebase](https://firebase.google.com/)
+
 ## External Requirements
 In order to build this project, you will need:
 * [Node.js](https://nodejs.org/en/)
@@ -23,7 +31,12 @@ To launch the app, run the following command in a terminal from the project root
 This command will serve the app on a port and open it in a web browser.
 
 # Deployment
-**Coming soon**
+Deploying the app is made easy using Ionic Framework and [Android Studio](https://developer.android.com/studio) 
+* Run `ionic build` in a terminal from the project root
+* Run `npx cap sync` in a terminal from the project root
+* Run `npx cap copy android` in a terminal from the project root
+* Run `npx cap open android` in a terminal from the project root
+* Following the last command Android Studio will open if installed, then the app can be built and deployed through the standard Android Studio workflow
 
 # Testing
 
@@ -33,16 +46,12 @@ Unit tests can be executed by running the following command in a terminal from t
 
 The results of these tests are printed out in the browser the testing software opens and in the terminal.
 
-Our first unit test for the initial deadline is included in `Koger/src/app/tab1/tab1.page.spec.ts`
-
 ### Behavior Testing
 Behavior tests can be executed by running the following command in a terminal from the project root:
 * `npm run e2e`
 
 This command will open up a browser which will very quickly simulate an user clicking through the app.
 The results of the test are printed out in the terminal once completed.
-
-Our first behavior test for the initial deadline is included in `Koger/e2e/src/tab.e2e-spec.ts`
 
 # Authors
 James Cochran - jdc7@email.sc.edu<br />
