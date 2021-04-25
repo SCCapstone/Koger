@@ -18,6 +18,6 @@ describe('FirestoreService', () => {
   });
 
   it('should be created', () => {
-    expect(true).toBeTruthy();
+    expect(service).toBeTruthy();
   });
 });

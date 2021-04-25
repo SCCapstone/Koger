@@ -8,12 +8,13 @@ describe('AuthenticateService', () => {
   let service: AuthenticateService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [AngularFireModule.initializeApp(environment.firebase)]
+    TestBed.configureTestingModule({ 
+      providers: [AngularFireModule.initializeApp(environment.firebase)]
     });
     service = TestBed.inject(AuthenticateService);
   });
 
   it('should be created', () => {
-    expect(true).toBeTruthy();
+    expect(service).toBeTruthy();
   });
 });
