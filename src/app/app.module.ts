@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -9,7 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
@@ -32,14 +34,17 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
   entryComponents: [],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     BrowserModule,
     HttpClientModule, 
     IonicModule.forRoot(), 
-    AppRoutingModule,
-    AngularFireAuthModule
+    AppRoutingModule
   ],
   providers: [
     StatusBar,
+    AngularFirestore,
+    AngularFirestoreModule,
     SplashScreen,
     EmailComposer,
     PhotoViewer,

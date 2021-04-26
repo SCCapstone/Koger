@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 
 // Importing Launch Navigator from Ionic Native to lauch navigation on device
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
@@ -8,6 +8,7 @@ import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-na
   templateUrl: './parking.page.html',
   styleUrls: ['./parking.page.scss'],
 })
+@Injectable()
 export class ParkingPage implements OnInit {
 
   // Constructor creates a private instance of the Launch Navigator

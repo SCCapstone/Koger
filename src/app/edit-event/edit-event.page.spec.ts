@@ -1,7 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 import { EditEventPage } from './edit-event.page';
+import { FormBuilder } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EditEventPage', () => {
   let component: EditEventPage;
@@ -10,7 +13,8 @@ describe('EditEventPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ EditEventPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), AngularFireModule.initializeApp(environment.firebase), RouterTestingModule],
+      providers: [FormBuilder]
     }).compileComponents();
 
     fixture = TestBed.createComponent(EditEventPage);

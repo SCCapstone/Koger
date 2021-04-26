@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fromEventPattern } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import 'firebase/firestore';
 import { Event } from '../../shared/event';
 import { Message } from '../../shared/message';
