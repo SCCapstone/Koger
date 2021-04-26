@@ -4,7 +4,7 @@
 This app will help users find their seats in the Koger Center as well as provide other services relevant to the Koger Center and their showings.
 [Description Page](https://github.com/SCCapstone/Koger/wiki/Project-Description).
 
-# Technologies
+## Technologies
 This project has the following dependencies:  
 * [Ionic Framework](https://ionicframework.com/)
 * [Node.js](https://nodejs.org/en/)
