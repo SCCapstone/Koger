@@ -16,7 +16,7 @@ describe('AdminDashboardPage', () => {
       declarations: [ AdminDashboardPage ],
       imports: [IonicModule.forRoot(), RouterTestingModule.withRoutes([
         { path: 'tab3', component: Tab3Page }
- ]),, AngularFireModule.initializeApp(environment.firebase)],
+ ]), AngularFireModule.initializeApp(environment.firebase)],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminDashboardPage);

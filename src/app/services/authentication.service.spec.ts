@@ -9,7 +9,7 @@ describe('AuthenticateService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({ 
-      providers: [AngularFireModule.initializeApp(environment.firebase)]
+      imports: [AngularFireModule.initializeApp(environment.firebase)]
     });
     service = TestBed.inject(AuthenticateService);
   });
