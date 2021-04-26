@@ -5,9 +5,9 @@ import { NavController, ModalController, Platform } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AdminLoginPage } from '../admin-login/admin-login.page';
 import { Router } from '@angular/router';
-import { ParkingInfoPage } from '../parking-info/parking-info.page';
 import { FirestoreService } from '../services/data/firestore.service';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 //import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
@@ -30,9 +30,12 @@ export class Tab3Page {
     private modalController: ModalController,
     public platform: Platform,
     private firestoreService: FirestoreService,
+    private callNumber: CallNumber
     
   ) {}
   
+  // Methods to route to different pages
+  // When the different buttons are clicked, the app is routed to different pages by these methods
   jumpToLogin()
   {
     if(!this.firestoreService.isLoggedIn) {
@@ -61,6 +64,7 @@ export class Tab3Page {
     this.route.navigate(['../handicapped']);
   }
 
+  // Method to send an email to the Koger Center
   sendEmail()
   {
     let email = {
@@ -73,16 +77,15 @@ export class Tab3Page {
     this.emailComposer.open(email);
   }
 
+  // Method to call the Koger Center
+  callPhone() {
+    this.callNumber.callNumber("18037777500", true).then(res => console.log('Launched dialer!', res)).catch(err => console.log('Error launching dialer', err));
+  }
+
   /*openUrl(){
     this.platform.ready().then(() => {
       let browser = new InAppBrowser("https://itkt.choicecrm.net/templates/USCK/#/events", '_blank');
     })
   }*/
 
-  async openParking() {
-    const modal = await this.modalController.create({
-      component: ParkingInfoPage
-    });
-    return await modal.present();
-  }
 }

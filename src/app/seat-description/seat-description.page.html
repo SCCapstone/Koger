@@ -1,3 +1,4 @@
+<!-- Header with back button for previous state -->
 <ion-header [translucent]="true">
   <ion-toolbar color="kogerblue">
     <ion-buttons slot="start" color="light">
@@ -7,12 +8,18 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- Content -->
 <ion-content [fullscreen]="true">
+  <!-- Card for the seat description carousel -->
   <ion-card class="ion-padding">
+    <!-- Seat description based off input information -->
     <ion-card-title class="ion-text-center">Seat Description</ion-card-title>
+    
     <p id={{inputSeat.section}} class="ion-text-center"><strong>Section:</strong> {{ inputSeat.section }}</p>
     <p id={{inputSeat.row}} class="ion-text-center"><strong>Row:</strong> {{ inputSeat.row }}</p>
     <p id={{inputSeat.seatNum}} class="ion-text-center" *ngIf="inputSeat.seatNum != null"><strong>Seat Number:</strong> {{ inputSeat.seatNum }}</p>
+    <!-- Direction slides with indicator at bottom for slides -->
+
     <ion-slides pager>
       <ion-slide *ngFor="let i of appSlides.items">
         <div class="slide">
