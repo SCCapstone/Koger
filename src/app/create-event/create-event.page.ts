@@ -24,7 +24,7 @@ export class CreateEventPage implements OnInit {
       this.createEventForm = formBuilder.group({
       eventName: ['', Validators.required],
       eventDescription: ['', Validators.required],
-      link: ['', Validators.compose([Validators.pattern('(http|https)://kogercenterforthearts.com/(.*)'), Validators.required])],
+      link: ['', Validators.compose([Validators.pattern('^((https|http):\/\/)?(www.)?[a-z0-9]+\.com(\/)?(.*)$'), Validators.required])],
       tag: ['', Validators.required],
       dates: ['', Validators.required],
     });
@@ -42,7 +42,7 @@ export class CreateEventPage implements OnInit {
     ],
     'link': [
       { type: 'required', message: 'Link is required.'},
-      { type: 'pattern', message: 'Link must follow URL Pattern'      }
+      { type: 'pattern', message: 'Link must follow URL Pattern \n (https or http:// <Website.com>'}
     ],
     'tag': [
       { type: 'required', message: 'Tag is required.'}
