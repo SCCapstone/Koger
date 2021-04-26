@@ -4,7 +4,6 @@ import { AdminDashboardPageObject } from './page-objects/admin-dashboard.page-ob
 
 describe('admin-dashboard-behaviors', ()=> {
     let adminDashboardPage: AdminDashboardPageObject;
-    //browser.driver.manage().window().maximize();
     browser.driver.manage().window().setSize(500, 800);
     beforeEach(() => {
         adminDashboardPage = new AdminDashboardPageObject();
