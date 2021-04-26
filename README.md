@@ -36,7 +36,7 @@ Deploying the app is made easy using Ionic Framework and [Android Studio](https:
 * Run `npx cap sync` in a terminal from the project root
 * Run `npx cap copy android` in a terminal from the project root
 * Run `npx cap open android` in a terminal from the project root
-* Following the last command Android Studio will open if installed, then the app can be built and deployed through the standard Android Studio workflow
+* Following the last command Android Studio will open if installed, then the app can be built and deployed through the standard Android Studio workflow.
 
 # Testing
 
@@ -52,6 +52,8 @@ Behavior tests can be executed by running the following command in a terminal fr
 
 This command will open up a browser which will very quickly simulate an user clicking through the app.
 The results of the test are printed out in the terminal once completed.
+
+* Note: Resolution size could cause errors in the e2e tests.
 
 # Authors
 James Cochran - jdc7@email.sc.edu<br />
