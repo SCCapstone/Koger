@@ -10,20 +10,20 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
-      <ion-card-title class="ion-text-center">Edit an Event</ion-card-title>
+      <ion-card-title id="edit-event-title" class="ion-text-center">Edit an Event</ion-card-title>
       <ion-card-subtitle class="ion-text-center">Choose from the Events Below</ion-card-subtitle>
     </ion-card-header>
     <ion-card *ngFor="let event of eventList" class="ion-padding">
       <span *ngIf="!event.isEdit; else elseBlock">
         <ion-card-header>
-          <ion-card-title class="ion-text-center">{{event.title}}</ion-card-title>
+          <ion-card-title class="ion-text-center" id={{event.tag}}>{{event.title}}</ion-card-title>
           <ion-card-subtitle>{{event.dates}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
-          <ion-button shape="round" color="kogerblue" size="small" (click)="EditEvent(event)">
+          <ion-button id={{event.title}} shape="round" color="kogerblue" size="small" (click)="EditEvent(event)">
             <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
           </ion-button>
-        <ion-button shape="round" color="danger" size="small" (click)="DeleteEvent(event)">
+        <ion-button id={{event.dates}} shape="round" color="danger" size="small" (click)="DeleteEvent(event)">
           <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
         </ion-button>
         </ion-card-content>
@@ -48,7 +48,7 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
-            <ion-label><strong>EVENT:   {{event.EditTitle}}</strong></ion-label>
+            <ion-label><strong id={{event.EditDescription}}>EVENT:   {{event.EditTitle}}</strong></ion-label>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -77,6 +77,6 @@
         </ion-card-content>
       </ng-template>
     </ion-card>
-    <img src="../../assets/img/WhiteKogerWoodmark.jpg" />
+    <img id="bottomimage" src="../../assets/img/WhiteKogerWoodmark.jpg" />
   </ion-card>
 </ion-content>

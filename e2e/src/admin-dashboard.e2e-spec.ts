@@ -4,7 +4,7 @@ import { AdminDashboardPageObject } from './page-objects/admin-dashboard.page-ob
 
 describe('admin-dashboard-behaviors', ()=> {
     let adminDashboardPage: AdminDashboardPageObject;
-    browser.driver.manage().window().maximize();
+    browser.driver.manage().window().setSize(500, 800);
     beforeEach(() => {
         adminDashboardPage = new AdminDashboardPageObject();
         
@@ -14,7 +14,7 @@ describe('admin-dashboard-behaviors', ()=> {
     it('Admin Dashboard Title Should be Correct', () => {
         expect(adminDashboardPage.getAdminPageTitle()).toContain("Admin Dashboard");
     });
-
+    // Tests below check routing by clicking the buttons on the page
     it('Clicking on Add an Event redirects to that page', () => {
         adminDashboardPage.clickAddAnEvent();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("create-event"), 5000));
@@ -29,7 +29,7 @@ describe('admin-dashboard-behaviors', ()=> {
         adminDashboardPage.clickSendPushNotifications();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("send-push"), 5000));
     });
-
+    // Tests below ensures routing for logout and requires user to relogin after logging out
     it('Clicking on Logout redirects user to correct page', () => {
         adminDashboardPage.clickLogOut();
         expect(browser.wait(protractor.ExpectedConditions.urlContains("tab3"), 5000));
@@ -39,7 +39,6 @@ describe('admin-dashboard-behaviors', ()=> {
         adminDashboardPage.clickLogOut();
         browser.driver.sleep(1000);
         browser.waitForAngular();
-        var EC = protractor.ExpectedConditions;
         var scrollToScript = 'document.getElementById("admin-login-btn").scrollIntoView();';
         var loginButton = element(by.id('admin-login-btn'));
         browser.driver.executeScript(scrollToScript).then(function () {

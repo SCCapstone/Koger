@@ -9,49 +9,49 @@
   <ion-card class="ion-padding">
     <ion-grid>
       <ion-card-header>
-        <ion-card-title class="ion-text-center">Enter Ticket Information:</ion-card-title>
+        <ion-card-title id="ticket-title" class="ion-text-center">Enter Ticket Information:</ion-card-title>
         <ion-card-subtitle class="ion-text-center">Section and Row Required</ion-card-subtitle>
       </ion-card-header>
       <!-- Form for validating input seat information (Section and Row Required) -->
       <form class="form" [formGroup]="validations_form">
-        <!-- Field to select section -->
-        <ion-item>
-          <ion-label floating>Section</ion-label>
-          <ion-select [(ngModel)]="seat.section" (ngModelChange)="setRows(seat.section)" formControlName="section" name="Section">
-            <ion-select-option *ngFor="let i of sections">{{ i }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <!-- Validation message for section -->
-        <ion-row>
-          <ion-col size="auto">
-            <div class = "validation-errors">
-              <ng-container *ngFor="let validation of validation_messages.section">
-              <div class="error-message"
-                *ngIf = "validations_form.get('section').hasError(validation.type) && (validations_form.get('section').dirty || validations_form.get('section').touched)">
-                {{ validation.message }}
-              </div>
-              </ng-container>
+        
+      <!-- Field to select section -->
+      <ion-item>
+        <ion-label floating>Section</ion-label>
+        <ion-select id="SectionSelect" [(ngModel)]="seat.section" (ngModelChange)="setRows(seat.section)" formControlName="section" name="Section">
+          <ion-select-option *ngFor="let i of sections">{{ i }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- Validation message for section -->
+      <ion-row>
+        <ion-col size="auto">
+          <div class = "validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.section">
+            <div class="error-message"
+              *ngIf = "validations_form.get('section').hasError(validation.type) && (validations_form.get('section').dirty || validations_form.get('section').touched)">
+              {{ validation.message }}
             </div>
-          </ion-col>
-        </ion-row>
-        <!-- Field to select row -->
-        <ion-item>
-          <ion-label floating>Row</ion-label>
-          <!-- Selected row is removed with change in section -->
-          <ion-select [(ngModel)]="seat.row" (ngModelChange)="setSeats(seat.row)" formControlName="row" name="Row">
-            <ion-select-option *ngFor="let i of rows">{{ i }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <!-- Validation message for row -->
-        <ion-row>
-          <ion-col size="auto">
-            <div class = "validation-errors">
-              <ng-container *ngFor="let validation of validation_messages.row">
-              <div class="error-message"
-                *ngIf = "validations_form.get('row').hasError(validation.type) && (validations_form.get('row').dirty || validations_form.get('row').touched)">
-                {{ validation.message }}
-              </div>
-              </ng-container>
+            </ng-container>
+         </div>
+        </ion-col>
+      </ion-row>
+      <!-- Field to select row -->
+      <ion-item>
+        <ion-label floating>Row</ion-label>
+        <!-- Selected row is removed with change in section -->
+        <ion-select id="RowSelect" [(ngModel)]="seat.row" (ngModelChange)="setSeats(seat.row)" formControlName="row" name="Row">
+          <ion-select-option *ngFor="let i of rows">{{ i }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- Validation message for row -->
+      <ion-row>
+        <ion-col size="auto">
+          <div class = "validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.row">
+            <div class="error-message"
+              *ngIf = "validations_form.get('row').hasError(validation.type) && (validations_form.get('row').dirty || validations_form.get('row').touched)">
+              {{ validation.message }}
+
             </div>
           </ion-col>
         </ion-row>
@@ -59,7 +59,7 @@
       <!-- Field to select seat numnber -->
       <ion-item>
         <ion-label floating>Seat Number: </ion-label>
-        <ion-select [(ngModel)]="seat.seatNum" name="SeatNum">
+        <ion-select id="SeatSelect" [(ngModel)]="seat.seatNum" name="SeatNum">
           <ion-select-option *ngFor="let i of seats">{{ i }}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -76,8 +76,8 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <!-- Button to go to seat description (can only be clicked when section and row are populated) -->
-          <ion-button expand="block" color="kogerblue" type="submit" (click)="goToSeatDescription()" [disabled]="!validations_form.valid">Find Seat</ion-button>
+           <!-- Button to go to seat description (can only be clicked when section and row are populated) -->
+          <ion-button id="submitbtn" expand="block" color="kogerblue" type="submit" (click)="goToSeatDescription()" [disabled]="!validations_form.valid">Find Seat</ion-button>
         </ion-col>
       </ion-row>
       <ion-row>

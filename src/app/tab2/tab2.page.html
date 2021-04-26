@@ -5,43 +5,43 @@
 <ion-content [fullscreen]="true">
   <ion-card class="ion-padding">
     <ion-card-header>
-      <ion-card-title class="ion-text-center">Individual Maps</ion-card-title>
+      <ion-card-title id="mapsTitle" class="ion-text-center">Individual Maps</ion-card-title>
     </ion-card-header>
     
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToMapLobby()">1st Floor: Orchestra/Lobby</ion-button>
+          <ion-button id="lobbyMap" expand="block" color="kogerblue" (click) = "jumpToMapLobby()">1st Floor: Orchestra/Lobby</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToMapOrchestra()">Orchestra Seating Chart</ion-button>
+          <ion-button id="orchestraMap"expand="block" color="kogerblue" (click) = "jumpToMapOrchestra()">Orchestra Seating Chart</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToMapGrand()">2nd Floor: Grand Tier/Gallery</ion-button>
+          <ion-button id="GTMap" expand="block" color="kogerblue" (click) = "jumpToMapGrand()">2nd Floor: Grand Tier/Gallery</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToMapSeatsGrand()">Grand Tier Seating Chart</ion-button>
+          <ion-button id="GTSeatingChart" expand="block" color="kogerblue" (click) = "jumpToMapSeatsGrand()">Grand Tier Seating Chart</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToMapBalcony()">3rd Floor: Balcony</ion-button>
+          <ion-button id="balconyMap" expand="block" color="kogerblue" (click) = "jumpToMapBalcony()">3rd Floor: Balcony</ion-button>
         </ion-col>
       </ion-row>
   
       <ion-row>
         <ion-col>
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToMapSeatsBalcony()">Balcony Seating Chart</ion-button>
+          <ion-button id="balconySeatingChart" expand="block" color="kogerblue" (click) = "jumpToMapSeatsBalcony()">Balcony Seating Chart</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

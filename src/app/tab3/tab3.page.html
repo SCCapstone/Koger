@@ -8,38 +8,41 @@
   <!-- Card with the different information buttons-->
   <ion-card class="ion-padding">
     <ion-card-header>
-      <ion-card-title class="ion-text-center">Information Center</ion-card-title>
+      <ion-card-title id="info-title" class="ion-text-center">Information Center</ion-card-title>
     </ion-card-header>
     <!-- Buttons -->
     <ion-grid>
       <ion-row>
         <ion-col>
           <!-- Upcoming Events -->
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToEvents()">Upcoming Events</ion-button>
+          <ion-button id="upcomingEvents" expand="block" color="kogerblue" (click) = "jumpToEvents()">Upcoming Events</ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
+
           <!-- Art -->
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
+          <ion-button id="art" expand="block" color="kogerblue" (click) = "jumpToArt()">Art in the Koger Center</ion-button>
+
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <!-- Parking -->
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToParking()">Parking Information</ion-button>
+          <ion-button id="parking" expand="block" color="kogerblue" (click) = "jumpToParking()">Parking Information</ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <!-- ADA Accessibility -->
-          <ion-button expand="block" color="kogerblue" (click) = "jumpToHandicapped()">ADA Accessibility</ion-button>
+          <ion-button id="ADA" expand="block" color="kogerblue" (click) = "jumpToHandicapped()">ADA Accessibility</ion-button>
+
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <!-- Purchase Tickets -->
-          <ion-button expand="block" color="kogerblue" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
+          <ion-button id="ticket" expand="block" color="kogerblue" onclick="window.open('https://itkt.choicecrm.net/templates/USCK/#/events', '_system', 'location=yes'); return false;">Purchase Tickets</ion-button>
         </ion-col>
       </ion-row>
 

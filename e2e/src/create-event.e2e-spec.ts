@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import { browser, element, by, ExpectedConditions, protractor } from 'protractor';
 import { CreateEventPageObject } from './page-objects/create-event.page-object';
 
@@ -11,6 +10,7 @@ describe('create event page behaviours', () => {
         createEventPage.navigateTo();
     });
 
+    // Checks form validation for creating an event
     it('Create Event page title is correct', () => {
         expect(createEventPage.getCreatePageTitle()).toContain("Add an Event"); 
     });
@@ -31,5 +31,8 @@ describe('create event page behaviours', () => {
     });
     it('Submit button should not be clickable with no data', ()=> {
         expect(createEventPage.isSubmitClickableWithNoInformation());
+    })
+    it('Submit button should be clickable and redirect to admin dashboard', () => {
+        expect(createEventPage.isSubmitClickableWithInformation());
     })
 });
