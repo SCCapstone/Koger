@@ -11,8 +11,8 @@ describe('FirestoreService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      //imports: [InjectionToken]
-      providers: [AngularFirestore, AngularFireModule, AngularFirestoreModule, AngularFireModule.initializeApp(environment.firebase)]
+      imports: [AngularFireModule.initializeApp(environment.firebase)],
+      providers: [AngularFirestore, AngularFireModule, AngularFirestoreModule]
     });
     service = TestBed.inject(FirestoreService);
   });

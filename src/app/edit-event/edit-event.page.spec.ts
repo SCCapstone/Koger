@@ -4,7 +4,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { EditEventPage } from './edit-event.page';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EditEventPage', () => {
   let component: EditEventPage;
@@ -13,8 +13,8 @@ describe('EditEventPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ EditEventPage ],
-      imports: [IonicModule.forRoot(), AngularFireModule.initializeApp(environment.firebase)],
-      providers: [FormBuilder, Router]
+      imports: [IonicModule.forRoot(), AngularFireModule.initializeApp(environment.firebase), RouterTestingModule],
+      providers: [FormBuilder]
     }).compileComponents();
 
     fixture = TestBed.createComponent(EditEventPage);

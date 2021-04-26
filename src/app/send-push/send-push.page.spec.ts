@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 
@@ -16,8 +17,8 @@ describe('SendPushPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SendPushPage ],
-      imports: [IonicModule.forRoot(), AngularFireModule.initializeApp(environment.firebase)],
-      providers: [FormBuilder, Router]
+      imports: [IonicModule.forRoot(), AngularFireModule.initializeApp(environment.firebase), RouterTestingModule],
+      providers: [FormBuilder]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SendPushPage);
