@@ -2,7 +2,7 @@
 1051 Greene St, Columbia, SC 29201
 
 ## Video Presentation
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vBqVdG-3ZlA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vBqVdG-3ZlA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><br />
 
 ## Project Description
 The employees at the Koger Center wanted an app to be made so that patrons will be able to put in their ticket information before coming to the Koger Center so they know how to get to their seats.  With this app, a user can put in their section and row (both of these are required) and seat number (optional) to get a detailed description of how to get to their seats.<br /><br />
