@@ -39,10 +39,13 @@ export class FirestoreService {
     return this.firestore.collection('Event').snapshotChanges();
   }
 
+  // queries the push collection
   getLastMessage(): Observable<Message[]> {
     return this.firestore.collection<Message>('push').valueChanges();
   }
 
+  // updates message document in push collection, when this update occurs, the job (cloud function) 
+  // on the firebase console will pick it up and send out the push notifications
   updateMessage(title: string, body: string) {
     return this.firestore.collection('push').doc('message').update({ title: title, body: body});
   }
